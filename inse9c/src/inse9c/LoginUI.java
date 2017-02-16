@@ -11,6 +11,9 @@ package inse9c;
  */
 public class LoginUI extends javax.swing.JFrame {
 
+    
+    registrationUI r = new registrationUI();
+    
     /**
      * Creates new form LoginUI
      */
@@ -118,10 +121,24 @@ public class LoginUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void loginButActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButActionPerformed
-        //GO TO HOMESCREEN
-        System.out.println("loginButActionPerformed");
+        //current checking fake email account, or something entered in the reg screen
+        if(loginValidation()){
+            Menu m = new Menu();
+            m.setVisible(true);
+        }
+        
     }//GEN-LAST:event_loginButActionPerformed
 
+    public boolean loginValidation(){       
+        
+        if(userEmail.getText().equals(r.getEmail()) && userPassword.getText().equals(r.getPassword())){
+            return true;
+        }else if(userEmail.getText().equals("admin@pdt.co.uk") && userPassword.getText().equals("password")){
+            return true;
+        }
+        return false;
+    }
+    
     private void userEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userEmailActionPerformed
         loginButActionPerformed(evt);
     }//GEN-LAST:event_userEmailActionPerformed
@@ -132,7 +149,6 @@ public class LoginUI extends javax.swing.JFrame {
 
     private void registerButMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerButMouseClicked
         //Login window remains open, whilst opening the registration window
-        registrationUI r = new registrationUI();
         r.setVisible(true);
     }//GEN-LAST:event_registerButMouseClicked
 
