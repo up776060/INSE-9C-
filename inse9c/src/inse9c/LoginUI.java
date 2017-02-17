@@ -40,6 +40,11 @@ public class LoginUI extends javax.swing.JFrame {
         registerBut = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                formMouseClicked(evt);
+            }
+        });
 
         loginBut.setText("Login");
         loginBut.addActionListener(new java.awt.event.ActionListener() {
@@ -59,6 +64,11 @@ public class LoginUI extends javax.swing.JFrame {
 
         userEmail.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         userEmail.setText("user@email.com");
+        userEmail.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                userEmailMouseClicked(evt);
+            }
+        });
         userEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 userEmailActionPerformed(evt);
@@ -163,6 +173,14 @@ public class LoginUI extends javax.swing.JFrame {
         r.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_registerButMouseClicked
+
+    private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formMouseClicked
+
+    private void userEmailMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_userEmailMouseClicked
+        userEmail.setText("");
+    }//GEN-LAST:event_userEmailMouseClicked
 
     /**
      * @param args the command line arguments
