@@ -264,7 +264,7 @@ public class QuizUI extends javax.swing.JFrame {
     private void ButtonNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonNextActionPerformed
         // TODO add your handling code here:
         if (i == 2) {
-            End t = new End();
+            End t = new End(score, correctans.length);
             t.setVisible(true);
             this.setVisible(false);
         }

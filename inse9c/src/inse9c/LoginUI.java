@@ -173,7 +173,6 @@ public class LoginUI extends javax.swing.JFrame {
     private void registerButMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerButMouseClicked
         //Login window remains open, whilst opening the registration window
         r.setVisible(true);
-        this.setVisible(false);
     }//GEN-LAST:event_registerButMouseClicked
 
     private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked

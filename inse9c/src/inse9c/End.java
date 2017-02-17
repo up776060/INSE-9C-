@@ -1,5 +1,8 @@
 package inse9c;
 
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -12,13 +15,32 @@ package inse9c;
  */
 public class End extends javax.swing.JFrame {
 
+    private int score, totalQuestions;
+    
     /**
      * Creates new form End
      */
     public End() {
         initComponents();
     }
+    
+    public End(int marks, int totQues) {
+        initComponents();
+        score = marks;
+        totalQuestions = totQues;
+        Editable_score.setText(Integer.toString(score));
+        Total_score.setText(Integer.toString(totalQuestions));
+        
+        System.out.println(score);
+        System.out.println(totalQuestions);
 
+        double perc = ((double)score / (double)totalQuestions)*100;
+        
+        
+        DecimalFormat df = new DecimalFormat("#.#");
+        df.setRoundingMode(RoundingMode.HALF_EVEN);
+        Percentage.setText(String.valueOf(df.format(perc)) + "%");
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
