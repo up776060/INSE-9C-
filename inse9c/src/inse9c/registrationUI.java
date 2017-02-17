@@ -243,8 +243,6 @@ public class registrationUI extends javax.swing.JFrame {
     }//GEN-LAST:event_acceptTermsActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        LoginUI t = new LoginUI();
-        t.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton2ActionPerformed
 
