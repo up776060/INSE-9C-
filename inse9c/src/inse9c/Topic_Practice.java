@@ -114,15 +114,15 @@ public class Topic_Practice extends javax.swing.JFrame {
 
         lblPercentage1.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         lblPercentage1.setForeground(new java.awt.Color(255, 255, 255));
-        lblPercentage1.setText("100%");
+        lblPercentage1.setText("0%");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblPercentage1)
+                .addContainerGap(22, Short.MAX_VALUE)
+                .addComponent(lblPercentage1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -213,15 +213,15 @@ public class Topic_Practice extends javax.swing.JFrame {
 
         lblPercentage2.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         lblPercentage2.setForeground(new java.awt.Color(255, 255, 255));
-        lblPercentage2.setText("100%");
+        lblPercentage2.setText("0%");
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblPercentage2)
+                .addContainerGap(23, Short.MAX_VALUE)
+                .addComponent(lblPercentage2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel7Layout.setVerticalGroup(
@@ -309,15 +309,15 @@ public class Topic_Practice extends javax.swing.JFrame {
 
         lblPercentage3.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         lblPercentage3.setForeground(new java.awt.Color(255, 255, 255));
-        lblPercentage3.setText("100%");
+        lblPercentage3.setText("0%");
 
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
         jPanel11.setLayout(jPanel11Layout);
         jPanel11Layout.setHorizontalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblPercentage3)
+                .addContainerGap(23, Short.MAX_VALUE)
+                .addComponent(lblPercentage3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel11Layout.setVerticalGroup(
@@ -405,15 +405,15 @@ public class Topic_Practice extends javax.swing.JFrame {
 
         lblPercentage5.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         lblPercentage5.setForeground(new java.awt.Color(255, 255, 255));
-        lblPercentage5.setText("100%");
+        lblPercentage5.setText("0%");
 
         javax.swing.GroupLayout jPanel17Layout = new javax.swing.GroupLayout(jPanel17);
         jPanel17.setLayout(jPanel17Layout);
         jPanel17Layout.setHorizontalGroup(
             jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel17Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblPercentage5)
+                .addContainerGap(23, Short.MAX_VALUE)
+                .addComponent(lblPercentage5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel17Layout.setVerticalGroup(
@@ -501,15 +501,15 @@ public class Topic_Practice extends javax.swing.JFrame {
 
         lblPercentage6.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         lblPercentage6.setForeground(new java.awt.Color(255, 255, 255));
-        lblPercentage6.setText("100%");
+        lblPercentage6.setText("0%");
 
         javax.swing.GroupLayout jPanel21Layout = new javax.swing.GroupLayout(jPanel21);
         jPanel21.setLayout(jPanel21Layout);
         jPanel21Layout.setHorizontalGroup(
             jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel21Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblPercentage6)
+                .addContainerGap(23, Short.MAX_VALUE)
+                .addComponent(lblPercentage6, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel21Layout.setVerticalGroup(
@@ -597,15 +597,15 @@ public class Topic_Practice extends javax.swing.JFrame {
 
         lblPercentage7.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         lblPercentage7.setForeground(new java.awt.Color(255, 255, 255));
-        lblPercentage7.setText("100%");
+        lblPercentage7.setText("0%");
 
         javax.swing.GroupLayout jPanel25Layout = new javax.swing.GroupLayout(jPanel25);
         jPanel25.setLayout(jPanel25Layout);
         jPanel25Layout.setHorizontalGroup(
             jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel25Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblPercentage7)
+                .addContainerGap(23, Short.MAX_VALUE)
+                .addComponent(lblPercentage7, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel25Layout.setVerticalGroup(
@@ -693,15 +693,15 @@ public class Topic_Practice extends javax.swing.JFrame {
 
         lblPercentage8.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         lblPercentage8.setForeground(new java.awt.Color(255, 255, 255));
-        lblPercentage8.setText("100%");
+        lblPercentage8.setText("0%");
 
         javax.swing.GroupLayout jPanel29Layout = new javax.swing.GroupLayout(jPanel29);
         jPanel29.setLayout(jPanel29Layout);
         jPanel29Layout.setHorizontalGroup(
             jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel29Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblPercentage8)
+                .addContainerGap(23, Short.MAX_VALUE)
+                .addComponent(lblPercentage8, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel29Layout.setVerticalGroup(
