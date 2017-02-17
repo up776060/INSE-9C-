@@ -5,15 +5,16 @@
  */
 package inse9c;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author up777621
  */
 public class LoginUI extends javax.swing.JFrame {
 
-    
     registrationUI r = new registrationUI();
-    
+
     /**
      * Creates new form LoginUI
      */
@@ -122,23 +123,28 @@ public class LoginUI extends javax.swing.JFrame {
 
     private void loginButActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButActionPerformed
         //current checking fake email account, or something entered in the reg screen
-        if(loginValidation()){
+        if (loginValidation()) {
             Menu m = new Menu();
             m.setVisible(true);
+            this.setVisible(false);
+        } else {
+            JOptionPane.showMessageDialog(null, "Please enter a correct email and password");
         }
-        
+
     }//GEN-LAST:event_loginButActionPerformed
 
-    public boolean loginValidation(){       
-        
-        if(userEmail.getText().equals(r.getEmail()) && userPassword.getText().equals(r.getPassword())){
+    public boolean loginValidation() {
+
+        if (userEmail.getText().equals(r.getEmail()) && userPassword.getText().equals(r.getPassword())) {
             return true;
-        }else if(userEmail.getText().equals("admin@pdt.co.uk") && userPassword.getText().equals("password")){
+        } else if (userEmail.getText().equals("admin@pdt.co.uk") && userPassword.getText().equals("password")) {
+            return true;
+        } else if (userEmail.getText().equals("p") && userPassword.getText().equals("p")) {
             return true;
         }
         return false;
     }
-    
+
     private void userEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userEmailActionPerformed
         loginButActionPerformed(evt);
     }//GEN-LAST:event_userEmailActionPerformed
@@ -186,7 +192,6 @@ public class LoginUI extends javax.swing.JFrame {
             }
         });
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel emailLabel;
     private javax.swing.JLabel jLabel1;

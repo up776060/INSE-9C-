@@ -5,7 +5,6 @@ package inse9c;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author up785062
@@ -46,8 +45,18 @@ public class Menu extends javax.swing.JFrame {
         });
 
         Quiz_button.setText("Quiz");
+        Quiz_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Quiz_buttonActionPerformed(evt);
+            }
+        });
 
         Topics_button.setText("Topics");
+        Topics_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Topics_buttonActionPerformed(evt);
+            }
+        });
 
         Progress_button.setText("Progress Monitor");
 
@@ -106,6 +115,16 @@ public class Menu extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_Mock_buttonActionPerformed
 
+    private void Quiz_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Quiz_buttonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Quiz_buttonActionPerformed
+
+    private void Topics_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Topics_buttonActionPerformed
+        Topic_Practice t = new Topic_Practice();
+        t.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_Topics_buttonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -141,7 +160,6 @@ public class Menu extends javax.swing.JFrame {
             }
         });
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Header_label;
     private javax.swing.JButton LogOut_button;

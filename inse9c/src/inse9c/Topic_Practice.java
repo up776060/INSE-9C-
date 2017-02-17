@@ -94,11 +94,21 @@ public class Topic_Practice extends javax.swing.JFrame {
 
         btnBack.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnBack.setText("Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
 
         jPanel2.setBackground(new java.awt.Color(255, 204, 102));
 
         btnPractice1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnPractice1.setText("Practice");
+        btnPractice1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPractice1ActionPerformed(evt);
+            }
+        });
 
         jPanel3.setBackground(new java.awt.Color(0, 0, 0));
 
@@ -193,6 +203,11 @@ public class Topic_Practice extends javax.swing.JFrame {
 
         btnPractice2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnPractice2.setText("Practice");
+        btnPractice2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPractice2ActionPerformed(evt);
+            }
+        });
 
         jPanel7.setBackground(new java.awt.Color(0, 0, 0));
 
@@ -284,6 +299,11 @@ public class Topic_Practice extends javax.swing.JFrame {
 
         btnPractice3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnPractice3.setText("Practice");
+        btnPractice3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPractice3ActionPerformed(evt);
+            }
+        });
 
         jPanel11.setBackground(new java.awt.Color(0, 0, 0));
 
@@ -375,6 +395,11 @@ public class Topic_Practice extends javax.swing.JFrame {
 
         btnPractice5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnPractice5.setText("Practice");
+        btnPractice5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPractice5ActionPerformed(evt);
+            }
+        });
 
         jPanel17.setBackground(new java.awt.Color(0, 0, 0));
 
@@ -466,6 +491,11 @@ public class Topic_Practice extends javax.swing.JFrame {
 
         btnPractice6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnPractice6.setText("Practice");
+        btnPractice6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPractice6ActionPerformed(evt);
+            }
+        });
 
         jPanel21.setBackground(new java.awt.Color(0, 0, 0));
 
@@ -557,6 +587,11 @@ public class Topic_Practice extends javax.swing.JFrame {
 
         btnPractice7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnPractice7.setText("Practice");
+        btnPractice7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPractice7ActionPerformed(evt);
+            }
+        });
 
         jPanel25.setBackground(new java.awt.Color(0, 0, 0));
 
@@ -648,6 +683,11 @@ public class Topic_Practice extends javax.swing.JFrame {
 
         btnPractice8.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnPractice8.setText("Practice");
+        btnPractice8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPractice8ActionPerformed(evt);
+            }
+        });
 
         jPanel29.setBackground(new java.awt.Color(0, 0, 0));
 
@@ -797,6 +837,54 @@ public class Topic_Practice extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        Menu m = new Menu();
+        m.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnBackActionPerformed
+
+    private void btnPractice1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPractice1ActionPerformed
+        Topics t = new Topics("Alertness");
+        t.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnPractice1ActionPerformed
+
+    private void btnPractice2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPractice2ActionPerformed
+        Topics t = new Topics("Attitude");
+        t.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnPractice2ActionPerformed
+
+    private void btnPractice3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPractice3ActionPerformed
+        Topics t = new Topics("Safety and your vehicle");
+        t.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnPractice3ActionPerformed
+
+    private void btnPractice5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPractice5ActionPerformed
+        Topics t = new Topics("Hazard Awareness");
+        t.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnPractice5ActionPerformed
+
+    private void btnPractice6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPractice6ActionPerformed
+        Topics t = new Topics("Safety Margin");
+        t.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnPractice6ActionPerformed
+
+    private void btnPractice7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPractice7ActionPerformed
+        Topics t = new Topics("Motorway Rules");
+        t.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnPractice7ActionPerformed
+
+    private void btnPractice8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPractice8ActionPerformed
+        Topics t = new Topics("Vehicle Handling");
+        t.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnPractice8ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -831,7 +919,6 @@ public class Topic_Practice extends javax.swing.JFrame {
             }
         });
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnPractice1;

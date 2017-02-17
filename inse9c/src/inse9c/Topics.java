@@ -5,7 +5,6 @@ package inse9c;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author up719920
@@ -17,6 +16,11 @@ public class Topics extends javax.swing.JFrame {
      */
     public Topics() {
         initComponents();
+    }
+    String quizTopic;
+
+    public Topics(String topic) {
+        quizTopic = topic;
     }
 
     /**
@@ -75,6 +79,11 @@ public class Topics extends javax.swing.JFrame {
 
         startButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         startButton.setText("Start Topic");
+        startButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                startButtonActionPerformed(evt);
+            }
+        });
 
         headerLabel.setBackground(new java.awt.Color(255, 153, 0));
         headerLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -130,6 +139,12 @@ public class Topics extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_headerLabelActionPerformed
 
+    private void startButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startButtonActionPerformed
+        QuizUI q = new QuizUI();
+        q.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_startButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -165,7 +180,6 @@ public class Topics extends javax.swing.JFrame {
             }
         });
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backButton;
     private javax.swing.JTextField headerLabel;

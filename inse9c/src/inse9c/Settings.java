@@ -5,7 +5,6 @@ package inse9c;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author up785062
@@ -222,7 +221,6 @@ public class Settings extends javax.swing.JFrame {
             }
         });
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Back_button;
     private javax.swing.JComboBox<String> Colours_combo;

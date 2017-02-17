@@ -12,7 +12,7 @@ import java.io.PrintWriter;
  * @author up777621
  */
 public class registrationUI extends javax.swing.JFrame {
-    
+
     String email, fName, sName, dob, password;
 
     /**
@@ -166,12 +166,11 @@ public class registrationUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void userFirstNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userFirstNameActionPerformed
-        
     }//GEN-LAST:event_userFirstNameActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         //Test all of the inputs are full
-        
+
         //Store the information
         //locally for now Database support and DAO intergration later 15/02/17
         email = userEmail.getText();
@@ -183,26 +182,26 @@ public class registrationUI extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    
-    public String getFName(){
+    public String getFName() {
         return fName;
     }
-    
-    public String getSName(){
+
+    public String getSName() {
         return sName;
     }
-    
-    public String getDOB(){
+
+    public String getDOB() {
         return dob;
     }
-    
-    public String getEmail(){
+
+    public String getEmail() {
         return email;
     }
-    
-    public String getPassword(){
+
+    public String getPassword() {
         return password;
     }
+
     /**
      * @param args the command line arguments
      */
@@ -237,7 +236,6 @@ public class registrationUI extends javax.swing.JFrame {
             }
         });
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JCheckBox jCheckBox1;
