@@ -42,7 +42,7 @@
                           <Component id="userSurname" alignment="0" pref="100" max="32767" attributes="0"/>
                           <Component id="userFirstName" pref="100" max="32767" attributes="0"/>
                           <Component id="userPassword" pref="100" max="32767" attributes="0"/>
-                          <Component id="userConfimPassword" alignment="0" pref="100" max="32767" attributes="0"/>
+                          <Component id="userConfirmPassword" alignment="0" pref="100" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <Component id="jButton1" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -99,7 +99,7 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="userConfimPassword" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="userConfirmPassword" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Component id="jScrollPane1" max="32767" attributes="0"/>
@@ -196,7 +196,7 @@
     </Component>
     <Component class="javax.swing.JPasswordField" name="userPassword">
     </Component>
-    <Component class="javax.swing.JPasswordField" name="userConfimPassword">
+    <Component class="javax.swing.JPasswordField" name="userConfirmPassword">
     </Component>
   </SubComponents>
 </Form>

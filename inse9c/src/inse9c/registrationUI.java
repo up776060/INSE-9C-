@@ -6,6 +6,7 @@
 package inse9c;
 
 import java.io.PrintWriter;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -13,7 +14,7 @@ import java.io.PrintWriter;
  */
 public class registrationUI extends javax.swing.JFrame {
 
-    String email, fName, sName, dob, password;
+    private String email, fName, sName, dob, password;
 
     /**
      * Creates new form registrationUI
@@ -47,7 +48,7 @@ public class registrationUI extends javax.swing.JFrame {
         jTextArea1 = new javax.swing.JTextArea();
         jCheckBox1 = new javax.swing.JCheckBox();
         userPassword = new javax.swing.JPasswordField();
-        userConfimPassword = new javax.swing.JPasswordField();
+        userConfirmPassword = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -109,7 +110,7 @@ public class registrationUI extends javax.swing.JFrame {
                             .addComponent(userSurname, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
                             .addComponent(userFirstName, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
                             .addComponent(userPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-                            .addComponent(userConfimPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)))
+                            .addComponent(userConfirmPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)))
                     .addComponent(jButton1))
                 .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -153,7 +154,7 @@ public class registrationUI extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel7)
-                            .addComponent(userConfimPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(userConfirmPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jScrollPane1))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -170,16 +171,32 @@ public class registrationUI extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         //Test all of the inputs are full
+        if (userFirstName.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Please Enter a First Name");
+        } else if (userSurname.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Please Enter a Surname");
+        } else if (userDOB.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Please Enter a Date of Birth");
+        } else if (userEmail.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Please Enter an Email");
+        } else if (userPassword.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Please Enter a Password");
+        } else if (userConfirmPassword.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Please Confirm your Password");
+        } else if (!userConfirmPassword.getText().equals(userPassword.getText())) {
+            JOptionPane.showMessageDialog(null, "Please Confirm the correct Password");
+        } else {
 
-        //Store the information
-        //locally for now Database support and DAO intergration later 15/02/17
-        email = userEmail.getText();
-        fName = userFirstName.getText();
-        sName = userSurname.getText();
-        dob = userDOB.getText();
-        password = userPassword.getText();
-        //Close and reopen loginUI
-        this.setVisible(false);
+            //Store the information
+            //locally for now Database support and DAO intergration later 15/02/17
+            email = userEmail.getText();
+            fName = userFirstName.getText();
+            sName = userSurname.getText();
+            dob = userDOB.getText();
+            password = userPassword.getText();
+            //Close and reopen loginUI
+            this.setVisible(false);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     public String getFName() {
@@ -248,7 +265,7 @@ public class registrationUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JPasswordField userConfimPassword;
+    private javax.swing.JPasswordField userConfirmPassword;
     private javax.swing.JTextField userDOB;
     private javax.swing.JTextField userEmail;
     private javax.swing.JTextField userFirstName;
