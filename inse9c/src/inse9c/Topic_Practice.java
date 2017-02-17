@@ -16,6 +16,7 @@ public class Topic_Practice extends javax.swing.JFrame {
      */
     public Topic_Practice() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**

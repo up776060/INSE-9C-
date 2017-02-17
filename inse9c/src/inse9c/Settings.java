@@ -16,6 +16,7 @@ public class Settings extends javax.swing.JFrame {
      */
     public Settings() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**

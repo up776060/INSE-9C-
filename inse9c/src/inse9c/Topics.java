@@ -16,12 +16,14 @@ public class Topics extends javax.swing.JFrame {
      */
     public Topics() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
     String quizTopic;
 
     public Topics(String topic) {
         quizTopic = topic;
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**

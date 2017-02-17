@@ -21,6 +21,7 @@ public class registrationUI extends javax.swing.JFrame {
      */
     public registrationUI() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**

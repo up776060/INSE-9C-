@@ -22,6 +22,7 @@ public class End extends javax.swing.JFrame {
      */
     public End() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
     
     public End(int marks, int totQues) {

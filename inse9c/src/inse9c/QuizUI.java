@@ -32,6 +32,7 @@ public class QuizUI extends javax.swing.JFrame {
      */
     public QuizUI() {
         initComponents();
+        this.setLocationRelativeTo(null);
         jLabel1.setText("Alertness");
         i=0;
         score = 0;
