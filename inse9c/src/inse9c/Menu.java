@@ -77,6 +77,11 @@ public class Menu extends javax.swing.JFrame {
 
         LogOut_button.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         LogOut_button.setText("Log out");
+        LogOut_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LogOut_buttonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -140,6 +145,12 @@ public class Menu extends javax.swing.JFrame {
         Settings s = new Settings();
         s.setVisible(true);
     }//GEN-LAST:event_Setting_buttonActionPerformed
+
+    private void LogOut_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogOut_buttonActionPerformed
+        LoginUI t = new LoginUI();
+        t.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_LogOut_buttonActionPerformed
 
     /**
      * @param args the command line arguments

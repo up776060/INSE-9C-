@@ -137,6 +137,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Log out"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="LogOut_buttonActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
