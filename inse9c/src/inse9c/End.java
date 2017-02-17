@@ -22,12 +22,12 @@ public class End extends javax.swing.JFrame {
      */
     public End() {
         initComponents();
-        this.setLocationRelativeTo(null);
     }
     
     public End(int marks, int totQues) {
         initComponents();
-        this.setLocationRelativeTo(null);
+        this.setLocationRelativeTo(null);  
+        
         score = marks;
         totalQuestions = totQues;
         Editable_score.setText(Integer.toString(score));
@@ -61,6 +61,7 @@ public class End extends javax.swing.JFrame {
         Percentage = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         End_Score.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         End_Score.setText("Score");

@@ -37,6 +37,7 @@ public class Menu extends javax.swing.JFrame {
         LogOut_button = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         Mock_button.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         Mock_button.setText("Mock Theory test");

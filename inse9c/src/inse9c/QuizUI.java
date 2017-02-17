@@ -28,7 +28,6 @@ public class QuizUI extends javax.swing.JFrame {
 
     public QuizUI() {
         initComponents();
-        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -39,6 +38,7 @@ public class QuizUI extends javax.swing.JFrame {
     public QuizUI(String topic) {
         initComponents();
         this.setLocationRelativeTo(null);
+                
         quizTopic = topic;
 
         switch (quizTopic) {
@@ -132,6 +132,7 @@ public class QuizUI extends javax.swing.JFrame {
         lbScore = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         headerLabel.setFont(new java.awt.Font("Segoe UI Semibold", 0, 36)); // NOI18N
         headerLabel.setText("Quiz Name");

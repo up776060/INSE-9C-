@@ -47,6 +47,7 @@ public class Settings extends javax.swing.JFrame {
         jTextField3 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         Back_button.setText("Back");
         Back_button.addActionListener(new java.awt.event.ActionListener() {
