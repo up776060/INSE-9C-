@@ -33,7 +33,7 @@ public class Settings extends javax.swing.JFrame {
         OFF_Button = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        Colours_combo = new javax.swing.JComboBox<>();
+        Colours_combo = new javax.swing.JComboBox<String>();
         jLabel4 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         Use_application = new javax.swing.JTextArea();
@@ -51,6 +51,11 @@ public class Settings extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         Back_button.setText("Back");
+        Back_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Back_buttonActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel1.setText("Settings and Help");
@@ -65,7 +70,7 @@ public class Settings extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("Background colour");
 
-        Colours_combo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "red", "blue", "yellow", "green" }));
+        Colours_combo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "red", "blue", "yellow", "green" }));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setText("How to use application");
@@ -185,6 +190,10 @@ public class Settings extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void Back_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Back_buttonActionPerformed
+        this.setVisible(false);
+    }//GEN-LAST:event_Back_buttonActionPerformed
 
     /**
      * @param args the command line arguments

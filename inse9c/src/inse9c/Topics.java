@@ -21,6 +21,7 @@ public class Topics extends javax.swing.JFrame {
 
     public Topics(String topic) {
         quizTopic = topic;
+        initComponents();
     }
 
     /**

@@ -1,5 +1,7 @@
 package inse9c;
 
+import javax.swing.JOptionPane;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -95,6 +97,11 @@ public class QuizUI extends javax.swing.JFrame {
 
         ButtonHint.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
         ButtonHint.setText("Hint");
+        ButtonHint.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonHintActionPerformed(evt);
+            }
+        });
 
         ButtonExit.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
         ButtonExit.setText("Exit");
@@ -154,7 +161,7 @@ public class QuizUI extends javax.swing.JFrame {
                 .addComponent(AnswerC)
                 .addGap(18, 18, 18)
                 .addComponent(AnswerD)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
                 .addComponent(ButtonNext, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -192,8 +199,14 @@ public class QuizUI extends javax.swing.JFrame {
     }//GEN-LAST:event_ButtonNextActionPerformed
 
     private void ButtonExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonExitActionPerformed
-        // TODO add your handling code here:
+        Menu m = new Menu();
+        m.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_ButtonExitActionPerformed
+
+    private void ButtonHintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonHintActionPerformed
+        JOptionPane.showMessageDialog(null, "HINT PLACEHOLDER");
+    }//GEN-LAST:event_ButtonHintActionPerformed
 
     /**
      * @param args the command line arguments

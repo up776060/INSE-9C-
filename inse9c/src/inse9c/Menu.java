@@ -61,6 +61,11 @@ public class Menu extends javax.swing.JFrame {
         Progress_button.setText("Progress Monitor");
 
         Setting_button.setText("Settings and Help");
+        Setting_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Setting_buttonActionPerformed(evt);
+            }
+        });
 
         Header_label.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         Header_label.setText("Portsmouth Driving Theory");
@@ -124,6 +129,11 @@ public class Menu extends javax.swing.JFrame {
         t.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_Topics_buttonActionPerformed
+
+    private void Setting_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Setting_buttonActionPerformed
+        Settings s = new Settings();
+        s.setVisible(true);
+    }//GEN-LAST:event_Setting_buttonActionPerformed
 
     /**
      * @param args the command line arguments
