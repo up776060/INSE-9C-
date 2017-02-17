@@ -24,6 +24,25 @@ public class Topics extends javax.swing.JFrame {
         quizTopic = topic;
         initComponents();
         this.setLocationRelativeTo(null);
+        
+        if(quizTopic.equals("Alertness")){
+            headerLabel.setText("Topic A: " + quizTopic);
+        } else if(quizTopic.equals("Attitude")){
+            headerLabel.setText("Topic B: " + quizTopic);
+        } else if(quizTopic.equals("Safety and your vehicle")){
+            headerLabel.setText("Topic C: " + quizTopic);
+        } else if(quizTopic.equals("Hazard Awareness")){
+            headerLabel.setText("Topic D: " + quizTopic);
+        } else if(quizTopic.equals("Safety Margin")){
+            headerLabel.setText("Topic E: " + quizTopic);
+        } else if(quizTopic.equals("Motorway Rules")){
+            headerLabel.setText("Topic F: " + quizTopic);
+        } else if(quizTopic.equals("Vehicle Handling")){
+            headerLabel.setText("Topic G: " + quizTopic);
+        } else {
+            System.out.println("error TOPICS SELECTION");
+        }
+        
     }
 
     /**
@@ -108,7 +127,7 @@ public class Topics extends javax.swing.JFrame {
                         .addGap(30, 30, 30)
                         .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(169, 169, 169)
-                        .addComponent(headerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(headerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(233, 233, 233)
                         .addComponent(startButton, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -145,7 +164,7 @@ public class Topics extends javax.swing.JFrame {
     }//GEN-LAST:event_headerLabelActionPerformed
 
     private void startButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startButtonActionPerformed
-        QuizUI q = new QuizUI();
+        QuizUI q = new QuizUI(quizTopic);
         q.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_startButtonActionPerformed

@@ -9,63 +9,95 @@ import java.util.ArrayList;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author Brad King
  */
 public class QuizUI extends javax.swing.JFrame {
-    
+
     // 2 Dimensional array to store questions and possible answers. Array for correct answer.
     String[][] question1;
     String[] correctans;
+    String quizTopic;
     int score;
     int count;
     int i;
-    
+
     ButtonGroup bg = new ButtonGroup();
     // All Radio buttons grouped so 1 active at a time
-    
-    
-    /**
-     * Creates new form NewJFrame
-     */
+
     public QuizUI() {
         initComponents();
         this.setLocationRelativeTo(null);
-        jLabel1.setText("Alertness");
-        i=0;
+    }
+
+    /**
+     * Creates new form NewJFrame
+     *
+     * @param topic
+     */
+    public QuizUI(String topic) {
+        initComponents();
+        this.setLocationRelativeTo(null);
+        quizTopic = topic;
+
+        switch (quizTopic) {
+            case "Alertness":
+                headerLabel.setText("Topic A: " + quizTopic);
+                break;
+            case "Attitude":
+                headerLabel.setText("Topic B: " + quizTopic);
+                break;
+            case "Safety and your vehicle":
+                headerLabel.setText("Topic C: " + quizTopic);
+                break;
+            case "Hazard Awareness":
+                headerLabel.setText("Topic D: " + quizTopic);
+                break;
+            case "Safety Margin":
+                headerLabel.setText("Topic E: " + quizTopic);
+                break;
+            case "Motorway Rules":
+                headerLabel.setText("Topic F: " + quizTopic);
+                break;
+            case "Vehicle Handling":
+                headerLabel.setText("Topic G: " + quizTopic);
+                break;
+            default:
+                System.out.println("error TOPICS SELECTION");
+                break;
+        }
+
+        i = 0;
         score = 0;
-        
+
         // Array of 3 questions (change 1st number to make bigger array)
         question1 = new String[3][5];
-        
-        question1[0][0]="This is a question";
-        question1[0][1]="This is answer 1";
-        question1[0][2]="This is answer 2";
-        question1[0][3]="This is answer 3";
-        question1[0][4]="This is answer 4";
-        
+
+        question1[0][0] = "This is a question";
+        question1[0][1] = "This is answer 1";
+        question1[0][2] = "This is answer 2";
+        question1[0][3] = "This is answer 3";
+        question1[0][4] = "This is answer 4";
+
         correctans = new String[3];
-        
-        correctans[0]="This is answer 4";
-        correctans[1]="This is 2 answer 3";
-        correctans[2]="This is 3 answer 1";
-        
-        question1[1][0]="This is a second question";
-        question1[1][1]="This is 2 answer 1";
-        question1[1][2]="This is 2 answer 2";
-        question1[1][3]="This is 2 answer 3";
-        question1[1][4]="This is 2 answer 4";
-        
-        
-        question1[2][0]="This is a third question";
-        question1[2][1]="This is 3 answer 1";
-        question1[2][2]="This is 3 answer 2";
-        question1[2][3]="This is 3 answer 3";
-        question1[2][4]="This is 3 answer 4";
-        
-        
+
+        correctans[0] = "This is answer 4";
+        correctans[1] = "This is 2 answer 3";
+        correctans[2] = "This is 3 answer 1";
+
+        question1[1][0] = "This is a second question";
+        question1[1][1] = "This is 2 answer 1";
+        question1[1][2] = "This is 2 answer 2";
+        question1[1][3] = "This is 2 answer 3";
+        question1[1][4] = "This is 2 answer 4";
+
+        question1[2][0] = "This is a third question";
+        question1[2][1] = "This is 3 answer 1";
+        question1[2][2] = "This is 3 answer 2";
+        question1[2][3] = "This is 3 answer 3";
+        question1[2][4] = "This is 3 answer 4";
+
         TextfieldQuestion.setText(question1[0][0]);
         AnswerA.setText(question1[0][1]);
         AnswerA.setActionCommand(question1[0][1]);
@@ -75,9 +107,8 @@ public class QuizUI extends javax.swing.JFrame {
         AnswerC.setActionCommand(question1[0][3]);
         AnswerD.setText(question1[0][4]);
         AnswerD.setActionCommand(question1[0][4]);
-        
+
         // Assigns textField and radioButton values for 1st question!
-        
     }
 
     /**
@@ -89,7 +120,7 @@ public class QuizUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        headerLabel = new javax.swing.JLabel();
         TextfieldQuestion = new javax.swing.JTextField();
         AnswerA = new javax.swing.JRadioButton();
         AnswerB = new javax.swing.JRadioButton();
@@ -102,8 +133,8 @@ public class QuizUI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI Semibold", 0, 36)); // NOI18N
-        jLabel1.setText("Quiz Name");
+        headerLabel.setFont(new java.awt.Font("Segoe UI Semibold", 0, 36)); // NOI18N
+        headerLabel.setText("Quiz Name");
 
         TextfieldQuestion.setEditable(false);
         TextfieldQuestion.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
@@ -200,7 +231,7 @@ public class QuizUI extends javax.swing.JFrame {
                 .addGap(23, 23, 23)
                 .addComponent(ButtonExit, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(212, 212, 212)
-                .addComponent(jLabel1)
+                .addComponent(headerLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lbScore)
                 .addGap(88, 88, 88))
@@ -218,7 +249,7 @@ public class QuizUI extends javax.swing.JFrame {
                     .addComponent(ButtonExit, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(lbScore)
-                        .addComponent(jLabel1)))
+                        .addComponent(headerLabel)))
                 .addGap(35, 35, 35)
                 .addComponent(TextfieldQuestion, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(46, 46, 46)
@@ -264,57 +295,60 @@ public class QuizUI extends javax.swing.JFrame {
 
     private void ButtonNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonNextActionPerformed
         // TODO add your handling code here:
-        if (i == 2) {
-            End t = new End(score, correctans.length);
-            t.setVisible(true);
-            this.setVisible(false);
-        }
-        
-        if (AnswerA.isSelected() == false && AnswerB.isSelected() == false && AnswerC.isSelected() == false && AnswerD.isSelected() == false){
-            
+
+        if (AnswerA.isSelected() == false && AnswerB.isSelected() == false && AnswerC.isSelected() == false && AnswerD.isSelected() == false) {
+
             JOptionPane.showMessageDialog(null, "Please select an answer before continuing.");
-        }
-        
-        else {
-      
-        // Gets data from radio button. If same as answer, reward a point
-        String submit = bg.getSelection().getActionCommand().toString();
-        
-        if (submit.equals(correctans[i])){
-            score = score + 1;
-            lbScore.setText("Score: "+score);
-        }
+        } else {
+
+            // Gets data from radio button. If same as answer, reward a point
+            String submit = bg.getSelection().getActionCommand().toString();
+
+            if (submit.equals(correctans[i])) {
+                score = score + 1;
+                lbScore.setText("Score: " + score);
+            }
+
             
-        // Increment i by 1 
-        i = i + 1;
-        
-        // Display next question
-        TextfieldQuestion.setText(question1[i][0]);
-        AnswerA.setText(question1[i][1]);
-        AnswerA.setActionCommand(question1[i][1]);
-        AnswerB.setText(question1[i][2]);
-        AnswerB.setActionCommand(question1[i][2]);
-        AnswerC.setText(question1[i][3]);
-        AnswerC.setActionCommand(question1[i][3]);
-        AnswerD.setText(question1[i][4]);
-        AnswerD.setActionCommand(question1[i][4]);
-        
-        
+
+            if (i == 2) {
+                End t = new End(score, correctans.length);
+                t.setVisible(true);
+                this.setVisible(false);
+            }
+
+            // Increment i by 1 
+            i = i + 1;
+            
+            // Display next question
+            TextfieldQuestion.setText(question1[i][0]);
+            AnswerA.setText(question1[i][1]);
+            AnswerA.setActionCommand(question1[i][1]);
+            AnswerB.setText(question1[i][2]);
+            AnswerB.setActionCommand(question1[i][2]);
+            AnswerC.setText(question1[i][3]);
+            AnswerC.setActionCommand(question1[i][3]);
+            AnswerD.setText(question1[i][4]);
+            AnswerD.setActionCommand(question1[i][4]);
+
         }
-        
+
         if (i == 2) {
             ButtonNext.setText("Submit");
         }
         // WHAT NEEDS TO BE DONE!
         // End of quiz screen displayed
         // Hint (could be as simple as changing text color to red for 2 items)
-        
+
     }//GEN-LAST:event_ButtonNextActionPerformed
 
     private void ButtonExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonExitActionPerformed
-        Menu m = new Menu();
-        m.setVisible(true);
-        this.setVisible(false);
+        int result = JOptionPane.showConfirmDialog(null, "Are you sure?", "alert", JOptionPane.OK_CANCEL_OPTION);
+        if (result == 0) {
+            Menu m = new Menu();
+            m.setVisible(true);
+            this.setVisible(false);
+        }
     }//GEN-LAST:event_ButtonExitActionPerformed
 
     private void ButtonHintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonHintActionPerformed
@@ -366,7 +400,7 @@ public class QuizUI extends javax.swing.JFrame {
     private javax.swing.JButton ButtonHint;
     private javax.swing.JButton ButtonNext;
     private javax.swing.JTextField TextfieldQuestion;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel headerLabel;
     private javax.swing.JLabel lbScore;
     // End of variables declaration//GEN-END:variables
 }

@@ -27,6 +27,7 @@ public class End extends javax.swing.JFrame {
     
     public End(int marks, int totQues) {
         initComponents();
+        this.setLocationRelativeTo(null);
         score = marks;
         totalQuestions = totQues;
         Editable_score.setText(Integer.toString(score));
@@ -65,10 +66,10 @@ public class End extends javax.swing.JFrame {
         End_Score.setText("Score");
 
         Total_score.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        Total_score.setText("3");
+        Total_score.setText("0");
 
         Editable_score.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        Editable_score.setText("3");
+        Editable_score.setText("0");
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setText("    /");
