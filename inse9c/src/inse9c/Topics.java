@@ -133,7 +133,9 @@ public class Topics extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
-        
+        Topic_Practice t = new Topic_Practice();
+        t.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_backButtonActionPerformed
 
     private void headerLabelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_headerLabelActionPerformed
