@@ -52,6 +52,11 @@ public class End extends javax.swing.JFrame {
 
         End_Return.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         End_Return.setText("Return to Main menu");
+        End_Return.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                End_ReturnActionPerformed(evt);
+            }
+        });
 
         Percentage_label.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         Percentage_label.setText("Percentage");
@@ -108,6 +113,12 @@ public class End extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void End_ReturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_End_ReturnActionPerformed
+        Menu t = new Menu();
+        t.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_End_ReturnActionPerformed
 
     /**
      * @param args the command line arguments

@@ -263,7 +263,12 @@ public class QuizUI extends javax.swing.JFrame {
 
     private void ButtonNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonNextActionPerformed
         // TODO add your handling code here:
-   
+        if (i == 2) {
+            End t = new End();
+            t.setVisible(true);
+            this.setVisible(false);
+        }
+        
         if (AnswerA.isSelected() == false && AnswerB.isSelected() == false && AnswerC.isSelected() == false && AnswerD.isSelected() == false){
             
             JOptionPane.showMessageDialog(null, "Please select an answer before continuing.");
