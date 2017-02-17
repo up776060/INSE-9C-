@@ -264,6 +264,12 @@ public class QuizUI extends javax.swing.JFrame {
     private void ButtonNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonNextActionPerformed
         // TODO add your handling code here:
    
+        if (AnswerA.isSelected() == false && AnswerB.isSelected() == false && AnswerC.isSelected() == false && AnswerD.isSelected() == false){
+            
+            JOptionPane.showMessageDialog(null, "Please select an answer before continuing.");
+        }
+        
+        else {
       
         // Gets data from radio button. If same as answer, reward a point
         String submit = bg.getSelection().getActionCommand().toString();
@@ -287,8 +293,10 @@ public class QuizUI extends javax.swing.JFrame {
         AnswerD.setText(question1[i][4]);
         AnswerD.setActionCommand(question1[i][4]);
         
+        
+        }
+        
         // WHAT NEEDS TO BE DONE!
-        // Validation - Error pop-up when attempting no answer
         // End of quiz screen displayed
         // Hint (could be as simple as changing text color to red for 2 items)
         
