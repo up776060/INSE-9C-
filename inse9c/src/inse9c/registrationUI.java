@@ -46,7 +46,7 @@ public class registrationUI extends javax.swing.JFrame {
         userEmail = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
-        jCheckBox1 = new javax.swing.JCheckBox();
+        acceptTerms = new javax.swing.JCheckBox();
         userPassword = new javax.swing.JPasswordField();
         userConfirmPassword = new javax.swing.JPasswordField();
 
@@ -101,8 +101,13 @@ public class registrationUI extends javax.swing.JFrame {
         jTextArea1.setText("Terms and Conditions");
         jScrollPane1.setViewportView(jTextArea1);
 
-        jCheckBox1.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        jCheckBox1.setText("I agree to the terms and conditions");
+        acceptTerms.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        acceptTerms.setText("I agree to the terms and conditions");
+        acceptTerms.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                acceptTermsActionPerformed(evt);
+            }
+        });
 
         userPassword.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
 
@@ -135,7 +140,7 @@ public class registrationUI extends javax.swing.JFrame {
                 .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 367, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jCheckBox1)))
+                    .addComponent(acceptTerms)))
             .addGroup(layout.createSequentialGroup()
                 .addGap(208, 208, 208)
                 .addComponent(jLabel1)
@@ -176,7 +181,7 @@ public class registrationUI extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
-                    .addComponent(jCheckBox1))
+                    .addComponent(acceptTerms))
                 .addContainerGap())
         );
 
@@ -202,6 +207,8 @@ public class registrationUI extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Please Confirm your Password");
         } else if (!userConfirmPassword.getText().equals(userPassword.getText())) {
             JOptionPane.showMessageDialog(null, "Please Confirm the correct Password");
+        } else if (!acceptTerms.isSelected()) {
+            JOptionPane.showMessageDialog(null, "Please accept the terms and conditions");
         } else {
 
             //Store the information
@@ -215,6 +222,10 @@ public class registrationUI extends javax.swing.JFrame {
             this.setVisible(false);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void acceptTermsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_acceptTermsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_acceptTermsActionPerformed
 
     public String getFName() {
         return fName;
@@ -271,8 +282,8 @@ public class registrationUI extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JCheckBox acceptTerms;
     private javax.swing.JButton jButton1;
-    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
