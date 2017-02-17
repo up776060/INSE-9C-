@@ -192,6 +192,8 @@ public class Settings extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void Back_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Back_buttonActionPerformed
+        Menu t = new Menu();
+        t.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_Back_buttonActionPerformed
 
