@@ -80,7 +80,7 @@
                           <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="52" max="32767" attributes="0"/>
+                  <EmptySpace pref="48" max="32767" attributes="0"/>
                   <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jPanel6" min="-2" max="-2" attributes="0"/>
@@ -103,7 +103,7 @@
         <Component class="javax.swing.JButton" name="btnBack">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Tahoma" size="18" style="0"/>
+              <Font name="Segoe UI" size="18" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Back"/>
           </Properties>
@@ -157,7 +157,7 @@
             <Component class="javax.swing.JButton" name="btnPractice1">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Tahoma" size="18" style="0"/>
+                  <Font name="Segoe UI" size="18" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Practice"/>
               </Properties>
@@ -249,7 +249,7 @@
             <Component class="javax.swing.JLabel" name="lblTopic1">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Tahoma" size="20" style="0"/>
+                  <Font name="Segoe UI" size="20" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Topic A"/>
               </Properties>
@@ -257,7 +257,7 @@
             <Component class="javax.swing.JLabel" name="lblDesc1">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Tahoma" size="18" style="0"/>
+                  <Font name="Segoe UI" size="18" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Alertness: (Description)"/>
               </Properties>
@@ -267,7 +267,7 @@
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Tahoma" size="30" style="0"/>
+              <Font name="Segoe UI" size="30" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Topics"/>
           </Properties>
@@ -318,7 +318,7 @@
             <Component class="javax.swing.JButton" name="btnPractice2">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Tahoma" size="18" style="0"/>
+                  <Font name="Segoe UI" size="18" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Practice"/>
               </Properties>
@@ -410,7 +410,7 @@
             <Component class="javax.swing.JLabel" name="lblTopic2">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Tahoma" size="20" style="0"/>
+                  <Font name="Segoe UI" size="20" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Topic B"/>
               </Properties>
@@ -418,7 +418,7 @@
             <Component class="javax.swing.JLabel" name="lblDesc2">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Tahoma" size="18" style="0"/>
+                  <Font name="Segoe UI" size="18" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Attitude: (Description)"/>
               </Properties>
@@ -471,7 +471,7 @@
             <Component class="javax.swing.JButton" name="btnPractice3">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Tahoma" size="18" style="0"/>
+                  <Font name="Segoe UI" size="18" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Practice"/>
               </Properties>
@@ -563,7 +563,7 @@
             <Component class="javax.swing.JLabel" name="lblTopic3">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Tahoma" size="20" style="0"/>
+                  <Font name="Segoe UI" size="20" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Topic C"/>
               </Properties>
@@ -571,7 +571,7 @@
             <Component class="javax.swing.JLabel" name="lblDesc3">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Tahoma" size="18" style="0"/>
+                  <Font name="Segoe UI" size="18" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Safety and your vehicle: (Description)"/>
               </Properties>
@@ -624,7 +624,7 @@
             <Component class="javax.swing.JButton" name="btnPractice5">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Tahoma" size="18" style="0"/>
+                  <Font name="Segoe UI" size="18" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Practice"/>
               </Properties>
@@ -716,7 +716,7 @@
             <Component class="javax.swing.JLabel" name="lblTopic4">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Tahoma" size="20" style="0"/>
+                  <Font name="Segoe UI" size="20" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Topic D"/>
               </Properties>
@@ -724,7 +724,7 @@
             <Component class="javax.swing.JLabel" name="lblDesc4">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Tahoma" size="18" style="0"/>
+                  <Font name="Segoe UI" size="18" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Hazard Awareness: (Description)"/>
               </Properties>
@@ -777,7 +777,7 @@
             <Component class="javax.swing.JButton" name="btnPractice6">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Tahoma" size="18" style="0"/>
+                  <Font name="Segoe UI" size="18" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Practice"/>
               </Properties>
@@ -869,7 +869,7 @@
             <Component class="javax.swing.JLabel" name="lblTopic5">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Tahoma" size="20" style="0"/>
+                  <Font name="Segoe UI" size="20" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Topic E"/>
               </Properties>
@@ -877,7 +877,7 @@
             <Component class="javax.swing.JLabel" name="lblDesc5">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Tahoma" size="18" style="0"/>
+                  <Font name="Segoe UI" size="18" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Safety Margin: (Description)"/>
               </Properties>
@@ -930,7 +930,7 @@
             <Component class="javax.swing.JButton" name="btnPractice7">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Tahoma" size="18" style="0"/>
+                  <Font name="Segoe UI" size="18" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Practice"/>
               </Properties>
@@ -1022,7 +1022,7 @@
             <Component class="javax.swing.JLabel" name="lblTopic6">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Tahoma" size="20" style="0"/>
+                  <Font name="Segoe UI" size="20" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Topic F"/>
               </Properties>
@@ -1030,7 +1030,7 @@
             <Component class="javax.swing.JLabel" name="lblDesc6">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Tahoma" size="18" style="0"/>
+                  <Font name="Segoe UI" size="18" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Motorway Rules: (Description)"/>
               </Properties>
@@ -1055,7 +1055,7 @@
                       <Component id="jPanel31" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                       <Component id="lblDesc7" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="140" max="32767" attributes="0"/>
+                      <EmptySpace pref="149" max="32767" attributes="0"/>
                       <Component id="btnPractice8" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jPanel29" min="-2" max="-2" attributes="0"/>
@@ -1083,7 +1083,7 @@
             <Component class="javax.swing.JButton" name="btnPractice8">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Tahoma" size="18" style="0"/>
+                  <Font name="Segoe UI" size="18" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Practice"/>
               </Properties>
@@ -1175,7 +1175,7 @@
             <Component class="javax.swing.JLabel" name="lblTopic7">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Tahoma" size="20" style="0"/>
+                  <Font name="Segoe UI" size="20" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Topic G"/>
               </Properties>
@@ -1183,7 +1183,7 @@
             <Component class="javax.swing.JLabel" name="lblDesc7">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Tahoma" size="18" style="0"/>
+                  <Font name="Segoe UI" size="18" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Vehicle Handling: (Description)"/>
               </Properties>

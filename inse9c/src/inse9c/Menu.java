@@ -37,6 +37,7 @@ public class Menu extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        Mock_button.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         Mock_button.setText("Mock Theory test");
         Mock_button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -44,6 +45,7 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
+        Quiz_button.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         Quiz_button.setText("Quiz");
         Quiz_button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -51,6 +53,7 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
+        Topics_button.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         Topics_button.setText("Topics");
         Topics_button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -58,8 +61,10 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
+        Progress_button.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         Progress_button.setText("Progress Monitor");
 
+        Setting_button.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         Setting_button.setText("Settings and Help");
         Setting_button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -67,9 +72,10 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
-        Header_label.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        Header_label.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         Header_label.setText("Portsmouth Driving Theory");
 
+        LogOut_button.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         LogOut_button.setText("Log out");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -85,13 +91,13 @@ public class Menu extends javax.swing.JFrame {
                             .addComponent(Quiz_button, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(Topics_button, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(Progress_button, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(Setting_button, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE)))
+                            .addComponent(Setting_button, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(LogOut_button, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(65, 65, 65)
                         .addComponent(Header_label)))
-                .addContainerGap(180, Short.MAX_VALUE))
+                .addContainerGap(188, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -110,7 +116,7 @@ public class Menu extends javax.swing.JFrame {
                 .addComponent(Progress_button, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(Setting_button, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         pack();

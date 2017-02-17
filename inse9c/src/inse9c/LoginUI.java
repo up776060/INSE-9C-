@@ -48,13 +48,16 @@ public class LoginUI extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel1.setText("Portsmouth Driving Theory");
 
+        emailLabel.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         emailLabel.setText("Email:");
 
+        passwordLabel.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         passwordLabel.setText("Password:");
 
+        userEmail.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         userEmail.setText("user@email.com");
         userEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -62,12 +65,14 @@ public class LoginUI extends javax.swing.JFrame {
             }
         });
 
+        userPassword.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         userPassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 userPasswordActionPerformed(evt);
             }
         });
 
+        registerBut.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         registerBut.setForeground(new java.awt.Color(0, 0, 255));
         registerBut.setText("CREATE LOGIN");
         registerBut.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -111,7 +116,7 @@ public class LoginUI extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(passwordLabel)
                     .addComponent(userPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(loginBut)
                     .addComponent(registerBut))

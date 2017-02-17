@@ -92,7 +92,7 @@ public class Topic_Practice extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(179, 204, 255));
 
-        btnBack.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnBack.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnBack.setText("Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -102,7 +102,7 @@ public class Topic_Practice extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(255, 204, 102));
 
-        btnPractice1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnPractice1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnPractice1.setText("Practice");
         btnPractice1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -159,10 +159,10 @@ public class Topic_Practice extends javax.swing.JFrame {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        lblTopic1.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        lblTopic1.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         lblTopic1.setText("Topic A");
 
-        lblDesc1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblDesc1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblDesc1.setText("Alertness: (Description)");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -196,12 +196,12 @@ public class Topic_Practice extends javax.swing.JFrame {
             .addComponent(btnPractice1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 30)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 30)); // NOI18N
         jLabel1.setText("Topics");
 
         jPanel6.setBackground(new java.awt.Color(255, 204, 102));
 
-        btnPractice2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnPractice2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnPractice2.setText("Practice");
         btnPractice2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -258,10 +258,10 @@ public class Topic_Practice extends javax.swing.JFrame {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        lblTopic2.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        lblTopic2.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         lblTopic2.setText("Topic B");
 
-        lblDesc2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblDesc2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblDesc2.setText("Attitude: (Description)");
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
@@ -297,7 +297,7 @@ public class Topic_Practice extends javax.swing.JFrame {
 
         jPanel10.setBackground(new java.awt.Color(255, 204, 102));
 
-        btnPractice3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnPractice3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnPractice3.setText("Practice");
         btnPractice3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -354,10 +354,10 @@ public class Topic_Practice extends javax.swing.JFrame {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        lblTopic3.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        lblTopic3.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         lblTopic3.setText("Topic C");
 
-        lblDesc3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblDesc3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblDesc3.setText("Safety and your vehicle: (Description)");
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
@@ -393,7 +393,7 @@ public class Topic_Practice extends javax.swing.JFrame {
 
         jPanel16.setBackground(new java.awt.Color(255, 204, 102));
 
-        btnPractice5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnPractice5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnPractice5.setText("Practice");
         btnPractice5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -450,10 +450,10 @@ public class Topic_Practice extends javax.swing.JFrame {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        lblTopic4.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        lblTopic4.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         lblTopic4.setText("Topic D");
 
-        lblDesc4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblDesc4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblDesc4.setText("Hazard Awareness: (Description)");
 
         javax.swing.GroupLayout jPanel16Layout = new javax.swing.GroupLayout(jPanel16);
@@ -489,7 +489,7 @@ public class Topic_Practice extends javax.swing.JFrame {
 
         jPanel20.setBackground(new java.awt.Color(255, 204, 102));
 
-        btnPractice6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnPractice6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnPractice6.setText("Practice");
         btnPractice6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -546,10 +546,10 @@ public class Topic_Practice extends javax.swing.JFrame {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        lblTopic5.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        lblTopic5.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         lblTopic5.setText("Topic E");
 
-        lblDesc5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblDesc5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblDesc5.setText("Safety Margin: (Description)");
 
         javax.swing.GroupLayout jPanel20Layout = new javax.swing.GroupLayout(jPanel20);
@@ -585,7 +585,7 @@ public class Topic_Practice extends javax.swing.JFrame {
 
         jPanel24.setBackground(new java.awt.Color(255, 204, 102));
 
-        btnPractice7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnPractice7.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnPractice7.setText("Practice");
         btnPractice7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -642,10 +642,10 @@ public class Topic_Practice extends javax.swing.JFrame {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        lblTopic6.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        lblTopic6.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         lblTopic6.setText("Topic F");
 
-        lblDesc6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblDesc6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblDesc6.setText("Motorway Rules: (Description)");
 
         javax.swing.GroupLayout jPanel24Layout = new javax.swing.GroupLayout(jPanel24);
@@ -681,7 +681,7 @@ public class Topic_Practice extends javax.swing.JFrame {
 
         jPanel28.setBackground(new java.awt.Color(255, 204, 102));
 
-        btnPractice8.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnPractice8.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnPractice8.setText("Practice");
         btnPractice8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -738,10 +738,10 @@ public class Topic_Practice extends javax.swing.JFrame {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        lblTopic7.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        lblTopic7.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         lblTopic7.setText("Topic G");
 
-        lblDesc7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblDesc7.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblDesc7.setText("Vehicle Handling: (Description)");
 
         javax.swing.GroupLayout jPanel28Layout = new javax.swing.GroupLayout(jPanel28);
@@ -756,7 +756,7 @@ public class Topic_Practice extends javax.swing.JFrame {
                 .addComponent(jPanel31, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21)
                 .addComponent(lblDesc7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 140, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 149, Short.MAX_VALUE)
                 .addComponent(btnPractice8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel29, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -806,7 +806,7 @@ public class Topic_Practice extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(23, 23, 23)
                         .addComponent(jLabel1)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
