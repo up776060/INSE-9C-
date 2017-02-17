@@ -144,6 +144,7 @@ public class Menu extends javax.swing.JFrame {
     private void Setting_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Setting_buttonActionPerformed
         Settings s = new Settings();
         s.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_Setting_buttonActionPerformed
 
     private void LogOut_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogOut_buttonActionPerformed

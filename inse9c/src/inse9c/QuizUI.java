@@ -296,6 +296,9 @@ public class QuizUI extends javax.swing.JFrame {
         
         }
         
+        if (i == 2) {
+            ButtonNext.setText("Submit");
+        }
         // WHAT NEEDS TO BE DONE!
         // End of quiz screen displayed
         // Hint (could be as simple as changing text color to red for 2 items)
