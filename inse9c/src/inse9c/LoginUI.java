@@ -12,6 +12,8 @@ import javax.swing.JOptionPane;
  * @author up777621
  */
 public class LoginUI extends javax.swing.JFrame {
+    
+    private boolean clicked = false;
 
     registrationUI r = new registrationUI();
 
@@ -179,7 +181,10 @@ public class LoginUI extends javax.swing.JFrame {
     }//GEN-LAST:event_formMouseClicked
 
     private void userEmailMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_userEmailMouseClicked
-        userEmail.setText("");
+        if(!clicked){
+            userEmail.setText("");
+            clicked = true;
+        }
     }//GEN-LAST:event_userEmailMouseClicked
 
     /**
