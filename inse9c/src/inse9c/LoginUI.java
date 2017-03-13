@@ -5,6 +5,8 @@
  */
 package inse9c;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -153,7 +155,13 @@ public class LoginUI extends javax.swing.JFrame {
     }//GEN-LAST:event_loginButActionPerformed
 
     public boolean loginValidation() {
-
+        //use encryption method on password so it's compatible with the one stored in Database
+        String encryptedPass = "";
+        try {
+                encryptedPass = DAO.byteArraytoHexString(  DAO.computeHash( userPassword.getText() )  );
+            } catch (Exception ex) {
+                Logger.getLogger(registrationUI.class.getName()).log(Level.SEVERE, null, ex);
+            }
         if (userEmail.getText().equals(r.getEmail()) && userPassword.getText().equals(r.getPassword())) {
             return true;
         } else if (userEmail.getText().equals("admin@pdt.co.uk") && userPassword.getText().equals("password")) {

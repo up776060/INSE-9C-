@@ -10,6 +10,8 @@ import javax.swing.JOptionPane;
 import java.lang.Object;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  *
  * @author up777621
@@ -256,8 +258,13 @@ public class registrationUI extends javax.swing.JFrame {
             email = userEmail.getText();
             fName = userFirstName.getText();
             sName = userSurname.getText();
-            dob = 
-            password = userPassword.getText();
+            dob = dobYear.getSelectedItem() + "-" + dobMonth.getSelectedItem() + "-" + dobDay.getSelectedItem();
+            try {
+                password = DAO.byteArraytoHexString(  DAO.computeHash( userPassword.getText() )  );
+            } catch (Exception ex) {
+                Logger.getLogger(registrationUI.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            System.out.println(password);
             //Close this UI
             this.setVisible(false);
         }
@@ -291,7 +298,13 @@ public class registrationUI extends javax.swing.JFrame {
         return password;
     }
     
+    
+    
+    
     public String dobIsValid(){
+        /*if there's something wrong with their dob, a string is returned with
+        the exact error
+        */
         if(dobDay.getSelectedItem().equals("Day") || dobMonth.getSelectedItem().equals("Month") || dobYear.getSelectedItem().equals("Year")){
             return "Date not entered correctly";
         } else if ( 2001 <= Integer.parseInt( dobYear.getSelectedItem().toString() ) ) {
