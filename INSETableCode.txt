@@ -1,0 +1,95 @@
+﻿create database INSEdataBase;
+use INSEdataBase;
+
+
+ CREATE TABLE theoryTest (
+        theoryTestID INT NOT NULL AUTO_INCREMENT,
+        testType varchar(30) NOT NULL
+);
+
+
+CREATE TABLE User (
+        userID INT  NOT NULL  AUTO_INCREMENT,
+        Registered BOOL DEFAULT FALSE,
+        userFname varchar(20) NOT NULL,
+userLname varchar(20) NOT NULL
+userEmail varchar(30) NOT NULL ,
+userDOB DATE NOT NULL,
+userPassword varchar(40)  NOT NULL,
+testResultID INT NOT NULL,
+PRIMARY KEY (userID),
+UNIQUE KEY (userEmail),
+FOREIGN KEY (testResultID) REFERENCES testResult(testResultID)
+);
+
+
+ CREATE TABLE userTest (
+        userID INT NOT NULL,
+        theorytestID INT NOT NULL,
+        PRIMARY KEY (userID, theoryTestID),
+        FOREIGN KEY (userID) REFERENCES User(userID),
+        FOREIGN KEY (theorytestID) REFERENCES theoryTest (theoryTestID)
+);
+
+
+
+
+CREATE TABLE Question (
+        QuestionID INT NOT NULL AUTO_INCREMENT,
+        questionTopic varchar(25) NOT NULL,
+        questionContents varchar(100) NOT NULL,
+        PRIMARY KEY (QuestionID)
+);
+
+
+
+
+CREATE TABLE testQuestion (
+        theoryTestID INT NOT NULL,
+QuestionID INT NOT NULL,
+PRIMARY KEY (theoryTestID, QuestionID),
+FOREIGN KEY (theoryTestID)  REFERENCES theoryTest (theoryTestID),
+FOREIGN KEY (QuestionID)  REFERENCES Question (QuestionID)
+);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CREATE TABLE testResult (
+        testResultID INT NOT NULL AUTO_INCREMENT,
+        practTestResult varchar(10) NOT NULL,
+        topicResult varchar(10) NOT NULL,
+        quizResult varchar(10) NOT NULL,
+        PRIMARY KEY (testResultID)
+);
+
+
+CREATE TABLE Answer (
+        AnswerID INT NOT NULL AUTO_INCREMENT,
+        answerTopic varchar(25) NOT NULL,
+        answerContents varchar(80) NOT NULL,
+        PRIMARY KEY (AnswerID)
+);
+
+
+
+
+
+
+CREATE TABLE testAnswer (
+        theoryTestID INT NOT NULL,
+        AnswerID INT NOT NULL,
+        PRIMARY KEY (theoryTestID, AnswerID),
+        FOREIGN KEY (theoryTestID) REFERENCES theoryTest (theoryTestID),
+        FOREIGN KEY (AnswerID)  REFERENCES Answer (AnswerID)
+);
