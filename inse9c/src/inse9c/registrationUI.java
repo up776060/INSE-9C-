@@ -7,7 +7,9 @@ package inse9c;
 
 import java.io.PrintWriter;
 import javax.swing.JOptionPane;
-
+import java.lang.Object;
+import java.util.Calendar;
+import java.util.Date;
 /**
  *
  * @author up777621
@@ -43,7 +45,6 @@ public class registrationUI extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         userFirstName = new javax.swing.JTextField();
         userSurname = new javax.swing.JTextField();
-        userDOB = new javax.swing.JTextField();
         userEmail = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
@@ -51,6 +52,9 @@ public class registrationUI extends javax.swing.JFrame {
         userPassword = new javax.swing.JPasswordField();
         userConfirmPassword = new javax.swing.JPasswordField();
         jButton2 = new javax.swing.JButton();
+        dobDay = new javax.swing.JComboBox<>();
+        dobMonth = new javax.swing.JComboBox<>();
+        dobYear = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -93,8 +97,6 @@ public class registrationUI extends javax.swing.JFrame {
 
         userSurname.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
 
-        userDOB.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-
         userEmail.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
 
         jTextArea1.setEditable(false);
@@ -123,6 +125,12 @@ public class registrationUI extends javax.swing.JFrame {
             }
         });
 
+        dobDay.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Day", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
+
+        dobMonth.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Month", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "Deecember" }));
+
+        dobYear.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Year", "2017", "2016", "2015", "2014", "2013", "2012", "2011", "2010", "2009", "2008", "2007", "2006", "2005", "2004", "2003", "2002", "2001", "2000", "1999", "1998", "1997", "1996", "1995", "1994", "1993", "1992", "1991", "1990", "1989", "1988", "1987", "1986", "1985", "1984", "1983", "1982", "1981", "1980", "1979", "1978", "1977", "1976", "1975", "1974", "1973", "1972", "1971", "1970", "1969", "1968", "1967", "1966", "1965", "1964", "1963", "1962", "1961", "1960", "1959", "1958", "1957", "1956", "1955", "1954", "1953", "1952", "1951", "1950", "1949", "1948", "1947", "1946", "1945", "1944", "1943", "1942", "1941", "1940", "1939", "1938", "1937", "1936", "1935", "1934", "1933", "1932", "1931", "1930", "1929", "1928", "1927", "1926", "1925", "1924", "1923", "1922", "1921", "1920", "1919", "1918", "1917", "1916", "1915", "1914", "1913", "1912", "1911", "1910", "1909", "1908", "1907", "1906", "1905", "1904", "1903", "1902", "1901", "1900" }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -143,12 +151,22 @@ public class registrationUI extends javax.swing.JFrame {
                                 .addGap(41, 41, 41)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(userEmail)
-                                    .addComponent(userDOB)
                                     .addComponent(userConfirmPassword)
-                                    .addComponent(userFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(userSurname)
-                                    .addComponent(userPassword)))
-                            .addComponent(jButton1))
+                                    .addComponent(userPassword)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(userFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(dobDay, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(dobMonth, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(dobYear, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGap(0, 0, Short.MAX_VALUE))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jButton1)
+                                .addGap(0, 0, Short.MAX_VALUE)))
                         .addGap(32, 32, 32)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(acceptTerms)
@@ -167,7 +185,7 @@ public class registrationUI extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton2)
                     .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -180,7 +198,9 @@ public class registrationUI extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
-                            .addComponent(userDOB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(dobDay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(dobMonth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(dobYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
@@ -209,12 +229,14 @@ public class registrationUI extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         //Test all of the inputs are full
+        
+        //getSelectedItem
         if (userFirstName.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Please Enter a First Name");
         } else if (userSurname.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Please Enter a Surname");
-        } else if (userDOB.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Please Enter a Date of Birth");
+        } else if (!dobIsValid().equals("")) {
+            JOptionPane.showMessageDialog(null, dobIsValid());
         } else if (userEmail.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Please Enter an Email");
         } else if (userPassword.getText().isEmpty()) {
@@ -225,14 +247,16 @@ public class registrationUI extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Please Confirm the correct Password");
         } else if (!acceptTerms.isSelected()) {
             JOptionPane.showMessageDialog(null, "Please accept the terms and conditions");
-        } else {
+        } else if (!userEmail.getText().matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$")) {
+            JOptionPane.showMessageDialog(null, "The email entered is not acceptable");
+        }else{
 
             //Store the information
             //locally for now Database support and DAO intergration later 15/02/17
             email = userEmail.getText();
             fName = userFirstName.getText();
             sName = userSurname.getText();
-            dob = userDOB.getText();
+            dob = 
             password = userPassword.getText();
             //Close this UI
             this.setVisible(false);
@@ -266,7 +290,15 @@ public class registrationUI extends javax.swing.JFrame {
     public String getPassword() {
         return password;
     }
-
+    
+    public String dobIsValid(){
+        if(dobDay.getSelectedItem().equals("Day") || dobMonth.getSelectedItem().equals("Month") || dobYear.getSelectedItem().equals("Year")){
+            return "Date not entered correctly";
+        } else if ( 2001 <= Integer.parseInt( dobYear.getSelectedItem().toString() ) ) {
+            return "You must be 16 years of age to apply for this application";
+        }
+        return "";
+    }
     /**
      * @param args the command line arguments
      */
@@ -303,6 +335,9 @@ public class registrationUI extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JCheckBox acceptTerms;
+    private javax.swing.JComboBox<String> dobDay;
+    private javax.swing.JComboBox<String> dobMonth;
+    private javax.swing.JComboBox<String> dobYear;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
@@ -315,7 +350,6 @@ public class registrationUI extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JPasswordField userConfirmPassword;
-    private javax.swing.JTextField userDOB;
     private javax.swing.JTextField userEmail;
     private javax.swing.JTextField userFirstName;
     private javax.swing.JPasswordField userPassword;
