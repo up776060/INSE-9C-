@@ -7,6 +7,7 @@ package inse9c;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
@@ -21,6 +22,10 @@ public class DAO {
     private static Statement stmt = null;
     private static Connection conn = null;
     private static String sql = "";
+    
+    private static String email;
+    
+    
     public static Connection connect() {
         
         try {
@@ -55,6 +60,14 @@ public class DAO {
         conn.close();
     }
     
+    public static ResultSet retrieveLoginDetails(String email)
+    throws SQLException
+    {
+        conn = connect();
+        ResultSet rs = stmt.executeQuery("select * from User where userEmail = '" + email + "'");
+        return rs;
+    }
+    
     public static byte[] computeHash(String x) throws Exception {
         java.security.MessageDigest d = null;
         d = java.security.MessageDigest.getInstance("SHA-1");
@@ -73,5 +86,13 @@ public class DAO {
             sb.append(Integer.toHexString(v));
         }
         return sb.toString().toUpperCase();
+    }
+    
+    public static void setEmail(String newEmail){
+        email = newEmail;
+    }
+    
+    public static String getEmail(){
+        return email;
     }
 }

@@ -5,6 +5,8 @@
  */
 package inse9c;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -148,9 +150,7 @@ public class LoginUI extends javax.swing.JFrame {
             Menu m = new Menu();
             m.setVisible(true);
             this.setVisible(false);
-        } else {
-            JOptionPane.showMessageDialog(null, "Please enter a correct email and password");
-        }
+        } 
 
     }//GEN-LAST:event_loginButActionPerformed
 
@@ -160,14 +160,32 @@ public class LoginUI extends javax.swing.JFrame {
         try {
             encryptedPass = DAO.byteArraytoHexString(DAO.computeHash(userPassword.getText()));
         } catch (Exception ex) {
+            Logger.getLogger(LoginUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            encryptedPass = DAO.byteArraytoHexString(DAO.computeHash(userPassword.getText()));
+        } catch (Exception ex) {
             Logger.getLogger(registrationUI.class.getName()).log(Level.SEVERE, null, ex);
         }
-        if (userEmail.getText().equals(r.getEmail()) && userPassword.getText().equals(r.getPassword())) {
-            return true;
-        } else if (userEmail.getText().equals("admin@pdt.co.uk") && userPassword.getText().equals("password")) {
-            return true;
-        } else if (userEmail.getText().equals("p") && userPassword.getText().equals("p")) {
-            return true;
+        if (!userEmail.getText().isEmpty() && !userPassword.getText().isEmpty()) {
+            try {
+                ResultSet rs = DAO.retrieveLoginDetails(userEmail.getText());
+                if(!rs.next())
+                    JOptionPane.showMessageDialog(this, "The email you entered does not exist");
+                else{
+                    String pw = rs.getString("userPassword");
+                    if(pw.equals(encryptedPass)){
+                        return true;
+                    }else{
+                        JOptionPane.showMessageDialog(this, "The password you entered does not match our records");
+                        return false;
+                    }
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(LoginUI.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else{
+            JOptionPane.showMessageDialog(this, "Please enter an email and password");
         }
         return false;
     }
