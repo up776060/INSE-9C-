@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
  * @author up777621
  */
 public class LoginUI extends javax.swing.JFrame {
-    
+
     private boolean clicked = false;
 
     registrationUI r = new registrationUI();
@@ -158,10 +158,10 @@ public class LoginUI extends javax.swing.JFrame {
         //use encryption method on password so it's compatible with the one stored in Database
         String encryptedPass = "";
         try {
-                encryptedPass = DAO.byteArraytoHexString(  DAO.computeHash( userPassword.getText() )  );
-            } catch (Exception ex) {
-                Logger.getLogger(registrationUI.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            encryptedPass = DAO.byteArraytoHexString(DAO.computeHash(userPassword.getText()));
+        } catch (Exception ex) {
+            Logger.getLogger(registrationUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
         if (userEmail.getText().equals(r.getEmail()) && userPassword.getText().equals(r.getPassword())) {
             return true;
         } else if (userEmail.getText().equals("admin@pdt.co.uk") && userPassword.getText().equals("password")) {
@@ -190,7 +190,7 @@ public class LoginUI extends javax.swing.JFrame {
     }//GEN-LAST:event_formMouseClicked
 
     private void userEmailMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_userEmailMouseClicked
-        if(!clicked){
+        if (!clicked) {
             userEmail.setText("");
             clicked = true;
         }

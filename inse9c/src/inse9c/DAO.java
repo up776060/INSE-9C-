@@ -19,31 +19,42 @@ import java.util.logging.Logger;
 public class DAO {
 
     private static Statement stmt = null;
-    
-    public DAO() {
-    }
-
-    public static Connection connect(){
-        Connection conn=null;
-        try{
+    private static Connection conn = null;
+    private static String sql = "";
+    public static Connection connect() {
+        
+        try {
             // Load the driver class
             Class.forName("com.mysql.jdbc.Driver");
             // Open the connection to the database
-            conn = DriverManager.getConnection("jdbc:mysql://inse9c.cslzqhqslqaw.eu-west-2.rds.amazonaws.com:3306","admin","Inseteam9c");
+            conn = DriverManager.getConnection("jdbc:mysql://inse9c.cslzqhqslqaw.eu-west-2.rds.amazonaws.com:3306/inse9c", "admin", "Inseteam9c");
             stmt = conn.createStatement();
-        }catch(ClassNotFoundException ce){
+        } catch (ClassNotFoundException ce) {
             ce.printStackTrace();
-            System.out.println("Exception: "+ce);
-        }catch(SQLException sqe){
+            System.out.println("Exception: " + ce);
+        } catch (SQLException sqe) {
             sqe.printStackTrace();
-            System.out.println("Exception: "+sqe);
+            System.out.println("Exception: " + sqe);
         }
-        if (conn == null){
+        if (conn == null) {
             System.out.println("Connection Failed");
         }
         return conn;
     }
-
+    
+    public static void registerUser(
+                        String fName, String sName, String dob, 
+                        String email, String pass)
+    throws SQLException
+    {
+        conn = connect();
+        sql = "insert into User (userFname, userLname, userEmail, userDOB, userPassword) values("
+                + "'" + fName + "'," + "'" + sName + "'," + "'" + email + "'," + "'" + dob + "'," +"'" + pass + "')"; 
+        System.out.println(sql);
+        stmt.execute(sql);
+        conn.close();
+    }
+    
     public static byte[] computeHash(String x) throws Exception {
         java.security.MessageDigest d = null;
         d = java.security.MessageDigest.getInstance("SHA-1");

@@ -38,7 +38,7 @@ public class QuizUI extends javax.swing.JFrame {
     public QuizUI(String topic) {
         initComponents();
         this.setLocationRelativeTo(null);
-                
+
         quizTopic = topic;
 
         switch (quizTopic) {
@@ -310,8 +310,6 @@ public class QuizUI extends javax.swing.JFrame {
                 lbScore.setText("Score: " + score);
             }
 
-            
-
             if (i == 2) {
                 End t = new End(score, correctans.length);
                 t.setVisible(true);
@@ -320,7 +318,7 @@ public class QuizUI extends javax.swing.JFrame {
 
             // Increment i by 1 
             i = i + 1;
-            
+
             // Display next question
             TextfieldQuestion.setText(question1[i][0]);
             AnswerA.setText(question1[i][1]);

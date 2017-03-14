@@ -8,10 +8,12 @@ package inse9c;
 import java.io.PrintWriter;
 import javax.swing.JOptionPane;
 import java.lang.Object;
+import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 /**
  *
  * @author up777621
@@ -231,7 +233,7 @@ public class registrationUI extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         //Test all of the inputs are full
-        
+
         //getSelectedItem
         if (userFirstName.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Please Enter a First Name");
@@ -251,21 +253,26 @@ public class registrationUI extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Please accept the terms and conditions");
         } else if (!userEmail.getText().matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$")) {
             JOptionPane.showMessageDialog(null, "The email entered is not acceptable");
-        }else{
+        } else {
 
             //Store the information
             //locally for now Database support and DAO intergration later 15/02/17
             email = userEmail.getText();
             fName = userFirstName.getText();
             sName = userSurname.getText();
-            dob = dobYear.getSelectedItem() + "-" + dobMonth.getSelectedItem() + "-" + dobDay.getSelectedItem();
+            dob = dobYear.getSelectedItem() + "-" + determineMonth(dobMonth.getSelectedItem().toString()) + "-" + dobDay.getSelectedItem();
             try {
-                password = DAO.byteArraytoHexString(  DAO.computeHash( userPassword.getText() )  );
+                password = DAO.byteArraytoHexString(DAO.computeHash(userPassword.getText()));
             } catch (Exception ex) {
                 Logger.getLogger(registrationUI.class.getName()).log(Level.SEVERE, null, ex);
             }
-            System.out.println(password);
-            //Close this UI
+            
+            try {
+                DAO.registerUser(fName, sName, dob, email, password);
+            } catch (SQLException ex) {
+                Logger.getLogger(registrationUI.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
             this.setVisible(false);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -297,21 +304,49 @@ public class registrationUI extends javax.swing.JFrame {
     public String getPassword() {
         return password;
     }
-    
-    
-    
-    
-    public String dobIsValid(){
+
+    public String dobIsValid() {
         /*if there's something wrong with their dob, a string is returned with
         the exact error
-        */
-        if(dobDay.getSelectedItem().equals("Day") || dobMonth.getSelectedItem().equals("Month") || dobYear.getSelectedItem().equals("Year")){
+         */
+        if (dobDay.getSelectedItem().equals("Day") || dobMonth.getSelectedItem().equals("Month") || dobYear.getSelectedItem().equals("Year")) {
             return "Date not entered correctly";
-        } else if ( 2001 <= Integer.parseInt( dobYear.getSelectedItem().toString() ) ) {
+        } else if (2001 <= Integer.parseInt(dobYear.getSelectedItem().toString())) {
             return "You must be 16 years of age to apply for this application";
         }
         return "";
     }
+    
+    public String determineMonth(String textMonth){
+        if(textMonth.equals("January"))
+            return "01";
+        if(textMonth.equals("February"))
+            return "02";
+        if(textMonth.equals("March"))
+            return "03";
+        if(textMonth.equals("April"))
+            return "04";
+        if(textMonth.equals("May"))
+            return "05";
+        if(textMonth.equals("June"))
+            return "06";
+        if(textMonth.equals("July"))
+            return "07";
+        if(textMonth.equals("August"))
+            return "08";
+        if(textMonth.equals("September"))
+            return "09";
+        if(textMonth.equals("October"))
+            return "10";
+        if(textMonth.equals("November"))
+            return "11";
+        if(textMonth.equals("December"))
+            return "12";
+        
+        
+        return "1";
+    }
+
     /**
      * @param args the command line arguments
      */

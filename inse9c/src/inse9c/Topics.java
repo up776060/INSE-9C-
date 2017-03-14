@@ -23,25 +23,25 @@ public class Topics extends javax.swing.JFrame {
         quizTopic = topic;
         initComponents();
         this.setLocationRelativeTo(null);
-                
-        if(quizTopic.equals("Alertness")){
+
+        if (quizTopic.equals("Alertness")) {
             headerLabel.setText("Topic A: " + quizTopic);
-        } else if(quizTopic.equals("Attitude")){
+        } else if (quizTopic.equals("Attitude")) {
             headerLabel.setText("Topic B: " + quizTopic);
-        } else if(quizTopic.equals("Safety and your vehicle")){
+        } else if (quizTopic.equals("Safety and your vehicle")) {
             headerLabel.setText("Topic C: " + quizTopic);
-        } else if(quizTopic.equals("Hazard Awareness")){
+        } else if (quizTopic.equals("Hazard Awareness")) {
             headerLabel.setText("Topic D: " + quizTopic);
-        } else if(quizTopic.equals("Safety Margin")){
+        } else if (quizTopic.equals("Safety Margin")) {
             headerLabel.setText("Topic E: " + quizTopic);
-        } else if(quizTopic.equals("Motorway Rules")){
+        } else if (quizTopic.equals("Motorway Rules")) {
             headerLabel.setText("Topic F: " + quizTopic);
-        } else if(quizTopic.equals("Vehicle Handling")){
+        } else if (quizTopic.equals("Vehicle Handling")) {
             headerLabel.setText("Topic G: " + quizTopic);
         } else {
             System.out.println("error TOPICS SELECTION");
         }
-        
+
     }
 
     /**

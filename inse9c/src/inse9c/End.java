@@ -8,7 +8,6 @@ import java.text.DecimalFormat;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author up785062
@@ -16,33 +15,33 @@ import java.text.DecimalFormat;
 public class End extends javax.swing.JFrame {
 
     private int score, totalQuestions;
-    
+
     /**
      * Creates new form End
      */
     public End() {
         initComponents();
     }
-    
+
     public End(int marks, int totQues) {
         initComponents();
-        this.setLocationRelativeTo(null);  
-        
+        this.setLocationRelativeTo(null);
+
         score = marks;
         totalQuestions = totQues;
         Editable_score.setText(Integer.toString(score));
         Total_score.setText(Integer.toString(totalQuestions));
-        
+
         System.out.println(score);
         System.out.println(totalQuestions);
 
-        double perc = ((double)score / (double)totalQuestions)*100;
-        
-        
+        double perc = ((double) score / (double) totalQuestions) * 100;
+
         DecimalFormat df = new DecimalFormat("#.#");
         df.setRoundingMode(RoundingMode.HALF_EVEN);
         Percentage.setText(String.valueOf(df.format(perc)) + "%");
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
