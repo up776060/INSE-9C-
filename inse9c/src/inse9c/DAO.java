@@ -22,12 +22,10 @@ public class DAO {
     private static Statement stmt = null;
     private static Connection conn = null;
     private static String sql = "";
-    
     private static String email;
-    
-    
+
     public static Connection connect() {
-        
+
         try {
             // Load the driver class
             Class.forName("com.mysql.jdbc.Driver");
@@ -46,28 +44,25 @@ public class DAO {
         }
         return conn;
     }
-    
+
     public static void registerUser(
-                        String fName, String sName, String dob, 
-                        String email, String pass)
-    throws SQLException
-    {
+            String fName, String sName, String dob,
+            String email, String pass)
+            throws SQLException {
         conn = connect();
         sql = "insert into User (userFname, userLname, userEmail, userDOB, userPassword) values("
-                + "'" + fName + "'," + "'" + sName + "'," + "'" + email + "'," + "'" + dob + "'," +"'" + pass + "')"; 
-        System.out.println(sql);
+                + "'" + fName + "'," + "'" + sName + "'," + "'" + email + "'," + "'" + dob + "'," + "'" + pass + "')";
         stmt.execute(sql);
         conn.close();
     }
-    
+
     public static ResultSet retrieveLoginDetails(String email)
-    throws SQLException
-    {
+            throws SQLException {
         conn = connect();
         ResultSet rs = stmt.executeQuery("select * from User where userEmail = '" + email + "'");
         return rs;
     }
-    
+
     public static byte[] computeHash(String x) throws Exception {
         java.security.MessageDigest d = null;
         d = java.security.MessageDigest.getInstance("SHA-1");
@@ -87,12 +82,12 @@ public class DAO {
         }
         return sb.toString().toUpperCase();
     }
-    
-    public static void setEmail(String newEmail){
+
+    public static void setEmail(String newEmail) {
         email = newEmail;
     }
-    
-    public static String getEmail(){
+
+    public static String getEmail() {
         return email;
     }
 }
