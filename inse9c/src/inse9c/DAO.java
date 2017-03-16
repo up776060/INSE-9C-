@@ -24,6 +24,13 @@ public class DAO {
     private static String sql = "";
     private static String email;
 
+    public DAO(String em){
+        email = em;
+    }
+    
+    
+    
+    
     public static Connection connect() {
 
         try {
@@ -44,7 +51,16 @@ public class DAO {
         }
         return conn;
     }
-
+    
+    public static void changePassword(String password)
+    throws SQLException{
+        conn = connect();
+        sql = "UPDATE User SET userPassword = '" + password +"' WHERE userEmail = '" + email + "'";
+        stmt.execute(sql);
+        conn.close();
+    }
+    
+    
     public static void registerUser(
             String fName, String sName, String dob,
             String email, String pass)

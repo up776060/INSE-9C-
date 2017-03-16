@@ -18,7 +18,7 @@ import javax.swing.JOptionPane;
 public class LoginUI extends javax.swing.JFrame {
 
     private boolean clicked = false;
-
+    DAO dao;
     registrationUI r = new registrationUI();
 
     /**
@@ -147,7 +147,7 @@ public class LoginUI extends javax.swing.JFrame {
     private void loginButActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButActionPerformed
         //current checking fake email account, or something entered in the reg screen
         if (loginValidation()) {
-            Menu m = new Menu();
+            Menu m = new Menu(dao);
             m.setVisible(true);
             this.setVisible(false);
         } 
@@ -175,6 +175,7 @@ public class LoginUI extends javax.swing.JFrame {
                 else{
                     String pw = rs.getString("userPassword");
                     if(pw.equals(encryptedPass)){
+                        dao = new DAO(userEmail.getText());
                         return true;
                     }else{
                         JOptionPane.showMessageDialog(this, "The password you entered does not match our records");

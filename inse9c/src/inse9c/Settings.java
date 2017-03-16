@@ -27,6 +27,14 @@ public class Settings extends javax.swing.JFrame {
     /**
      * Creates new form NewJFrame2
      */
+    DAO dao;
+    
+    public Settings(DAO d) {
+        initComponents();
+        this.setLocationRelativeTo(null);
+        dao = d;
+    }
+    
     public Settings() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -273,7 +281,7 @@ public class Settings extends javax.swing.JFrame {
         try {
             // TODO add your handling code here:
             
-            String email = "up776060@myport.ac.uk";
+            String email = dao.getEmail();
             //String pwd = currentPass.getText();
             String newPwd = newPass.getText();
             String confPwd = newPass2.getText();
@@ -283,37 +291,22 @@ public class Settings extends javax.swing.JFrame {
             
             
             encCpwd = DAO.byteArraytoHexString(DAO.computeHash(currentPass.getText()));
-            System.out.println(encCpwd);
             
-            ResultSet rs = DAO.retrieveLoginDetails("up776060@myport.ac.uk");
-            System.out.println(rs);
+            
+            ResultSet rs = DAO.retrieveLoginDetails(email);
+            
             
             rs.next();
             String pw = rs.getString("userPassword");
-            System.out.println(pw);
+            
             
             if(pw.equals(encCpwd)){
-                System.out.println("Yahoo!");
                 if(newPwd.equals(confPwd)){
                     
-                    System.out.println("The new 2 match!");
                     
                     String encNpwd = DAO.byteArraytoHexString(DAO.computeHash(newPass.getText()));
-                    System.out.println(encNpwd);
                     
-                    
-                    Connection conn = DAO.connect();
-                    System.out.println("It connected!");
-                    //String sql = "UPDATE User set userPassword ="+encNpwd+" where userEmail =up776060@myport.ac.uk";
-                    PreparedStatement ps = conn.prepareStatement("UPDATE User SET userPassword = ? WHERE userEmail = ?");
-                    ps.setString(1,encNpwd);
-                    ps.setString(2,"up776060@myport.ac.uk");
-                    
-                    ps.executeUpdate();
-                    ps.close();
-                    //stmt.execute(sql);
-                    System.out.println("It executed!");
-                    conn.close();
+                    dao.changePassword(encNpwd);
                     
                 }
             } else {

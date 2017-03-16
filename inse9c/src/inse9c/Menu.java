@@ -12,14 +12,20 @@ package inse9c;
  * @author up785062
  */
 public class Menu extends javax.swing.JFrame {
-
+    
+    private static DAO dao;
     /**
      * Creates new form NewJFrame
      */
     public Menu() {
         initComponents();
         this.setLocationRelativeTo(null);
-        
+    }
+    
+    public Menu(DAO d) {
+        initComponents();
+        this.setLocationRelativeTo(null);
+        dao = d;
     }
 
     /**
@@ -150,7 +156,7 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_Topics_buttonActionPerformed
 
     private void Setting_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Setting_buttonActionPerformed
-        Settings s = new Settings();
+        Settings s = new Settings(dao);
         s.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_Setting_buttonActionPerformed
