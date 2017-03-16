@@ -1,8 +1,15 @@
 package inse9c;
 
+import java.awt.Color;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import javax.swing.JOptionPane;
 import javax.swing.ButtonGroup;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -38,7 +45,7 @@ public class QuizUI extends javax.swing.JFrame {
     public QuizUI(String topic) {
         initComponents();
         this.setLocationRelativeTo(null);
-
+        checkBg();
         quizTopic = topic;
 
         switch (quizTopic) {
@@ -109,6 +116,32 @@ public class QuizUI extends javax.swing.JFrame {
         AnswerD.setActionCommand(question1[0][4]);
 
         // Assigns textField and radioButton values for 1st question!
+    }
+    
+    public void checkBg() {
+        String readCol = "";
+
+        try {
+            BufferedReader br = new BufferedReader(new FileReader("colourSettings.txt"));
+            readCol = br.readLine();
+            
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Settings.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Settings.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        if (readCol.equals("red")) {
+            this.getContentPane().setBackground(Color.red);
+        }
+        if (readCol.equals("yellow")) {
+            this.getContentPane().setBackground(Color.yellow);
+        }
+        if (readCol.equals("green")) {
+            this.getContentPane().setBackground(Color.green);
+        }
+        if (readCol.equals("blue")) {
+            this.getContentPane().setBackground(Color.blue);
+        }
     }
 
     /**

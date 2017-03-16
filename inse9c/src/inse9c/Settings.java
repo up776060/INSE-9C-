@@ -1,5 +1,9 @@
 package inse9c;
+
 import java.awt.Color;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.FileReader;
 import java.io.IOException;
@@ -28,16 +32,67 @@ public class Settings extends javax.swing.JFrame {
      * Creates new form NewJFrame2
      */
     DAO dao;
-    
+
     public Settings(DAO d) {
         initComponents();
         this.setLocationRelativeTo(null);
         dao = d;
+        checkBg();
     }
-    
+
+    public void checkBg() {
+        String readCol = "";
+
+        try {
+            BufferedReader br = new BufferedReader(new FileReader("colourSettings.txt"));
+            readCol = br.readLine();
+            
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Settings.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Settings.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        if (readCol.equals("red")) {
+            this.getContentPane().setBackground(Color.red);
+        }
+        if (readCol.equals("yellow")) {
+            this.getContentPane().setBackground(Color.yellow);
+        }
+        if (readCol.equals("green")) {
+            this.getContentPane().setBackground(Color.green);
+        }
+        if (readCol.equals("blue")) {
+            this.getContentPane().setBackground(Color.blue);
+        }
+    }
+
     public Settings() {
         initComponents();
         this.setLocationRelativeTo(null);
+        String readCol = "";
+
+        try {
+            BufferedReader br = new BufferedReader(new FileReader("colourSettings.txt"));
+            readCol = br.readLine();
+            System.out.println(readCol);
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Settings.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Settings.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        if (readCol == "red") {
+            this.getContentPane().setBackground(Color.red);
+        }
+        if (readCol == "yellow") {
+            this.getContentPane().setBackground(Color.yellow);
+        }
+        if (readCol == "green") {
+            this.getContentPane().setBackground(Color.green);
+        }
+        if (readCol == "blue") {
+            this.getContentPane().setBackground(Color.blue);
+        }
     }
 
     /**
@@ -244,90 +299,80 @@ public class Settings extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void Back_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Back_buttonActionPerformed
-        Menu t = new Menu();
+        Menu t = new Menu(dao);
         t.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_Back_buttonActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        
+
         Object bgCol = Colours_combo.getSelectedItem();
-        
+
         String selectCol = bgCol.toString();
 
-        
-       // try {
-         // FileWriter writer = new FileWriter("Colorconfig.txt", true);
-         // writer.write(selectCol);
-         // writer.close();
-        //}
-        //catch (IOException e){
-         //   e.printStackTrace();
-        //}
-        
-        if (selectCol == "red"){
+        try {
+            BufferedWriter out = new BufferedWriter(new FileWriter("colourSettings.txt"));
+            out.write(selectCol);
+            out.close();
+        } catch (IOException e) {
+        }
+
+        if (selectCol == "red") {
             this.getContentPane().setBackground(Color.red);
         }
-        if (selectCol == "yellow"){
+        if (selectCol == "yellow") {
             this.getContentPane().setBackground(Color.yellow);
         }
-        if (selectCol == "green"){
+        if (selectCol == "green") {
             this.getContentPane().setBackground(Color.green);
         }
-        if (selectCol == "blue"){
+        if (selectCol == "blue") {
             this.getContentPane().setBackground(Color.blue);
         }
-   
+
         //this.setBackground(selectCol);
-        
+
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void changePassbutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changePassbutActionPerformed
-        try {
-            // TODO add your handling code here:
-            
-            String email = dao.getEmail();
-            //String pwd = currentPass.getText();
-            String newPwd = newPass.getText();
-            String confPwd = newPass2.getText();
-            Statement stmt = null;
-            
-            String encCpwd = "";
-            
-            
-            encCpwd = DAO.byteArraytoHexString(DAO.computeHash(currentPass.getText()));
-            
-            
-            ResultSet rs = DAO.retrieveLoginDetails(email);
-            
-            
-            rs.next();
-            String pw = rs.getString("userPassword");
-            
-            
-            if(pw.equals(encCpwd)){
-                if(newPwd.equals(confPwd)){
-                    
-                    
-                    String encNpwd = DAO.byteArraytoHexString(DAO.computeHash(newPass.getText()));
-                    
-                    dao.changePassword(encNpwd);
-                    JOptionPane.showMessageDialog(this, "Your password has succsesfully been updated");
-                }
-            } else {
-                JOptionPane.showMessageDialog(this, "The password you entered does not match our records");
-            }
-        } catch (Exception ex) {
-            Logger.getLogger(Settings.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
+        if (newPass.getText().equals(newPass2.getText())) {
+            try {
+                // TODO add your handling code here:
 
-        
-        
-        
-        
-        
+                String email = dao.getEmail();
+                //String pwd = currentPass.getText();
+                String newPwd = newPass.getText();
+                String confPwd = newPass2.getText();
+                Statement stmt = null;
+
+                String encCpwd = "";
+
+                encCpwd = DAO.byteArraytoHexString(DAO.computeHash(currentPass.getText()));
+
+                ResultSet rs = DAO.retrieveLoginDetails(email);
+
+                rs.next();
+                String pw = rs.getString("userPassword");
+
+                if (pw.equals(encCpwd)) {
+                    if (newPwd.equals(confPwd)) {
+
+                        String encNpwd = DAO.byteArraytoHexString(DAO.computeHash(newPass.getText()));
+
+                        dao.changePassword(encNpwd);
+                        JOptionPane.showMessageDialog(this, "Your password has succsesfully been updated");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(this, "The password you entered does not match our records");
+                }
+            } catch (Exception ex) {
+                Logger.getLogger(Settings.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "The passwords do not match");
+        }
+
     }//GEN-LAST:event_changePassbutActionPerformed
 
     private void currentPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_currentPassActionPerformed

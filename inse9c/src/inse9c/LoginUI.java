@@ -5,6 +5,11 @@
  */
 package inse9c;
 
+import java.awt.Color;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -27,8 +32,35 @@ public class LoginUI extends javax.swing.JFrame {
     public LoginUI() {
         initComponents();
         this.setLocationRelativeTo(null);
+        checkBg();
     }
+    
+    public void checkBg() {
+        String readCol = "";
 
+        try {
+            BufferedReader br = new BufferedReader(new FileReader("colourSettings.txt"));
+            readCol = br.readLine();
+            
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Settings.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Settings.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        if (readCol.equals("red")) {
+            this.getContentPane().setBackground(Color.red);
+        }
+        if (readCol.equals("yellow")) {
+            this.getContentPane().setBackground(Color.yellow);
+        }
+        if (readCol.equals("green")) {
+            this.getContentPane().setBackground(Color.green);
+        }
+        if (readCol.equals("blue")) {
+            this.getContentPane().setBackground(Color.blue);
+        }
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
