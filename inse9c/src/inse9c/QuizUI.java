@@ -344,31 +344,35 @@ public class QuizUI extends javax.swing.JFrame {
             String submit = bg.getSelection().getActionCommand().toString();
 
             if (submit.equals(correctans[i])) {
+                score = score + 1;
+                lbScore.setText("Score: " + score);
+
+                String sound = "true";
+
                 try {
-                    score = score + 1;
-                    lbScore.setText("Score: " + score);
-                    /*try {
-                    InputStream in = new FileInputStream("correctAnswerNoise.wav");
-                    AudioStream as = new AudioStream(in);
-                    AudioPlayer.player.start(as);
-                    AudioPlayer.player.stop(as);
-                    AudioPlayer.player.
-                    } catch (Exception ex) {
-                    }*/
-                    
-                    String soundName = "correctAnswerNoise.wav";
-                    AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(soundName).getAbsoluteFile());
-                    Clip clip = AudioSystem.getClip();
-                    clip.open(audioInputStream);
-                    clip.start();
-                } catch (LineUnavailableException ex) {
-                    Logger.getLogger(QuizUI.class.getName()).log(Level.SEVERE, null, ex);
+                    BufferedReader br = new BufferedReader(new FileReader("soundSettings.txt"));
+                    sound = br.readLine();
+                } catch (FileNotFoundException ex) {
+                    Logger.getLogger(Settings.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (IOException ex) {
-                    Logger.getLogger(QuizUI.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (UnsupportedAudioFileException ex) {
-                    Logger.getLogger(QuizUI.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(Settings.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                
+                if (sound.equals("true")) {
+                    try {
+                        String soundName = "correctAnswerNoise.wav";
+                        AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(soundName).getAbsoluteFile());
+                        Clip clip = AudioSystem.getClip();
+                        clip.open(audioInputStream);
+                        clip.start();
+                    } catch (LineUnavailableException ex) {
+                        Logger.getLogger(QuizUI.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (IOException ex) {
+                        Logger.getLogger(QuizUI.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (UnsupportedAudioFileException ex) {
+                        Logger.getLogger(QuizUI.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+
             }
 
             if (i == 2) {

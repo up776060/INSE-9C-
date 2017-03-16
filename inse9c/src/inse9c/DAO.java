@@ -5,6 +5,12 @@
  */
 package inse9c;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -24,13 +30,10 @@ public class DAO {
     private static String sql = "";
     private static String email;
 
-    public DAO(String em){
+    public DAO(String em) {
         email = em;
     }
-    
-    
-    
-    
+
     public static Connection connect() {
 
         try {
@@ -51,17 +54,15 @@ public class DAO {
         }
         return conn;
     }
-    
+
     public static void changePassword(String password)
-    throws SQLException
-    {
+            throws SQLException {
         conn = connect();
-        sql = "UPDATE User SET userPassword = '" + password +"' WHERE userEmail = '" + email + "'";
+        sql = "UPDATE User SET userPassword = '" + password + "' WHERE userEmail = '" + email + "'";
         stmt.execute(sql);
         conn.close();
     }
-    
-    
+
     public static void registerUser(
             String fName, String sName, String dob,
             String email, String pass)
@@ -74,10 +75,16 @@ public class DAO {
     }
 
     public static ResultSet retrieveLoginDetails(String email)
-            throws SQLException 
-    {
+            throws SQLException {
         conn = connect();
         ResultSet rs = stmt.executeQuery("select * from User where userEmail = '" + email + "'");
+        return rs;
+    }
+
+    public static ResultSet retrieveQuiz()
+            throws SQLException {
+        conn = connect();
+        ResultSet rs = stmt.executeQuery("select * from Question");
         return rs;
     }
 
@@ -108,6 +115,34 @@ public class DAO {
     public static String getEmail() {
         return email;
     }
-    
-    
+
+    public void toggleSound(boolean button) {
+        String sound = "true";
+
+        try {
+            BufferedReader br = new BufferedReader(new FileReader("soundSettings.txt"));
+            sound = br.readLine();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Settings.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Settings.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        if (sound.equals("true")) {
+            try {
+                BufferedWriter out = new BufferedWriter(new FileWriter("soundSettings.txt"));
+                out.write("False");
+                out.close();
+            } catch (IOException e) {
+            }
+        } else {
+           try {
+                BufferedWriter out = new BufferedWriter(new FileWriter("soundSettings.txt"));
+                out.write("true");
+                out.close();
+            } catch (IOException e) {
+            }
+        }
+    }
+
 }

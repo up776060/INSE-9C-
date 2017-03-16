@@ -132,8 +132,18 @@ public class Settings extends javax.swing.JFrame {
         jLabel1.setText("Settings and Help");
 
         ON_button.setText("ON");
+        ON_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ON_buttonActionPerformed(evt);
+            }
+        });
 
         OFF_Button.setText("OFF");
+        OFF_Button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                OFF_ButtonActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setText("Enable Sound ");
@@ -370,6 +380,16 @@ public class Settings extends javax.swing.JFrame {
     private void Colours_comboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Colours_comboActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_Colours_comboActionPerformed
+
+    private void ON_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ON_buttonActionPerformed
+        dao.toggleSound(true);
+        JOptionPane.showMessageDialog(this, "Sound enabled");
+    }//GEN-LAST:event_ON_buttonActionPerformed
+
+    private void OFF_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OFF_ButtonActionPerformed
+        dao.toggleSound(false);
+        JOptionPane.showMessageDialog(this, "Sound disabled");
+    }//GEN-LAST:event_OFF_ButtonActionPerformed
 
     /**
      * @param args the command line arguments
