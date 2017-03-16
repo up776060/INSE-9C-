@@ -62,12 +62,12 @@ public class Settings extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
-        currentPass = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        newPass = new javax.swing.JTextField();
-        newPass2 = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         changePassbut = new javax.swing.JButton();
+        currentPass = new javax.swing.JPasswordField();
+        newPass = new javax.swing.JPasswordField();
+        newPass2 = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -126,6 +126,12 @@ public class Settings extends javax.swing.JFrame {
             }
         });
 
+        currentPass.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                currentPassActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -139,14 +145,14 @@ public class Settings extends javax.swing.JFrame {
                             .addComponent(jLabel6)
                             .addComponent(jLabel7))
                         .addGap(30, 30, 30)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(currentPass, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(newPass2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(newPass, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(newPass)
+                            .addComponent(currentPass)
+                            .addComponent(newPass2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(88, 88, 88)
                         .addComponent(changePassbut)))
-                .addContainerGap(89, Short.MAX_VALUE))
+                .addContainerGap(67, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -204,7 +210,7 @@ public class Settings extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(355, 355, 355)
                         .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(151, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -307,7 +313,7 @@ public class Settings extends javax.swing.JFrame {
                     String encNpwd = DAO.byteArraytoHexString(DAO.computeHash(newPass.getText()));
                     
                     dao.changePassword(encNpwd);
-                    
+                    JOptionPane.showMessageDialog(this, "Your password has succsesfully been updated");
                 }
             } else {
                 JOptionPane.showMessageDialog(this, "The password you entered does not match our records");
@@ -323,6 +329,10 @@ public class Settings extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_changePassbutActionPerformed
+
+    private void currentPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_currentPassActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_currentPassActionPerformed
 
     /**
      * @param args the command line arguments
@@ -366,7 +376,7 @@ public class Settings extends javax.swing.JFrame {
     private javax.swing.JButton ON_button;
     private javax.swing.JTextArea Use_application;
     private javax.swing.JButton changePassbut;
-    private javax.swing.JTextField currentPass;
+    private javax.swing.JPasswordField currentPass;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -377,7 +387,7 @@ public class Settings extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField newPass;
-    private javax.swing.JTextField newPass2;
+    private javax.swing.JPasswordField newPass;
+    private javax.swing.JPasswordField newPass2;
     // End of variables declaration//GEN-END:variables
 }

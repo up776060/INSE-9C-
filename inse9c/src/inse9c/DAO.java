@@ -53,7 +53,8 @@ public class DAO {
     }
     
     public static void changePassword(String password)
-    throws SQLException{
+    throws SQLException
+    {
         conn = connect();
         sql = "UPDATE User SET userPassword = '" + password +"' WHERE userEmail = '" + email + "'";
         stmt.execute(sql);
@@ -73,7 +74,8 @@ public class DAO {
     }
 
     public static ResultSet retrieveLoginDetails(String email)
-            throws SQLException {
+            throws SQLException 
+    {
         conn = connect();
         ResultSet rs = stmt.executeQuery("select * from User where userEmail = '" + email + "'");
         return rs;

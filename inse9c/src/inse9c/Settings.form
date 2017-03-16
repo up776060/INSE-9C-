@@ -68,7 +68,7 @@
                       <Component id="jButton4" min="-2" pref="125" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="151" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -214,10 +214,10 @@
                               <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="currentPass" min="-2" pref="100" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="newPass" alignment="0" max="32767" attributes="0"/>
+                              <Component id="currentPass" alignment="0" max="32767" attributes="0"/>
                               <Component id="newPass2" min="-2" pref="100" max="-2" attributes="0"/>
-                              <Component id="newPass" min="-2" pref="100" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
@@ -225,7 +225,7 @@
                           <Component id="changePassbut" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="89" max="32767" attributes="0"/>
+                  <EmptySpace pref="67" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -262,8 +262,6 @@
             <Property name="text" type="java.lang.String" value="Current password"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="currentPass">
-        </Component>
         <Component class="javax.swing.JLabel" name="jLabel6">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -271,10 +269,6 @@
             </Property>
             <Property name="text" type="java.lang.String" value="New password"/>
           </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="newPass">
-        </Component>
-        <Component class="javax.swing.JTextField" name="newPass2">
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel7">
           <Properties>
@@ -291,6 +285,15 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="changePassbutActionPerformed"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JPasswordField" name="currentPass">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="currentPassActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JPasswordField" name="newPass">
+        </Component>
+        <Component class="javax.swing.JPasswordField" name="newPass2">
         </Component>
       </SubComponents>
     </Container>
