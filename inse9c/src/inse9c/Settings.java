@@ -16,6 +16,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.prefs.Preferences;
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -64,6 +65,10 @@ public class Settings extends javax.swing.JFrame {
         if (readCol.equals("blue")) {
             this.getContentPane().setBackground(Color.blue);
         }
+        if (readCol.equals("Default")) {
+            this.getContentPane().setBackground(null);
+        }
+        
     }
 
     public Settings() {
@@ -81,18 +86,7 @@ public class Settings extends javax.swing.JFrame {
             Logger.getLogger(Settings.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        if (readCol == "red") {
-            this.getContentPane().setBackground(Color.red);
-        }
-        if (readCol == "yellow") {
-            this.getContentPane().setBackground(Color.yellow);
-        }
-        if (readCol == "green") {
-            this.getContentPane().setBackground(Color.green);
-        }
-        if (readCol == "blue") {
-            this.getContentPane().setBackground(Color.blue);
-        }
+        checkBg();
     }
 
     /**
@@ -147,7 +141,12 @@ public class Settings extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("Background colour");
 
-        Colours_combo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "red", "blue", "yellow", "green" }));
+        Colours_combo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Default", "red", "blue", "yellow", "green" }));
+        Colours_combo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Colours_comboActionPerformed(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setText("How to use application");
@@ -318,18 +317,7 @@ public class Settings extends javax.swing.JFrame {
         } catch (IOException e) {
         }
 
-        if (selectCol == "red") {
-            this.getContentPane().setBackground(Color.red);
-        }
-        if (selectCol == "yellow") {
-            this.getContentPane().setBackground(Color.yellow);
-        }
-        if (selectCol == "green") {
-            this.getContentPane().setBackground(Color.green);
-        }
-        if (selectCol == "blue") {
-            this.getContentPane().setBackground(Color.blue);
-        }
+        checkBg();
 
         //this.setBackground(selectCol);
 
@@ -378,6 +366,10 @@ public class Settings extends javax.swing.JFrame {
     private void currentPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_currentPassActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_currentPassActionPerformed
+
+    private void Colours_comboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Colours_comboActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Colours_comboActionPerformed
 
     /**
      * @param args the command line arguments
