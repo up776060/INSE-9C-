@@ -5,6 +5,11 @@
  */
 package inse9c;
 
+import java.awt.Color;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.io.PrintWriter;
 import javax.swing.JOptionPane;
 import java.lang.Object;
@@ -28,6 +33,7 @@ public class registrationUI extends javax.swing.JFrame {
     public registrationUI() {
         initComponents();
         this.setLocationRelativeTo(null);
+        checkBg();
     }
 
     /**
@@ -251,6 +257,8 @@ public class registrationUI extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Please Confirm the correct Password");
         } else if (!acceptTerms.isSelected()) {
             JOptionPane.showMessageDialog(null, "Please accept the terms and conditions");
+        } else if (userPassword.getText().length() <= 7 || userPassword.getText().length() >= 33) {
+            JOptionPane.showMessageDialog(null, "Password must be 8 or more characters");
         } else if (!userEmail.getText().matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$")) {
             JOptionPane.showMessageDialog(null, "The email entered is not acceptable");
         } else {
@@ -266,16 +274,46 @@ public class registrationUI extends javax.swing.JFrame {
             } catch (Exception ex) {
                 Logger.getLogger(registrationUI.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
+
             try {
                 DAO.registerUser(fName, sName, dob, email, password);
             } catch (SQLException ex) {
                 Logger.getLogger(registrationUI.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
+
             this.setVisible(false);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    public void checkBg() {
+        String readCol = "";
+
+        try {
+            BufferedReader br = new BufferedReader(new FileReader("colourSettings.txt"));
+            readCol = br.readLine();
+
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Settings.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Settings.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        if (readCol.equals("red")) {
+            this.getContentPane().setBackground(Color.red);
+        }
+        if (readCol.equals("yellow")) {
+            this.getContentPane().setBackground(Color.yellow);
+        }
+        if (readCol.equals("green")) {
+            this.getContentPane().setBackground(Color.green);
+        }
+        if (readCol.equals("blue")) {
+            this.getContentPane().setBackground(Color.blue);
+        }
+        if (readCol.equals("Default")) {
+            this.getContentPane().setBackground(null);
+        }
+
+    }
 
     private void acceptTermsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_acceptTermsActionPerformed
         // TODO add your handling code here:
@@ -316,34 +354,45 @@ public class registrationUI extends javax.swing.JFrame {
         }
         return "";
     }
-    
-    public String determineMonth(String textMonth){
-        if(textMonth.equals("January"))
+
+    public String determineMonth(String textMonth) {
+        if (textMonth.equals("January")) {
             return "01";
-        if(textMonth.equals("February"))
+        }
+        if (textMonth.equals("February")) {
             return "02";
-        if(textMonth.equals("March"))
+        }
+        if (textMonth.equals("March")) {
             return "03";
-        if(textMonth.equals("April"))
+        }
+        if (textMonth.equals("April")) {
             return "04";
-        if(textMonth.equals("May"))
+        }
+        if (textMonth.equals("May")) {
             return "05";
-        if(textMonth.equals("June"))
+        }
+        if (textMonth.equals("June")) {
             return "06";
-        if(textMonth.equals("July"))
+        }
+        if (textMonth.equals("July")) {
             return "07";
-        if(textMonth.equals("August"))
+        }
+        if (textMonth.equals("August")) {
             return "08";
-        if(textMonth.equals("September"))
+        }
+        if (textMonth.equals("September")) {
             return "09";
-        if(textMonth.equals("October"))
+        }
+        if (textMonth.equals("October")) {
             return "10";
-        if(textMonth.equals("November"))
+        }
+        if (textMonth.equals("November")) {
             return "11";
-        if(textMonth.equals("December"))
+        }
+        if (textMonth.equals("December")) {
             return "12";
-        
-        
+        }
+
         return "1";
     }
 

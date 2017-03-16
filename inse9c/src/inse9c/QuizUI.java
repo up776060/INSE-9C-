@@ -7,7 +7,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import javax.swing.JOptionPane;
 import javax.swing.ButtonGroup;
-import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -117,14 +116,14 @@ public class QuizUI extends javax.swing.JFrame {
 
         // Assigns textField and radioButton values for 1st question!
     }
-    
+
     public void checkBg() {
         String readCol = "";
 
         try {
             BufferedReader br = new BufferedReader(new FileReader("colourSettings.txt"));
             readCol = br.readLine();
-            
+
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Settings.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
@@ -341,6 +340,14 @@ public class QuizUI extends javax.swing.JFrame {
             if (submit.equals(correctans[i])) {
                 score = score + 1;
                 lbScore.setText("Score: " + score);
+                /*try {
+                    InputStream in = new FileInputStream("correctAnswerNoise.wav");
+                    AudioStream as = new AudioStream(in);
+                    AudioPlayer.player.start(as);
+                    AudioPlayer.player.stop(as);
+                    AudioPlayer.player.
+                } catch (Exception ex) {
+                }*/
             }
 
             if (i == 2) {
