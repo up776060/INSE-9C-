@@ -9,6 +9,12 @@ import javax.swing.JOptionPane;
 import javax.swing.ButtonGroup;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.io.File;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -338,16 +344,31 @@ public class QuizUI extends javax.swing.JFrame {
             String submit = bg.getSelection().getActionCommand().toString();
 
             if (submit.equals(correctans[i])) {
-                score = score + 1;
-                lbScore.setText("Score: " + score);
-                /*try {
+                try {
+                    score = score + 1;
+                    lbScore.setText("Score: " + score);
+                    /*try {
                     InputStream in = new FileInputStream("correctAnswerNoise.wav");
                     AudioStream as = new AudioStream(in);
                     AudioPlayer.player.start(as);
                     AudioPlayer.player.stop(as);
                     AudioPlayer.player.
-                } catch (Exception ex) {
-                }*/
+                    } catch (Exception ex) {
+                    }*/
+                    
+                    String soundName = "correctAnswerNoise.wav";
+                    AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(soundName).getAbsoluteFile());
+                    Clip clip = AudioSystem.getClip();
+                    clip.open(audioInputStream);
+                    clip.start();
+                } catch (LineUnavailableException ex) {
+                    Logger.getLogger(QuizUI.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IOException ex) {
+                    Logger.getLogger(QuizUI.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (UnsupportedAudioFileException ex) {
+                    Logger.getLogger(QuizUI.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
             }
 
             if (i == 2) {
