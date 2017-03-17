@@ -341,7 +341,7 @@
             <StringItem index="9" value="September"/>
             <StringItem index="10" value="October"/>
             <StringItem index="11" value="November"/>
-            <StringItem index="12" value="Deecember"/>
+            <StringItem index="12" value="December"/>
           </StringArray>
         </Property>
       </Properties>
