@@ -65,11 +65,16 @@ public class End extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
 
+        if(score>totalQuestions)
+            score = totalQuestions;
+        
         score = marks;
         totalQuestions = totQues;
         Editable_score.setText(Integer.toString(score));
         Total_score.setText(Integer.toString(totalQuestions));
-
+        
+        
+        
         System.out.println(score);
         System.out.println(totalQuestions);
 

@@ -12,6 +12,7 @@ import java.util.logging.Logger;
 import java.io.File;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Random;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
@@ -382,17 +383,39 @@ public class QuizUI extends javax.swing.JFrame {
 
             // Increment i by 1 
             i++;
-
+            
+            if(i>9)
+                i=9;
+            
+            Random ran = new Random();
             // Display next question
             TextfieldQuestion.setText(question1[i][0]);
-            AnswerA.setText(question1[i][1]);
-            AnswerA.setActionCommand(question1[i][1]);
-            AnswerB.setText(question1[i][2]);
-            AnswerB.setActionCommand(question1[i][2]);
-            AnswerC.setText(question1[i][3]);
-            AnswerC.setActionCommand(question1[i][3]);
-            AnswerD.setText(question1[i][4]);
-            AnswerD.setActionCommand(question1[i][4]);
+            
+            int a1 = ran.nextInt(4) + 1;
+            AnswerA.setText(question1[i][a1]);
+            AnswerA.setActionCommand(question1[i][a1]);
+            
+            int a2 = ran.nextInt(4) + 1;
+            while(a2==a1){
+                a2 = ran.nextInt(4) + 1;
+            }
+                    
+            AnswerB.setText(question1[i][a2]);
+            AnswerB.setActionCommand(question1[i][a2]);
+            
+            int a3 = ran.nextInt(4) + 1;
+            while(a3 == a1 || a3 == a2){
+                a3 = ran.nextInt(4) + 1;
+            }
+            AnswerC.setText(question1[i][a3]);
+            AnswerC.setActionCommand(question1[i][a3]);
+            
+            int a4 = ran.nextInt(4) + 1;
+            while(a4==a1 || a4==a2 || a4==a3){
+                a4 = ran.nextInt(4) + 1;
+            }
+            AnswerD.setText(question1[i][a4]);
+            AnswerD.setActionCommand(question1[i][a4]);
 
         }
 
