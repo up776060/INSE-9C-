@@ -73,10 +73,6 @@ public class End extends javax.swing.JFrame {
         Editable_score.setText(Integer.toString(score));
         Total_score.setText(Integer.toString(totalQuestions));
         
-        
-        
-        System.out.println(score);
-        System.out.println(totalQuestions);
 
         double perc = ((double) score / (double) totalQuestions) * 100;
 
