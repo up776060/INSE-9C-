@@ -84,7 +84,7 @@ public class DAO {
     public static ResultSet retrieveQuiz()
             throws SQLException {
         conn = connect();
-        ResultSet rs = stmt.executeQuery("select * from Question");
+        ResultSet rs = stmt.executeQuery("select * from Question ORDER BY RAND() LIMIT 10");
         return rs;
     }
 
@@ -136,7 +136,7 @@ public class DAO {
             } catch (IOException e) {
             }
         } else {
-           try {
+            try {
                 BufferedWriter out = new BufferedWriter(new FileWriter("soundSettings.txt"));
                 out.write("true");
                 out.close();
@@ -144,5 +144,4 @@ public class DAO {
             }
         }
     }
-
 }

@@ -10,6 +10,8 @@ import javax.swing.ButtonGroup;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.io.File;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
@@ -33,8 +35,7 @@ public class QuizUI extends javax.swing.JFrame {
     String quizTopic;
     int score;
     int count;
-    int i;
-
+    int i = 0;
     ButtonGroup bg = new ButtonGroup();
     // All Radio buttons grouped so 1 active at a time
 
@@ -76,49 +77,47 @@ public class QuizUI extends javax.swing.JFrame {
                 headerLabel.setText("Topic G: " + quizTopic);
                 break;
             default:
-                System.out.println("error TOPICS SELECTION");
+                System.out.println("Quiz");
                 break;
         }
 
         i = 0;
         score = 0;
+        try {
+            ResultSet rs = DAO.retrieveQuiz();
+            
+            question1 = new String[10][5];
+            correctans = new String[10];
+            for (int i = 0; i < 10; i++) {
+                rs.next();
+                question1[i][0] = rs.getString("questionContents");
+                question1[i][1] = rs.getString("correctAns");
+                question1[i][2] = rs.getString("wrongAns1");
+                question1[i][3] = rs.getString("wrongAns2");
+                question1[i][4] = rs.getString("wrongAns3");
+
+                correctans[i] = rs.getString("correctAns");;
+            }
+
+            TextfieldQuestion.setText(question1[0][0]);
+            AnswerA.setText(question1[0][1]);
+            AnswerA.setActionCommand(question1[0][1]);
+            AnswerB.setText(question1[0][2]);
+            AnswerB.setActionCommand(question1[0][2]);
+            AnswerC.setText(question1[0][3]);
+            AnswerC.setActionCommand(question1[0][3]);
+            AnswerD.setText(question1[0][4]);
+            AnswerD.setActionCommand(question1[0][4]);
+
+
+
+
+        } catch (SQLException ex) {
+            Logger.getLogger(QuizUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
         // Array of 3 questions (change 1st number to make bigger array)
-        question1 = new String[3][5];
 
-        question1[0][0] = "This is a question";
-        question1[0][1] = "This is answer 1";
-        question1[0][2] = "This is answer 2";
-        question1[0][3] = "This is answer 3";
-        question1[0][4] = "This is answer 4";
-
-        correctans = new String[3];
-
-        correctans[0] = "This is answer 4";
-        correctans[1] = "This is 2 answer 3";
-        correctans[2] = "This is 3 answer 1";
-
-        question1[1][0] = "This is a second question";
-        question1[1][1] = "This is 2 answer 1";
-        question1[1][2] = "This is 2 answer 2";
-        question1[1][3] = "This is 2 answer 3";
-        question1[1][4] = "This is 2 answer 4";
-
-        question1[2][0] = "This is a third question";
-        question1[2][1] = "This is 3 answer 1";
-        question1[2][2] = "This is 3 answer 2";
-        question1[2][3] = "This is 3 answer 3";
-        question1[2][4] = "This is 3 answer 4";
-
-        TextfieldQuestion.setText(question1[0][0]);
-        AnswerA.setText(question1[0][1]);
-        AnswerA.setActionCommand(question1[0][1]);
-        AnswerB.setText(question1[0][2]);
-        AnswerB.setActionCommand(question1[0][2]);
-        AnswerC.setText(question1[0][3]);
-        AnswerC.setActionCommand(question1[0][3]);
-        AnswerD.setText(question1[0][4]);
-        AnswerD.setActionCommand(question1[0][4]);
 
         // Assigns textField and radioButton values for 1st question!
     }
@@ -375,14 +374,14 @@ public class QuizUI extends javax.swing.JFrame {
 
             }
 
-            if (i == 2) {
+            if (i == 9) {
                 End t = new End(score, correctans.length);
                 t.setVisible(true);
                 this.setVisible(false);
             }
 
             // Increment i by 1 
-            i = i + 1;
+            i++;
 
             // Display next question
             TextfieldQuestion.setText(question1[i][0]);
@@ -397,7 +396,7 @@ public class QuizUI extends javax.swing.JFrame {
 
         }
 
-        if (i == 2) {
+        if (i == 9) {
             ButtonNext.setText("Submit");
         }
         // WHAT NEEDS TO BE DONE!
@@ -454,7 +453,6 @@ public class QuizUI extends javax.swing.JFrame {
             }
         });
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton AnswerA;
     private javax.swing.JRadioButton AnswerB;
