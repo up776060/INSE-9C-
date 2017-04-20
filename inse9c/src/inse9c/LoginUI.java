@@ -40,18 +40,22 @@ public class LoginUI extends javax.swing.JFrame {
 
     public void checkEmail() {
         String email = "";
+        boolean notEmpty = false;
         try {
             BufferedReader br = new BufferedReader(new FileReader("email.txt"));
             email = br.readLine();
+            br.close();
+
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Settings.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
             Logger.getLogger(Settings.class.getName()).log(Level.SEVERE, null, ex);
         }
-
-        if (email != "") {
+        System.out.println(email);
+        if (notEmpty || email != null) {
             userEmail.setText(email);
             remEmail.setSelected(true);
+            clicked = true;
         }
     }
 
@@ -220,6 +224,13 @@ public class LoginUI extends javax.swing.JFrame {
             try {
                 BufferedWriter out = new BufferedWriter(new FileWriter("email.txt"));
                 out.write(userEmail.getText());
+                out.close();
+            } catch (IOException e) {
+            }
+        } else {
+            try {
+                BufferedWriter out = new BufferedWriter(new FileWriter("email.txt"));
+                out.write("");
                 out.close();
             } catch (IOException e) {
             }
