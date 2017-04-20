@@ -86,7 +86,7 @@ public class QuizUI extends javax.swing.JFrame {
         score = 0;
         try {
             ResultSet rs = DAO.retrieveQuiz();
-            
+
             question1 = new String[10][5];
             correctans = new String[10];
             for (int i = 0; i < 10; i++) {
@@ -99,6 +99,22 @@ public class QuizUI extends javax.swing.JFrame {
 
                 correctans[i] = rs.getString("correctAns");;
             }
+            //code to ensure the question does not escape the border
+            if (question1[0][0].length() > 80) {
+                int k = 65;
+                boolean changed = false;
+                do {
+                    if (question1[0][0].charAt(k) == ' ') {
+                        StringBuilder question = new StringBuilder(question1[0][0]);
+                        question.setCharAt(k, '\n');
+                        
+                        question1[0][0] = question.toString();
+                        changed = true;
+                    }
+                    k++;
+                } while (!changed);
+            }
+
 
             TextfieldQuestion.setText(question1[0][0]);
             AnswerA.setText(question1[0][1]);
@@ -116,10 +132,7 @@ public class QuizUI extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(QuizUI.class.getName()).log(Level.SEVERE, null, ex);
         }
-
         // Array of 3 questions (change 1st number to make bigger array)
-
-
         // Assigns textField and radioButton values for 1st question!
     }
 
@@ -130,10 +143,14 @@ public class QuizUI extends javax.swing.JFrame {
             BufferedReader br = new BufferedReader(new FileReader("colourSettings.txt"));
             readCol = br.readLine();
 
+
+
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(Settings.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Settings.class
+                    .getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
-            Logger.getLogger(Settings.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Settings.class
+                    .getName()).log(Level.SEVERE, null, ex);
         }
         if (readCol.equals("red")) {
             this.getContentPane().setBackground(Color.red);
@@ -159,7 +176,6 @@ public class QuizUI extends javax.swing.JFrame {
     private void initComponents() {
 
         headerLabel = new javax.swing.JLabel();
-        TextfieldQuestion = new javax.swing.JTextField();
         AnswerA = new javax.swing.JRadioButton();
         AnswerB = new javax.swing.JRadioButton();
         AnswerD = new javax.swing.JRadioButton();
@@ -168,21 +184,14 @@ public class QuizUI extends javax.swing.JFrame {
         ButtonHint = new javax.swing.JButton();
         ButtonExit = new javax.swing.JButton();
         lbScore = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        TextfieldQuestion = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
         headerLabel.setFont(new java.awt.Font("Segoe UI Semibold", 0, 36)); // NOI18N
         headerLabel.setText("Quiz Name");
-
-        TextfieldQuestion.setEditable(false);
-        TextfieldQuestion.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
-        TextfieldQuestion.setText("Oh Look, here's a famy looking area to store questions in");
-        TextfieldQuestion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TextfieldQuestionActionPerformed(evt);
-            }
-        });
 
         bg.add(AnswerA);
         AnswerA.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
@@ -246,14 +255,18 @@ public class QuizUI extends javax.swing.JFrame {
 
         lbScore.setText("Score: ");
 
+        TextfieldQuestion.setEditable(false);
+        TextfieldQuestion.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.background"));
+        TextfieldQuestion.setColumns(20);
+        TextfieldQuestion.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
+        TextfieldQuestion.setLineWrap(true);
+        TextfieldQuestion.setRows(3);
+        jScrollPane1.setViewportView(TextfieldQuestion);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(84, 84, 84)
-                .addComponent(TextfieldQuestion, javax.swing.GroupLayout.PREFERRED_SIZE, 818, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 112, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(112, 112, 112)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -262,17 +275,22 @@ public class QuizUI extends javax.swing.JFrame {
                     .addComponent(AnswerD)
                     .addComponent(AnswerC))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(ButtonExit, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(212, 212, 212)
-                .addComponent(headerLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lbScore)
-                .addGap(88, 88, 88))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(ButtonNext, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(ButtonExit, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(212, 212, 212)
+                                .addComponent(headerLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 321, Short.MAX_VALUE)
+                                .addComponent(lbScore)
+                                .addGap(53, 53, 53))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(ButtonNext, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(35, 35, 35))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
@@ -289,9 +307,9 @@ public class QuizUI extends javax.swing.JFrame {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(lbScore)
                         .addComponent(headerLabel)))
-                .addGap(35, 35, 35)
-                .addComponent(TextfieldQuestion, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(46, 46, 46)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
                 .addComponent(AnswerA)
                 .addGap(18, 18, 18)
                 .addComponent(AnswerB)
@@ -299,7 +317,7 @@ public class QuizUI extends javax.swing.JFrame {
                 .addComponent(AnswerC)
                 .addGap(18, 18, 18)
                 .addComponent(AnswerD)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
                 .addComponent(ButtonNext, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -311,10 +329,6 @@ public class QuizUI extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void TextfieldQuestionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextfieldQuestionActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TextfieldQuestionActionPerformed
 
     private void AnswerAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AnswerAActionPerformed
         // TODO add your handling code here:
@@ -352,10 +366,14 @@ public class QuizUI extends javax.swing.JFrame {
                 try {
                     BufferedReader br = new BufferedReader(new FileReader("soundSettings.txt"));
                     sound = br.readLine();
+
+
                 } catch (FileNotFoundException ex) {
-                    Logger.getLogger(Settings.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(Settings.class
+                            .getName()).log(Level.SEVERE, null, ex);
                 } catch (IOException ex) {
-                    Logger.getLogger(Settings.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(Settings.class
+                            .getName()).log(Level.SEVERE, null, ex);
                 }
                 if (sound.equals("true")) {
                     try {
@@ -364,12 +382,17 @@ public class QuizUI extends javax.swing.JFrame {
                         Clip clip = AudioSystem.getClip();
                         clip.open(audioInputStream);
                         clip.start();
+
+
                     } catch (LineUnavailableException ex) {
-                        Logger.getLogger(QuizUI.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(QuizUI.class
+                                .getName()).log(Level.SEVERE, null, ex);
                     } catch (IOException ex) {
-                        Logger.getLogger(QuizUI.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(QuizUI.class
+                                .getName()).log(Level.SEVERE, null, ex);
                     } catch (UnsupportedAudioFileException ex) {
-                        Logger.getLogger(QuizUI.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(QuizUI.class
+                                .getName()).log(Level.SEVERE, null, ex);
                     }
                 }
 
@@ -383,35 +406,54 @@ public class QuizUI extends javax.swing.JFrame {
 
             // Increment i by 1 
             i++;
-            
-            if(i>9)
-                i=9;
-            
+
+            if (i > 9) {
+                i = 9;
+            }
+
             Random ran = new Random();
             // Display next question
-            TextfieldQuestion.setText(question1[i][0]);
+            
             
             int a1 = ran.nextInt(4) + 1;
+            
+            if (question1[i][0].length() > 80) {
+                int k = 65;
+                boolean changed = false;
+                do {
+                    if (question1[i][0].charAt(k) == ' ') {
+                        StringBuilder question = new StringBuilder(question1[i][0]);
+                        question.setCharAt(k, '\n');
+                        
+                        question1[i][0] = question.toString();
+                        changed = true;
+                    }
+                    k++;
+                } while (!changed);
+            }
+            
+            TextfieldQuestion.setText(question1[i][0]);
+
             AnswerA.setText(question1[i][a1]);
             AnswerA.setActionCommand(question1[i][a1]);
-            
+
             int a2 = ran.nextInt(4) + 1;
-            while(a2==a1){
+            while (a2 == a1) {
                 a2 = ran.nextInt(4) + 1;
             }
-                    
+
             AnswerB.setText(question1[i][a2]);
             AnswerB.setActionCommand(question1[i][a2]);
-            
+
             int a3 = ran.nextInt(4) + 1;
-            while(a3 == a1 || a3 == a2){
+            while (a3 == a1 || a3 == a2) {
                 a3 = ran.nextInt(4) + 1;
             }
             AnswerC.setText(question1[i][a3]);
             AnswerC.setActionCommand(question1[i][a3]);
-            
+
             int a4 = ran.nextInt(4) + 1;
-            while(a4==a1 || a4==a2 || a4==a3){
+            while (a4 == a1 || a4 == a2 || a4 == a3) {
                 a4 = ran.nextInt(4) + 1;
             }
             AnswerD.setText(question1[i][a4]);
@@ -455,16 +497,22 @@ public class QuizUI extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(QuizUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(QuizUI.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(QuizUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(QuizUI.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(QuizUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(QuizUI.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(QuizUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(QuizUI.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -484,8 +532,9 @@ public class QuizUI extends javax.swing.JFrame {
     private javax.swing.JButton ButtonExit;
     private javax.swing.JButton ButtonHint;
     private javax.swing.JButton ButtonNext;
-    private javax.swing.JTextField TextfieldQuestion;
+    private javax.swing.JTextArea TextfieldQuestion;
     private javax.swing.JLabel headerLabel;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbScore;
     // End of variables declaration//GEN-END:variables
 }

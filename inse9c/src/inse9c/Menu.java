@@ -7,6 +7,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 
 
@@ -182,7 +183,10 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_Mock_buttonActionPerformed
 
     private void Quiz_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Quiz_buttonActionPerformed
-        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(this, "Once you start, you will have 60 minutes to complete 50 questions.\nAfter 60 minutes have passed, or you have completed the test,\nyou will be sent to the results page");
+        QuizUI q = new QuizUI("Quiz");
+        q.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_Quiz_buttonActionPerformed
 
     private void Topics_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Topics_buttonActionPerformed

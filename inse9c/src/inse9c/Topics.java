@@ -7,6 +7,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -50,17 +51,16 @@ public class Topics extends javax.swing.JFrame {
             System.out.println("error TOPICS SELECTION");
         }
         checkBg();
-        
+
     }
-    
-    
+
     public void checkBg() {
         String readCol = "";
 
         try {
             BufferedReader br = new BufferedReader(new FileReader("colourSettings.txt"));
             readCol = br.readLine();
-            
+
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Settings.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
@@ -81,10 +81,9 @@ public class Topics extends javax.swing.JFrame {
         if (readCol.equals("Default")) {
             this.getContentPane().setBackground(null);
         }
-        
+
     }
-    
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -205,6 +204,7 @@ public class Topics extends javax.swing.JFrame {
     }//GEN-LAST:event_headerLabelActionPerformed
 
     private void startButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startButtonActionPerformed
+        JOptionPane.showMessageDialog(this, "Once you start, you will have 60 minutes to complete 50 questions.\nAfter 60 minutes have passed, or you have completed the test,\nyou will be sent to the results page");
         QuizUI q = new QuizUI(quizTopic);
         q.setVisible(true);
         this.setVisible(false);

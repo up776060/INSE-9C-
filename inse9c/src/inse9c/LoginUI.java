@@ -51,7 +51,6 @@ public class LoginUI extends javax.swing.JFrame {
         } catch (IOException ex) {
             Logger.getLogger(Settings.class.getName()).log(Level.SEVERE, null, ex);
         }
-        System.out.println(email);
         if (notEmpty || email != null) {
             userEmail.setText(email);
             remEmail.setSelected(true);
