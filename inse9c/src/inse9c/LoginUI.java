@@ -7,8 +7,10 @@ package inse9c;
 
 import java.awt.Color;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -33,15 +35,33 @@ public class LoginUI extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         checkBg();
+        checkEmail();
     }
-    
+
+    public void checkEmail() {
+        String email = "";
+        try {
+            BufferedReader br = new BufferedReader(new FileReader("email.txt"));
+            email = br.readLine();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Settings.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Settings.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        if (email != "") {
+            userEmail.setText(email);
+            remEmail.setSelected(true);
+        }
+    }
+
     public void checkBg() {
         String readCol = "";
 
         try {
             BufferedReader br = new BufferedReader(new FileReader("colourSettings.txt"));
             readCol = br.readLine();
-            
+
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Settings.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
@@ -60,7 +80,7 @@ public class LoginUI extends javax.swing.JFrame {
             this.getContentPane().setBackground(Color.blue);
         }
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -77,6 +97,7 @@ public class LoginUI extends javax.swing.JFrame {
         userEmail = new javax.swing.JTextField();
         userPassword = new javax.swing.JPasswordField();
         registerBut = new javax.swing.JLabel();
+        remEmail = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -114,6 +135,11 @@ public class LoginUI extends javax.swing.JFrame {
                 userEmailActionPerformed(evt);
             }
         });
+        userEmail.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                userEmailKeyTyped(evt);
+            }
+        });
 
         userPassword.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         userPassword.addActionListener(new java.awt.event.ActionListener() {
@@ -128,6 +154,13 @@ public class LoginUI extends javax.swing.JFrame {
         registerBut.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 registerButMouseClicked(evt);
+            }
+        });
+
+        remEmail.setText("Remember my Email");
+        remEmail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                remEmailActionPerformed(evt);
             }
         });
 
@@ -150,7 +183,10 @@ public class LoginUI extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(userEmail)
-                            .addComponent(userPassword))))
+                            .addComponent(userPassword)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(remEmail)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -166,7 +202,9 @@ public class LoginUI extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(passwordLabel)
                     .addComponent(userPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                .addComponent(remEmail)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(loginBut)
                     .addComponent(registerBut))
@@ -178,11 +216,19 @@ public class LoginUI extends javax.swing.JFrame {
 
     private void loginButActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButActionPerformed
         //current checking fake email account, or something entered in the reg screen
+        if (remEmail.isSelected()) {
+            try {
+                BufferedWriter out = new BufferedWriter(new FileWriter("email.txt"));
+                out.write(userEmail.getText());
+                out.close();
+            } catch (IOException e) {
+            }
+        }
         if (loginValidation()) {
             Menu m = new Menu(dao);
             m.setVisible(true);
             this.setVisible(false);
-        } 
+        }
 
     }//GEN-LAST:event_loginButActionPerformed
 
@@ -202,14 +248,14 @@ public class LoginUI extends javax.swing.JFrame {
         if (!userEmail.getText().isEmpty() && !userPassword.getText().isEmpty()) {
             try {
                 ResultSet rs = DAO.retrieveLoginDetails(userEmail.getText());
-                if(!rs.next())
+                if (!rs.next()) {
                     JOptionPane.showMessageDialog(this, "The email you entered does not exist");
-                else{
+                } else {
                     String pw = rs.getString("userPassword");
-                    if(pw.equals(encryptedPass)){
+                    if (pw.equals(encryptedPass)) {
                         dao = new DAO(userEmail.getText());
                         return true;
-                    }else{
+                    } else {
                         JOptionPane.showMessageDialog(this, "The password you entered does not match our records");
                         return false;
                     }
@@ -217,7 +263,7 @@ public class LoginUI extends javax.swing.JFrame {
             } catch (SQLException ex) {
                 Logger.getLogger(LoginUI.class.getName()).log(Level.SEVERE, null, ex);
             }
-        } else{
+        } else {
             JOptionPane.showMessageDialog(this, "Please enter an email and password");
         }
         return false;
@@ -246,6 +292,16 @@ public class LoginUI extends javax.swing.JFrame {
             clicked = true;
         }
     }//GEN-LAST:event_userEmailMouseClicked
+
+    private void userEmailKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_userEmailKeyTyped
+        if (!clicked) {
+            userEmail.setText("");
+            clicked = true;
+        }
+    }//GEN-LAST:event_userEmailKeyTyped
+
+    private void remEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_remEmailActionPerformed
+    }//GEN-LAST:event_remEmailActionPerformed
 
     /**
      * @param args the command line arguments
@@ -287,6 +343,7 @@ public class LoginUI extends javax.swing.JFrame {
     private javax.swing.JButton loginBut;
     private javax.swing.JLabel passwordLabel;
     private javax.swing.JLabel registerBut;
+    private javax.swing.JCheckBox remEmail;
     private javax.swing.JTextField userEmail;
     private javax.swing.JPasswordField userPassword;
     // End of variables declaration//GEN-END:variables
