@@ -1,6 +1,8 @@
 package inse9c;
 
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -18,6 +20,7 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
+import javax.swing.Timer;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -31,19 +34,23 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 public class QuizUI extends javax.swing.JFrame {
 
     // 2 Dimensional array to store questions and possible answers. Array for correct answer.
+    Thread thread = new Thread();
+    Timer countdownTimer;
     String[][] question1;
     String[] correctans;
     String quizTopic;
     int score;
     int count;
     int i = 0;
+    int timeRemaining = 10;
     ButtonGroup bg = new ButtonGroup();
     // All Radio buttons grouped so 1 active at a time
 
     public QuizUI() {
         initComponents();
     }
-
+    
+    
     /**
      * Creates new form NewJFrame
      *
@@ -78,7 +85,7 @@ public class QuizUI extends javax.swing.JFrame {
                 headerLabel.setText("Topic G: " + quizTopic);
                 break;
             default:
-                System.out.println("Quiz");
+                headerLabel.setText("Quiz");
                 break;
         }
 
@@ -134,8 +141,25 @@ public class QuizUI extends javax.swing.JFrame {
         }
         // Array of 3 questions (change 1st number to make bigger array)
         // Assigns textField and radioButton values for 1st question!
+        countdownTimer = new Timer(1000, new CountdownTimerListener());
+        countdownTimer.start();
     }
 
+      class CountdownTimerListener implements ActionListener {
+          public void actionPerformed(ActionEvent e) {
+             if (--timeRemaining > 0) {
+                 int minutes = 0;
+                 int seconds = 0;
+                 minutes = timeRemaining/60;
+                 seconds = timeRemaining%60;
+                 timer.setText(String.valueOf(minutes+":"+seconds));
+              } else {
+                 timer.setText("Time's up!");
+                 countdownTimer.stop();
+              }
+          }
+      }
+    
     public void checkBg() {
         String readCol = "";
 
@@ -186,6 +210,7 @@ public class QuizUI extends javax.swing.JFrame {
         lbScore = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         TextfieldQuestion = new javax.swing.JTextArea();
+        timer = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -263,6 +288,9 @@ public class QuizUI extends javax.swing.JFrame {
         TextfieldQuestion.setRows(3);
         jScrollPane1.setViewportView(TextfieldQuestion);
 
+        timer.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        timer.setText("60:00");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -285,9 +313,15 @@ public class QuizUI extends javax.swing.JFrame {
                                 .addComponent(ButtonExit, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(212, 212, 212)
                                 .addComponent(headerLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 321, Short.MAX_VALUE)
-                                .addComponent(lbScore)
-                                .addGap(53, 53, 53))))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 321, Short.MAX_VALUE)
+                                        .addComponent(lbScore)
+                                        .addGap(53, 53, 53))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(111, 111, 111)
+                                        .addComponent(timer)
+                                        .addGap(0, 0, Short.MAX_VALUE))))))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(ButtonNext, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -306,7 +340,9 @@ public class QuizUI extends javax.swing.JFrame {
                     .addComponent(ButtonExit, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(lbScore)
-                        .addComponent(headerLabel)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(headerLabel)
+                            .addComponent(timer))))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
@@ -467,7 +503,11 @@ public class QuizUI extends javax.swing.JFrame {
         // WHAT NEEDS TO BE DONE!
         // End of quiz screen displayed
         // Hint (could be as simple as changing text color to red for 2 items)
-
+        if(timer.getText().matches("Time's up!")){
+            this.setVisible(false);
+            End t = new End(score, correctans.length);
+            t.setVisible(true);
+        }
     }//GEN-LAST:event_ButtonNextActionPerformed
 
     private void ButtonExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonExitActionPerformed
@@ -536,5 +576,6 @@ public class QuizUI extends javax.swing.JFrame {
     private javax.swing.JLabel headerLabel;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbScore;
+    private javax.swing.JLabel timer;
     // End of variables declaration//GEN-END:variables
 }
