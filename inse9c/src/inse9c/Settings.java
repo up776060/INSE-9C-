@@ -311,6 +311,7 @@ public class Settings extends javax.swing.JFrame {
         Menu t = new Menu(dao);
         t.setVisible(true);
         this.setVisible(false);
+        dispose();
     }//GEN-LAST:event_Back_buttonActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed

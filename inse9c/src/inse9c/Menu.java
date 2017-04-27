@@ -187,24 +187,28 @@ public class Menu extends javax.swing.JFrame {
         QuizUI q = new QuizUI("Quiz");
         q.setVisible(true);
         this.setVisible(false);
+        dispose();
     }//GEN-LAST:event_Quiz_buttonActionPerformed
 
     private void Topics_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Topics_buttonActionPerformed
         Topic_Practice t = new Topic_Practice();
         t.setVisible(true);
         this.setVisible(false);
+        dispose();
     }//GEN-LAST:event_Topics_buttonActionPerformed
 
     private void Setting_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Setting_buttonActionPerformed
         Settings s = new Settings(dao);
         s.setVisible(true);
         this.setVisible(false);
+        dispose();
     }//GEN-LAST:event_Setting_buttonActionPerformed
 
     private void LogOut_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogOut_buttonActionPerformed
         LoginUI t = new LoginUI();
         t.setVisible(true);
         this.setVisible(false);
+        dispose();
     }//GEN-LAST:event_LogOut_buttonActionPerformed
 
     /**

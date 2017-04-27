@@ -278,6 +278,7 @@ public class registrationUI extends javax.swing.JFrame {
             }
 
             this.setVisible(false);
+            dispose();
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 

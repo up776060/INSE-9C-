@@ -197,6 +197,7 @@ public class Topics extends javax.swing.JFrame {
         Topic_Practice t = new Topic_Practice();
         t.setVisible(true);
         this.setVisible(false);
+        dispose();
     }//GEN-LAST:event_backButtonActionPerformed
 
     private void headerLabelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_headerLabelActionPerformed
@@ -208,6 +209,7 @@ public class Topics extends javax.swing.JFrame {
         QuizUI q = new QuizUI(quizTopic);
         q.setVisible(true);
         this.setVisible(false);
+        dispose();
     }//GEN-LAST:event_startButtonActionPerformed
 
     /**

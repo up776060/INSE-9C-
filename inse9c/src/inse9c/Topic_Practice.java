@@ -852,48 +852,56 @@ public class Topic_Practice extends javax.swing.JFrame {
         Menu m = new Menu();
         m.setVisible(true);
         this.setVisible(false);
+        dispose();
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnPractice1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPractice1ActionPerformed
         Topics t = new Topics("Alertness");
         t.setVisible(true);
         this.setVisible(false);
+        dispose();
     }//GEN-LAST:event_btnPractice1ActionPerformed
 
     private void btnPractice2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPractice2ActionPerformed
         Topics t = new Topics("Attitude");
         t.setVisible(true);
         this.setVisible(false);
+        dispose();
     }//GEN-LAST:event_btnPractice2ActionPerformed
 
     private void btnPractice3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPractice3ActionPerformed
         Topics t = new Topics("Safety and your vehicle");
         t.setVisible(true);
         this.setVisible(false);
+        dispose();
     }//GEN-LAST:event_btnPractice3ActionPerformed
 
     private void btnPractice5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPractice5ActionPerformed
         Topics t = new Topics("Hazard Awareness");
         t.setVisible(true);
         this.setVisible(false);
+        dispose();
     }//GEN-LAST:event_btnPractice5ActionPerformed
 
     private void btnPractice6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPractice6ActionPerformed
         Topics t = new Topics("Safety Margin");
         t.setVisible(true);
         this.setVisible(false);
+        dispose();
     }//GEN-LAST:event_btnPractice6ActionPerformed
 
     private void btnPractice7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPractice7ActionPerformed
         Topics t = new Topics("Motorway Rules");
         t.setVisible(true);
         this.setVisible(false);
+        dispose();
     }//GEN-LAST:event_btnPractice7ActionPerformed
 
     private void btnPractice8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPractice8ActionPerformed
         Topics t = new Topics("Vehicle Handling");
         t.setVisible(true);
         this.setVisible(false);
+        dispose();
     }//GEN-LAST:event_btnPractice8ActionPerformed
     
     public void checkBg() {

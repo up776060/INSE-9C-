@@ -238,6 +238,7 @@ public class LoginUI extends javax.swing.JFrame {
             Menu m = new Menu(dao);
             m.setVisible(true);
             this.setVisible(false);
+            dispose();
         }
 
     }//GEN-LAST:event_loginButActionPerformed

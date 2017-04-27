@@ -438,6 +438,7 @@ public class QuizUI extends javax.swing.JFrame {
                 End t = new End(score, correctans.length);
                 t.setVisible(true);
                 this.setVisible(false);
+                dispose();
             }
 
             // Increment i by 1 
@@ -507,6 +508,7 @@ public class QuizUI extends javax.swing.JFrame {
             this.setVisible(false);
             End t = new End(score, correctans.length);
             t.setVisible(true);
+            dispose();
         }
     }//GEN-LAST:event_ButtonNextActionPerformed
 
@@ -516,6 +518,7 @@ public class QuizUI extends javax.swing.JFrame {
             Menu m = new Menu();
             m.setVisible(true);
             this.setVisible(false);
+            dispose();
         }
     }//GEN-LAST:event_ButtonExitActionPerformed
 

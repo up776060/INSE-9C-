@@ -183,6 +183,7 @@ public class End extends javax.swing.JFrame {
         Menu t = new Menu();
         t.setVisible(true);
         this.setVisible(false);
+        dispose();
     }//GEN-LAST:event_End_ReturnActionPerformed
 
     /**
