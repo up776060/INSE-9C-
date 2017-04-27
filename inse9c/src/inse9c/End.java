@@ -21,7 +21,7 @@ import java.util.logging.Logger;
  */
 public class End extends javax.swing.JFrame {
 
-    private int score, totalQuestions;
+    private int score, totalQuestions, userID;
 
     /**
      * Creates new form End
@@ -61,13 +61,13 @@ public class End extends javax.swing.JFrame {
         
     }
 
-    public End(int marks, int totQues) {
+    public End(int marks, int totQues, int iD) {
         initComponents();
         this.setLocationRelativeTo(null);
 
         if(score>totalQuestions)
             score = totalQuestions;
-        
+        userID = iD;
         score = marks;
         totalQuestions = totQues;
         Editable_score.setText(Integer.toString(score));

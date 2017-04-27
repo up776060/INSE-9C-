@@ -23,6 +23,7 @@ import javax.swing.JOptionPane;
 public class Menu extends javax.swing.JFrame {
     
     private static DAO dao;
+    private int userID;
     /**
      * Creates new form NewJFrame
      */
@@ -32,9 +33,10 @@ public class Menu extends javax.swing.JFrame {
         checkBg();
     }
     
-    public Menu(DAO d) {
+    public Menu(DAO d, int iD) {
         initComponents();
         this.setLocationRelativeTo(null);
+        userID = iD;
         dao = d;
         checkBg();
     }
@@ -179,26 +181,30 @@ public class Menu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void Mock_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Mock_buttonActionPerformed
-        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(this, "Once you start, you will have 60 minutes to complete 50 questions.\nAfter 60 minutes have passed, or you have completed the test,\nyou will be sent to the results page");
+        QuizUI q = new QuizUI("Mock Test", "Mock", userID);
+        q.setVisible(true);
+        this.setVisible(false);
+        dispose();
     }//GEN-LAST:event_Mock_buttonActionPerformed
 
     private void Quiz_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Quiz_buttonActionPerformed
         JOptionPane.showMessageDialog(this, "Once you start, you will have 60 minutes to complete 50 questions.\nAfter 60 minutes have passed, or you have completed the test,\nyou will be sent to the results page");
-        QuizUI q = new QuizUI("Quiz");
+        QuizUI q = new QuizUI("Quiz", "Quiz", userID);
         q.setVisible(true);
         this.setVisible(false);
         dispose();
     }//GEN-LAST:event_Quiz_buttonActionPerformed
 
     private void Topics_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Topics_buttonActionPerformed
-        Topic_Practice t = new Topic_Practice();
+        Topic_Practice t = new Topic_Practice(userID);
         t.setVisible(true);
         this.setVisible(false);
         dispose();
     }//GEN-LAST:event_Topics_buttonActionPerformed
 
     private void Setting_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Setting_buttonActionPerformed
-        Settings s = new Settings(dao);
+        Settings s = new Settings(dao, userID);
         s.setVisible(true);
         this.setVisible(false);
         dispose();

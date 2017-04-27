@@ -34,33 +34,48 @@ import javax.swing.Timer;
 public class QuizUI extends javax.swing.JFrame {
 
     // 2 Dimensional array to store questions and possible answers. Array for correct answer.
-    Thread thread = new Thread();
-    Timer countdownTimer;
-    String[][] question1;
-    String[] correctans;
-    String quizTopic;
-    int score;
-    int count;
-    int i = 0;
-    int timeRemaining = 10;
-    ButtonGroup bg = new ButtonGroup();
+    private Thread thread = new Thread();
+    private Timer countdownTimer;
+    private String[][] question1;
+    private String[] correctans;
+    private String quizTopic;
+    private String quizType;
+    private int userID;
+    private int score;
+    private int count;
+    private int i = 0;
+    private int timeRemaining = 0;
+    private ButtonGroup bg = new ButtonGroup();
     // All Radio buttons grouped so 1 active at a time
 
     public QuizUI() {
         initComponents();
     }
-    
-    
+
     /**
      * Creates new form NewJFrame
      *
      * @param topic
      */
-    public QuizUI(String topic) {
+    public QuizUI(String topic, String quizT, int iD) {
         initComponents();
         this.setLocationRelativeTo(null);
         checkBg();
         quizTopic = topic;
+        quizType = quizT;
+        userID = iD;
+
+        switch (quizT) {
+            case "Topic":
+                timeRemaining = 600;
+                break;
+            case "Quiz":
+                timeRemaining = 600;
+                break;
+            case "Mock":
+                timeRemaining = 3600;
+                break;
+        }
 
         switch (quizTopic) {
             case "Alertness":
@@ -84,8 +99,11 @@ public class QuizUI extends javax.swing.JFrame {
             case "Vehicle Handling":
                 headerLabel.setText("Topic G: " + quizTopic);
                 break;
-            default:
+            case "Quiz":
                 headerLabel.setText("Quiz");
+                break;
+            case "Mock":
+                headerLabel.setText("Mock Test");
                 break;
         }
 
@@ -114,7 +132,7 @@ public class QuizUI extends javax.swing.JFrame {
                     if (question1[0][0].charAt(k) == ' ') {
                         StringBuilder question = new StringBuilder(question1[0][0]);
                         question.setCharAt(k, '\n');
-                        
+
                         question1[0][0] = question.toString();
                         changed = true;
                     }
@@ -141,25 +159,36 @@ public class QuizUI extends javax.swing.JFrame {
         }
         // Array of 3 questions (change 1st number to make bigger array)
         // Assigns textField and radioButton values for 1st question!
-        countdownTimer = new Timer(1000, new CountdownTimerListener());
+        countdownTimer = new Timer(1000, new CountdownTimerListener(this));
         countdownTimer.start();
     }
 
-      class CountdownTimerListener implements ActionListener {
-          public void actionPerformed(ActionEvent e) {
-             if (--timeRemaining > 0) {
-                 int minutes = 0;
-                 int seconds = 0;
-                 minutes = timeRemaining/60;
-                 seconds = timeRemaining%60;
-                 timer.setText(String.valueOf(minutes+":"+seconds));
-              } else {
-                 timer.setText("Time's up!");
-                 countdownTimer.stop();
-              }
-          }
-      }
-    
+    class CountdownTimerListener implements ActionListener {
+
+        QuizUI q;
+
+        public CountdownTimerListener(QuizUI ui) {
+            q = ui;
+        }
+
+        public void actionPerformed(ActionEvent e) {
+            if (--timeRemaining > 0) {
+                int minutes = 0;
+                int seconds = 0;
+                minutes = timeRemaining / 60;
+                seconds = timeRemaining % 60;
+                timer.setText(String.valueOf(minutes + ":" + seconds));
+            } else {
+                timer.setText("Time's up!");
+                q.setVisible(false);
+                q.dispose();
+                End end = new End(score, correctans.length, userID);
+                end.setVisible(rootPaneCheckingEnabled);
+                countdownTimer.stop();
+            }
+        }
+    }
+
     public void checkBg() {
         String readCol = "";
 
@@ -435,7 +464,7 @@ public class QuizUI extends javax.swing.JFrame {
             }
 
             if (i == 9) {
-                End t = new End(score, correctans.length);
+                End t = new End(score, correctans.length, userID);
                 t.setVisible(true);
                 this.setVisible(false);
                 dispose();
@@ -450,10 +479,10 @@ public class QuizUI extends javax.swing.JFrame {
 
             Random ran = new Random();
             // Display next question
-            
-            
+
+
             int a1 = ran.nextInt(4) + 1;
-            
+
             if (question1[i][0].length() > 80) {
                 int k = 65;
                 boolean changed = false;
@@ -461,14 +490,14 @@ public class QuizUI extends javax.swing.JFrame {
                     if (question1[i][0].charAt(k) == ' ') {
                         StringBuilder question = new StringBuilder(question1[i][0]);
                         question.setCharAt(k, '\n');
-                        
+
                         question1[i][0] = question.toString();
                         changed = true;
                     }
                     k++;
                 } while (!changed);
             }
-            
+
             TextfieldQuestion.setText(question1[i][0]);
 
             AnswerA.setText(question1[i][a1]);
@@ -504,9 +533,9 @@ public class QuizUI extends javax.swing.JFrame {
         // WHAT NEEDS TO BE DONE!
         // End of quiz screen displayed
         // Hint (could be as simple as changing text color to red for 2 items)
-        if(timer.getText().matches("Time's up!")){
+        if (timer.getText().matches("Time's up!")) {
             this.setVisible(false);
-            End t = new End(score, correctans.length);
+            End t = new End(score, correctans.length, userID);
             t.setVisible(true);
             dispose();
         }

@@ -32,11 +32,13 @@ public class Settings extends javax.swing.JFrame {
     /**
      * Creates new form NewJFrame2
      */
-    DAO dao;
+    private DAO dao;
+    private int userID;
 
-    public Settings(DAO d) {
+    public Settings(DAO d, int iD) {
         initComponents();
         this.setLocationRelativeTo(null);
+        userID = iD;
         dao = d;
         checkBg();
     }
@@ -308,7 +310,7 @@ public class Settings extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void Back_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Back_buttonActionPerformed
-        Menu t = new Menu(dao);
+        Menu t = new Menu(dao, userID);
         t.setVisible(true);
         this.setVisible(false);
         dispose();

@@ -26,10 +26,12 @@ public class Topics extends javax.swing.JFrame {
     public Topics() {
         initComponents();
     }
-    String quizTopic;
+    private String quizTopic;
+    private int userID;
 
-    public Topics(String topic) {
+    public Topics(String topic, int iD) {
         quizTopic = topic;
+        userID = iD;
         initComponents();
         this.setLocationRelativeTo(null);
 
@@ -194,7 +196,7 @@ public class Topics extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
-        Topic_Practice t = new Topic_Practice();
+        Topic_Practice t = new Topic_Practice(userID);
         t.setVisible(true);
         this.setVisible(false);
         dispose();
@@ -206,7 +208,7 @@ public class Topics extends javax.swing.JFrame {
 
     private void startButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startButtonActionPerformed
         JOptionPane.showMessageDialog(this, "Once you start, you will have 60 minutes to complete 50 questions.\nAfter 60 minutes have passed, or you have completed the test,\nyou will be sent to the results page");
-        QuizUI q = new QuizUI(quizTopic);
+        QuizUI q = new QuizUI(quizTopic, "Topic", userID);
         q.setVisible(true);
         this.setVisible(false);
         dispose();

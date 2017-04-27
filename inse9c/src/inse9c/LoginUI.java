@@ -27,6 +27,7 @@ public class LoginUI extends javax.swing.JFrame {
     private boolean clicked = false;
     DAO dao;
     registrationUI r = new registrationUI();
+    int userID = 0;
 
     /**
      * Creates new form LoginUI
@@ -235,7 +236,7 @@ public class LoginUI extends javax.swing.JFrame {
             }
         }
         if (loginValidation()) {
-            Menu m = new Menu(dao);
+            Menu m = new Menu(dao, userID);
             m.setVisible(true);
             this.setVisible(false);
             dispose();
@@ -262,6 +263,7 @@ public class LoginUI extends javax.swing.JFrame {
                 if (!rs.next()) {
                     JOptionPane.showMessageDialog(this, "The email you entered does not exist");
                 } else {
+                    userID = rs.getInt("userID");
                     String pw = rs.getString("userPassword");
                     if (pw.equals(encryptedPass)) {
                         dao = new DAO(userEmail.getText());

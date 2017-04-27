@@ -22,9 +22,12 @@ public class Topic_Practice extends javax.swing.JFrame {
     /**
      * Creates new form Topic_Practice
      */
-    public Topic_Practice() {
+    private int userID;
+    
+    public Topic_Practice(int iD) {
         initComponents();
         this.setLocationRelativeTo(null);
+        userID = iD;
         checkBg();
     }
 
@@ -856,49 +859,49 @@ public class Topic_Practice extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnPractice1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPractice1ActionPerformed
-        Topics t = new Topics("Alertness");
+        Topics t = new Topics("Alertness", userID);
         t.setVisible(true);
         this.setVisible(false);
         dispose();
     }//GEN-LAST:event_btnPractice1ActionPerformed
 
     private void btnPractice2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPractice2ActionPerformed
-        Topics t = new Topics("Attitude");
+        Topics t = new Topics("Attitude", userID);
         t.setVisible(true);
         this.setVisible(false);
         dispose();
     }//GEN-LAST:event_btnPractice2ActionPerformed
 
     private void btnPractice3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPractice3ActionPerformed
-        Topics t = new Topics("Safety and your vehicle");
+        Topics t = new Topics("Safety and your vehicle", userID);
         t.setVisible(true);
         this.setVisible(false);
         dispose();
     }//GEN-LAST:event_btnPractice3ActionPerformed
 
     private void btnPractice5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPractice5ActionPerformed
-        Topics t = new Topics("Hazard Awareness");
+        Topics t = new Topics("Hazard Awareness", userID);
         t.setVisible(true);
         this.setVisible(false);
         dispose();
     }//GEN-LAST:event_btnPractice5ActionPerformed
 
     private void btnPractice6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPractice6ActionPerformed
-        Topics t = new Topics("Safety Margin");
+        Topics t = new Topics("Safety Margin", userID);
         t.setVisible(true);
         this.setVisible(false);
         dispose();
     }//GEN-LAST:event_btnPractice6ActionPerformed
 
     private void btnPractice7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPractice7ActionPerformed
-        Topics t = new Topics("Motorway Rules");
+        Topics t = new Topics("Motorway Rules", userID);
         t.setVisible(true);
         this.setVisible(false);
         dispose();
     }//GEN-LAST:event_btnPractice7ActionPerformed
 
     private void btnPractice8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPractice8ActionPerformed
-        Topics t = new Topics("Vehicle Handling");
+        Topics t = new Topics("Vehicle Handling", userID);
         t.setVisible(true);
         this.setVisible(false);
         dispose();
@@ -964,7 +967,7 @@ public class Topic_Practice extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Topic_Practice().setVisible(true);
+                new Topic_Practice(0).setVisible(true);
             }
         });
     }
