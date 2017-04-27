@@ -16,6 +16,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -106,6 +107,13 @@ public class DAO {
             sb.append(Integer.toHexString(v));
         }
         return sb.toString().toUpperCase();
+    }
+
+    public static void storeTestResult(String topic, int userID, int score) {
+//        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+//        LocalDate localDate = LocalDate.now();
+//        System.out.println(dtf.format(localDate)); //2016/11/16
+        //String year = d.getYear();
     }
 
     public static void setEmail(String newEmail) {
