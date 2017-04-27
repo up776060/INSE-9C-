@@ -112,6 +112,11 @@ public class Menu extends javax.swing.JFrame {
 
         Progress_button.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         Progress_button.setText("Progress Monitor");
+        Progress_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Progress_buttonActionPerformed(evt);
+            }
+        });
 
         Setting_button.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         Setting_button.setText("Settings and Help");
@@ -215,6 +220,13 @@ public class Menu extends javax.swing.JFrame {
         this.setVisible(false);
         dispose();
     }//GEN-LAST:event_LogOut_buttonActionPerformed
+
+    private void Progress_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Progress_buttonActionPerformed
+        ProgressMonitor pM = new ProgressMonitor(userID);
+        pM.setVisible(true);
+        this.setVisible(false);
+        dispose();
+    }//GEN-LAST:event_Progress_buttonActionPerformed
 
     /**
      * @param args the command line arguments
