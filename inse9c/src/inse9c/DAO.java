@@ -143,6 +143,46 @@ public class DAO {
 
     }
 
+    public static int getRecentTopicScores(int userID, String topic)
+            throws SQLException {
+        int scoreAvg = 0;
+        int totalScore = 0;
+        conn = connect();
+        ResultSet rs = stmt.executeQuery("select * from testResult where userID = '" + userID + "' and testType = '" + topic + "'");
+
+        int rowcount = 0;
+        if (rs.last()) {
+            rowcount = rs.getRow();
+            rs.beforeFirst(); // not rs.first() because the rs.next() below will move on, missing the first element
+        }
+        int scores[] = new int[rowcount];
+        int i = 0;
+        while (rs.next()) {
+            scores[i] = rs.getInt("testScore");
+            i++;
+        }
+        
+        for(int j = 0; j<rowcount; j++){
+            totalScore += scores[j];
+        }
+        
+        double topScore = getTopScore(topic) * rowcount;
+        if(rowcount > 0){
+            double rawAvg = (totalScore / topScore) *100;
+            scoreAvg = (int) rawAvg;
+        }
+        
+        
+        return scoreAvg;
+    }
+
+    public static double getTopScore(String topic){
+        if(topic.matches("Mock")){
+            return 50;
+        }
+        return 10;
+    }   
+    
     public static void setEmail(String newEmail) {
         email = newEmail;
     }

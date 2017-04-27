@@ -10,6 +10,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -29,8 +30,26 @@ public class Topic_Practice extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         userID = iD;
         checkBg();
+        loadScores();
     }
-
+    
+    public void loadScores(){
+        try {
+            DAO dao = new DAO();
+            alertnessAvg.setText(dao.getRecentTopicScores(userID, "Alertness") + "%");
+            attitudeAvg.setText(dao.getRecentTopicScores(userID, "Attitude") + "%");
+            hazardAvg.setText(dao.getRecentTopicScores(userID, "Hazard Awareness") + "%");
+            safetyMarginAvg.setText(dao.getRecentTopicScores(userID, "Safety Margin") + "%");
+            safetyAndVehicleAvg.setText(dao.getRecentTopicScores(userID, "Safety and your vehicle") + "%");
+            motorwayRulesAvg.setText(dao.getRecentTopicScores(userID, "Motorway Rules") + "%");
+            vehicleHandlingAvg.setText(dao.getRecentTopicScores(userID, "Vehicle Handling") + "%");
+        } catch (SQLException ex) {
+            Logger.getLogger(Topic_Practice.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -45,7 +64,7 @@ public class Topic_Practice extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         btnPractice1 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
-        lblPercentage1 = new javax.swing.JLabel();
+        alertnessAvg = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         lblTopic1 = new javax.swing.JLabel();
@@ -54,7 +73,7 @@ public class Topic_Practice extends javax.swing.JFrame {
         jPanel6 = new javax.swing.JPanel();
         btnPractice2 = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
-        lblPercentage2 = new javax.swing.JLabel();
+        attitudeAvg = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
         lblTopic2 = new javax.swing.JLabel();
@@ -62,7 +81,7 @@ public class Topic_Practice extends javax.swing.JFrame {
         jPanel10 = new javax.swing.JPanel();
         btnPractice3 = new javax.swing.JButton();
         jPanel11 = new javax.swing.JPanel();
-        lblPercentage3 = new javax.swing.JLabel();
+        safetyAndVehicleAvg = new javax.swing.JLabel();
         jPanel12 = new javax.swing.JPanel();
         jPanel13 = new javax.swing.JPanel();
         lblTopic3 = new javax.swing.JLabel();
@@ -70,7 +89,7 @@ public class Topic_Practice extends javax.swing.JFrame {
         jPanel16 = new javax.swing.JPanel();
         btnPractice5 = new javax.swing.JButton();
         jPanel17 = new javax.swing.JPanel();
-        lblPercentage5 = new javax.swing.JLabel();
+        hazardAvg = new javax.swing.JLabel();
         jPanel18 = new javax.swing.JPanel();
         jPanel19 = new javax.swing.JPanel();
         lblTopic4 = new javax.swing.JLabel();
@@ -78,7 +97,7 @@ public class Topic_Practice extends javax.swing.JFrame {
         jPanel20 = new javax.swing.JPanel();
         btnPractice6 = new javax.swing.JButton();
         jPanel21 = new javax.swing.JPanel();
-        lblPercentage6 = new javax.swing.JLabel();
+        safetyMarginAvg = new javax.swing.JLabel();
         jPanel22 = new javax.swing.JPanel();
         jPanel23 = new javax.swing.JPanel();
         lblTopic5 = new javax.swing.JLabel();
@@ -86,7 +105,7 @@ public class Topic_Practice extends javax.swing.JFrame {
         jPanel24 = new javax.swing.JPanel();
         btnPractice7 = new javax.swing.JButton();
         jPanel25 = new javax.swing.JPanel();
-        lblPercentage7 = new javax.swing.JLabel();
+        motorwayRulesAvg = new javax.swing.JLabel();
         jPanel26 = new javax.swing.JPanel();
         jPanel27 = new javax.swing.JPanel();
         lblTopic6 = new javax.swing.JLabel();
@@ -94,7 +113,7 @@ public class Topic_Practice extends javax.swing.JFrame {
         jPanel28 = new javax.swing.JPanel();
         btnPractice8 = new javax.swing.JButton();
         jPanel29 = new javax.swing.JPanel();
-        lblPercentage8 = new javax.swing.JLabel();
+        vehicleHandlingAvg = new javax.swing.JLabel();
         jPanel30 = new javax.swing.JPanel();
         jPanel31 = new javax.swing.JPanel();
         lblTopic7 = new javax.swing.JLabel();
@@ -126,9 +145,9 @@ public class Topic_Practice extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(0, 0, 0));
 
-        lblPercentage1.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
-        lblPercentage1.setForeground(new java.awt.Color(255, 255, 255));
-        lblPercentage1.setText("0%");
+        alertnessAvg.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        alertnessAvg.setForeground(new java.awt.Color(255, 255, 255));
+        alertnessAvg.setText("0%");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -136,15 +155,15 @@ public class Topic_Practice extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap(22, Short.MAX_VALUE)
-                .addComponent(lblPercentage1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(alertnessAvg, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblPercentage1)
-                .addContainerGap())
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(alertnessAvg)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel4.setBackground(new java.awt.Color(0, 0, 0));
@@ -189,9 +208,9 @@ public class Topic_Practice extends javax.swing.JFrame {
                 .addComponent(lblTopic1)
                 .addGap(15, 15, 15)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(lblDesc1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 210, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnPractice1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -205,9 +224,10 @@ public class Topic_Practice extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblTopic1)
-                    .addComponent(lblDesc1))
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblDesc1)
+                        .addComponent(btnPractice1)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(btnPractice1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 30)); // NOI18N
@@ -225,9 +245,9 @@ public class Topic_Practice extends javax.swing.JFrame {
 
         jPanel7.setBackground(new java.awt.Color(0, 0, 0));
 
-        lblPercentage2.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
-        lblPercentage2.setForeground(new java.awt.Color(255, 255, 255));
-        lblPercentage2.setText("0%");
+        attitudeAvg.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        attitudeAvg.setForeground(new java.awt.Color(255, 255, 255));
+        attitudeAvg.setText("0%");
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -235,15 +255,15 @@ public class Topic_Practice extends javax.swing.JFrame {
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
                 .addContainerGap(23, Short.MAX_VALUE)
-                .addComponent(lblPercentage2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(attitudeAvg, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblPercentage2)
-                .addContainerGap())
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(attitudeAvg)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel8.setBackground(new java.awt.Color(0, 0, 0));
@@ -288,9 +308,9 @@ public class Topic_Practice extends javax.swing.JFrame {
                 .addComponent(lblTopic2)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(7, 7, 7)
+                .addGap(18, 18, 18)
                 .addComponent(lblDesc2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 220, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnPractice2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -304,9 +324,10 @@ public class Topic_Practice extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblTopic2)
-                    .addComponent(lblDesc2))
+                    .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblDesc2)
+                        .addComponent(btnPractice2)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(btnPractice2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         jPanel10.setBackground(new java.awt.Color(255, 204, 102));
@@ -321,9 +342,9 @@ public class Topic_Practice extends javax.swing.JFrame {
 
         jPanel11.setBackground(new java.awt.Color(0, 0, 0));
 
-        lblPercentage3.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
-        lblPercentage3.setForeground(new java.awt.Color(255, 255, 255));
-        lblPercentage3.setText("0%");
+        safetyAndVehicleAvg.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        safetyAndVehicleAvg.setForeground(new java.awt.Color(255, 255, 255));
+        safetyAndVehicleAvg.setText("0%");
 
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
         jPanel11.setLayout(jPanel11Layout);
@@ -331,15 +352,15 @@ public class Topic_Practice extends javax.swing.JFrame {
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createSequentialGroup()
                 .addContainerGap(23, Short.MAX_VALUE)
-                .addComponent(lblPercentage3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(safetyAndVehicleAvg, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel11Layout.setVerticalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblPercentage3)
-                .addContainerGap())
+            .addGroup(jPanel11Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(safetyAndVehicleAvg)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel12.setBackground(new java.awt.Color(0, 0, 0));
@@ -384,9 +405,9 @@ public class Topic_Practice extends javax.swing.JFrame {
                 .addComponent(lblTopic3)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(7, 7, 7)
+                .addGap(18, 18, 18)
                 .addComponent(lblDesc3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 108, Short.MAX_VALUE)
                 .addComponent(btnPractice3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -400,9 +421,10 @@ public class Topic_Practice extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblTopic3)
-                    .addComponent(lblDesc3))
+                    .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblDesc3)
+                        .addComponent(btnPractice3)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(btnPractice3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         jPanel16.setBackground(new java.awt.Color(255, 204, 102));
@@ -417,9 +439,9 @@ public class Topic_Practice extends javax.swing.JFrame {
 
         jPanel17.setBackground(new java.awt.Color(0, 0, 0));
 
-        lblPercentage5.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
-        lblPercentage5.setForeground(new java.awt.Color(255, 255, 255));
-        lblPercentage5.setText("0%");
+        hazardAvg.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        hazardAvg.setForeground(new java.awt.Color(255, 255, 255));
+        hazardAvg.setText("0%");
 
         javax.swing.GroupLayout jPanel17Layout = new javax.swing.GroupLayout(jPanel17);
         jPanel17.setLayout(jPanel17Layout);
@@ -427,15 +449,15 @@ public class Topic_Practice extends javax.swing.JFrame {
             jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel17Layout.createSequentialGroup()
                 .addContainerGap(23, Short.MAX_VALUE)
-                .addComponent(lblPercentage5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(hazardAvg, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel17Layout.setVerticalGroup(
             jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel17Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblPercentage5)
-                .addContainerGap())
+            .addGroup(jPanel17Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(hazardAvg)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel18.setBackground(new java.awt.Color(0, 0, 0));
@@ -480,9 +502,9 @@ public class Topic_Practice extends javax.swing.JFrame {
                 .addComponent(lblTopic4)
                 .addGap(15, 15, 15)
                 .addComponent(jPanel19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(lblDesc4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 136, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnPractice5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -496,9 +518,10 @@ public class Topic_Practice extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblTopic4)
-                    .addComponent(lblDesc4))
+                    .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblDesc4)
+                        .addComponent(btnPractice5)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(btnPractice5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         jPanel20.setBackground(new java.awt.Color(255, 204, 102));
@@ -513,9 +536,9 @@ public class Topic_Practice extends javax.swing.JFrame {
 
         jPanel21.setBackground(new java.awt.Color(0, 0, 0));
 
-        lblPercentage6.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
-        lblPercentage6.setForeground(new java.awt.Color(255, 255, 255));
-        lblPercentage6.setText("0%");
+        safetyMarginAvg.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        safetyMarginAvg.setForeground(new java.awt.Color(255, 255, 255));
+        safetyMarginAvg.setText("0%");
 
         javax.swing.GroupLayout jPanel21Layout = new javax.swing.GroupLayout(jPanel21);
         jPanel21.setLayout(jPanel21Layout);
@@ -523,15 +546,15 @@ public class Topic_Practice extends javax.swing.JFrame {
             jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel21Layout.createSequentialGroup()
                 .addContainerGap(23, Short.MAX_VALUE)
-                .addComponent(lblPercentage6, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(safetyMarginAvg, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel21Layout.setVerticalGroup(
             jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel21Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblPercentage6)
-                .addContainerGap())
+            .addGroup(jPanel21Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(safetyMarginAvg)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel22.setBackground(new java.awt.Color(0, 0, 0));
@@ -576,9 +599,9 @@ public class Topic_Practice extends javax.swing.JFrame {
                 .addComponent(lblTopic5)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(7, 7, 7)
+                .addGap(18, 18, 18)
                 .addComponent(lblDesc5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 175, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnPractice6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -592,9 +615,10 @@ public class Topic_Practice extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblTopic5)
-                    .addComponent(lblDesc5))
+                    .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblDesc5)
+                        .addComponent(btnPractice6)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(btnPractice6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         jPanel24.setBackground(new java.awt.Color(255, 204, 102));
@@ -609,9 +633,9 @@ public class Topic_Practice extends javax.swing.JFrame {
 
         jPanel25.setBackground(new java.awt.Color(0, 0, 0));
 
-        lblPercentage7.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
-        lblPercentage7.setForeground(new java.awt.Color(255, 255, 255));
-        lblPercentage7.setText("0%");
+        motorwayRulesAvg.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        motorwayRulesAvg.setForeground(new java.awt.Color(255, 255, 255));
+        motorwayRulesAvg.setText("0%");
 
         javax.swing.GroupLayout jPanel25Layout = new javax.swing.GroupLayout(jPanel25);
         jPanel25.setLayout(jPanel25Layout);
@@ -619,15 +643,15 @@ public class Topic_Practice extends javax.swing.JFrame {
             jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel25Layout.createSequentialGroup()
                 .addContainerGap(23, Short.MAX_VALUE)
-                .addComponent(lblPercentage7, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(motorwayRulesAvg, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel25Layout.setVerticalGroup(
             jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel25Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblPercentage7)
-                .addContainerGap())
+            .addGroup(jPanel25Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(motorwayRulesAvg)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel26.setBackground(new java.awt.Color(0, 0, 0));
@@ -672,9 +696,9 @@ public class Topic_Practice extends javax.swing.JFrame {
                 .addComponent(lblTopic6)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel27, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(7, 7, 7)
+                .addGap(18, 18, 18)
                 .addComponent(lblDesc6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 157, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnPractice7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -688,9 +712,10 @@ public class Topic_Practice extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblTopic6)
-                    .addComponent(lblDesc6))
+                    .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblDesc6)
+                        .addComponent(btnPractice7)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(btnPractice7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         jPanel28.setBackground(new java.awt.Color(255, 204, 102));
@@ -705,9 +730,9 @@ public class Topic_Practice extends javax.swing.JFrame {
 
         jPanel29.setBackground(new java.awt.Color(0, 0, 0));
 
-        lblPercentage8.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
-        lblPercentage8.setForeground(new java.awt.Color(255, 255, 255));
-        lblPercentage8.setText("0%");
+        vehicleHandlingAvg.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        vehicleHandlingAvg.setForeground(new java.awt.Color(255, 255, 255));
+        vehicleHandlingAvg.setText("0%");
 
         javax.swing.GroupLayout jPanel29Layout = new javax.swing.GroupLayout(jPanel29);
         jPanel29.setLayout(jPanel29Layout);
@@ -715,15 +740,15 @@ public class Topic_Practice extends javax.swing.JFrame {
             jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel29Layout.createSequentialGroup()
                 .addContainerGap(23, Short.MAX_VALUE)
-                .addComponent(lblPercentage8, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(vehicleHandlingAvg, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel29Layout.setVerticalGroup(
             jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel29Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblPercentage8)
-                .addContainerGap())
+            .addGroup(jPanel29Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(vehicleHandlingAvg)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel30.setBackground(new java.awt.Color(0, 0, 0));
@@ -768,9 +793,9 @@ public class Topic_Practice extends javax.swing.JFrame {
                 .addComponent(lblTopic7)
                 .addGap(15, 15, 15)
                 .addComponent(jPanel31, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(lblDesc7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 149, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnPractice8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel29, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -780,12 +805,13 @@ public class Topic_Practice extends javax.swing.JFrame {
             .addComponent(jPanel29, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel30, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel31, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btnPractice8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel28Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblDesc7)
-                    .addComponent(lblTopic7))
+                    .addComponent(lblTopic7)
+                    .addGroup(jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblDesc7)
+                        .addComponent(btnPractice8)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -820,7 +846,7 @@ public class Topic_Practice extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(23, 23, 23)
                         .addComponent(jLabel1)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -972,6 +998,8 @@ public class Topic_Practice extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel alertnessAvg;
+    private javax.swing.JLabel attitudeAvg;
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnPractice1;
     private javax.swing.JButton btnPractice2;
@@ -980,6 +1008,7 @@ public class Topic_Practice extends javax.swing.JFrame {
     private javax.swing.JButton btnPractice6;
     private javax.swing.JButton btnPractice7;
     private javax.swing.JButton btnPractice8;
+    private javax.swing.JLabel hazardAvg;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
@@ -1017,13 +1046,6 @@ public class Topic_Practice extends javax.swing.JFrame {
     private javax.swing.JLabel lblDesc5;
     private javax.swing.JLabel lblDesc6;
     private javax.swing.JLabel lblDesc7;
-    private javax.swing.JLabel lblPercentage1;
-    private javax.swing.JLabel lblPercentage2;
-    private javax.swing.JLabel lblPercentage3;
-    private javax.swing.JLabel lblPercentage5;
-    private javax.swing.JLabel lblPercentage6;
-    private javax.swing.JLabel lblPercentage7;
-    private javax.swing.JLabel lblPercentage8;
     private javax.swing.JLabel lblTopic1;
     private javax.swing.JLabel lblTopic2;
     private javax.swing.JLabel lblTopic3;
@@ -1031,5 +1053,9 @@ public class Topic_Practice extends javax.swing.JFrame {
     private javax.swing.JLabel lblTopic5;
     private javax.swing.JLabel lblTopic6;
     private javax.swing.JLabel lblTopic7;
+    private javax.swing.JLabel motorwayRulesAvg;
+    private javax.swing.JLabel safetyAndVehicleAvg;
+    private javax.swing.JLabel safetyMarginAvg;
+    private javax.swing.JLabel vehicleHandlingAvg;
     // End of variables declaration//GEN-END:variables
 }
