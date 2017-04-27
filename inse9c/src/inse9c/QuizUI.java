@@ -182,7 +182,7 @@ public class QuizUI extends javax.swing.JFrame {
                 timer.setText("Time's up!");
                 q.setVisible(false);
                 q.dispose();
-                End end = new End(score, correctans.length, userID);
+                End end = new End(score, correctans.length, userID, quizType);
                 end.setVisible(rootPaneCheckingEnabled);
                 countdownTimer.stop();
             }
@@ -464,7 +464,7 @@ public class QuizUI extends javax.swing.JFrame {
             }
 
             if (i == 9) {
-                End t = new End(score, correctans.length, userID);
+                End t = new End(score, correctans.length, userID, quizType);
                 t.setVisible(true);
                 this.setVisible(false);
                 dispose();
@@ -535,7 +535,7 @@ public class QuizUI extends javax.swing.JFrame {
         // Hint (could be as simple as changing text color to red for 2 items)
         if (timer.getText().matches("Time's up!")) {
             this.setVisible(false);
-            End t = new End(score, correctans.length, userID);
+            End t = new End(score, correctans.length, userID, quizType);
             t.setVisible(true);
             dispose();
         }

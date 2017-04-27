@@ -32,14 +32,13 @@ public class Settings extends javax.swing.JFrame {
     /**
      * Creates new form NewJFrame2
      */
-    private DAO dao;
+    private DAO dao = new DAO();
     private int userID;
 
-    public Settings(DAO d, int iD) {
+    public Settings(int iD) {
         initComponents();
         this.setLocationRelativeTo(null);
         userID = iD;
-        dao = d;
         checkBg();
     }
 
@@ -310,7 +309,7 @@ public class Settings extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void Back_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Back_buttonActionPerformed
-        Menu t = new Menu(dao, userID);
+        Menu t = new Menu(userID);
         t.setVisible(true);
         this.setVisible(false);
         dispose();
@@ -339,9 +338,6 @@ public class Settings extends javax.swing.JFrame {
     private void changePassbutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changePassbutActionPerformed
         if (newPass.getText().equals(newPass2.getText())) {
             try {
-                // TODO add your handling code here:
-
-                String email = dao.getEmail();
                 //String pwd = currentPass.getText();
                 String newPwd = newPass.getText();
                 String confPwd = newPass2.getText();
@@ -351,7 +347,7 @@ public class Settings extends javax.swing.JFrame {
 
                 encCpwd = DAO.byteArraytoHexString(DAO.computeHash(currentPass.getText()));
 
-                ResultSet rs = DAO.retrieveLoginDetails(email);
+                ResultSet rs = DAO.retrieveLoginByUserID(userID);
 
                 rs.next();
                 String pw = rs.getString("userPassword");

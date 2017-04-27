@@ -16,6 +16,8 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -30,9 +32,18 @@ public class DAO {
     private static Connection conn = null;
     private static String sql = "";
     private static String email;
+    private static int userID;
 
     public DAO(String em) {
         email = em;
+    }
+
+    public DAO(int iD) {
+        userID = iD;
+    }
+
+    public DAO() {
+
     }
 
     public static Connection connect() {
@@ -75,10 +86,17 @@ public class DAO {
         conn.close();
     }
 
-    public static ResultSet retrieveLoginDetails(String email)
+    public static ResultSet retrieveLoginByEmail(String email)
             throws SQLException {
         conn = connect();
         ResultSet rs = stmt.executeQuery("select * from User where userEmail = '" + email + "'");
+        return rs;
+    }
+
+    public static ResultSet retrieveLoginByUserID(int id)
+            throws SQLException {
+        conn = connect();
+        ResultSet rs = stmt.executeQuery("select * from User where userID = '" + id + "'");
         return rs;
     }
 
@@ -109,11 +127,20 @@ public class DAO {
         return sb.toString().toUpperCase();
     }
 
-    public static void storeTestResult(String topic, int userID, int score) {
-//        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
-//        LocalDate localDate = LocalDate.now();
-//        System.out.println(dtf.format(localDate)); //2016/11/16
-        //String year = d.getYear();
+    public static void storeTestResult(String topic, int score) {
+        try {
+            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            LocalDate localDate = LocalDate.now();
+            String date = dtf.format(localDate); //2016/11/16
+
+            conn = connect();
+            sql = "insert into testResult (userID, testType, testScore, testDate) values('" + userID + "','" + topic + "','" + score + "','" + date + "')";
+            stmt.execute(sql);
+            conn.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }
 
     public static void setEmail(String newEmail) {

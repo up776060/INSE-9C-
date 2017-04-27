@@ -236,7 +236,7 @@ public class LoginUI extends javax.swing.JFrame {
             }
         }
         if (loginValidation()) {
-            Menu m = new Menu(dao, userID);
+            Menu m = new Menu(userID);
             m.setVisible(true);
             this.setVisible(false);
             dispose();
@@ -259,7 +259,7 @@ public class LoginUI extends javax.swing.JFrame {
         }
         if (!userEmail.getText().isEmpty() && !userPassword.getText().isEmpty()) {
             try {
-                ResultSet rs = DAO.retrieveLoginDetails(userEmail.getText());
+                ResultSet rs = DAO.retrieveLoginByEmail(userEmail.getText());
                 if (!rs.next()) {
                     JOptionPane.showMessageDialog(this, "The email you entered does not exist");
                 } else {

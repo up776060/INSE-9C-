@@ -33,11 +33,10 @@ public class Menu extends javax.swing.JFrame {
         checkBg();
     }
     
-    public Menu(DAO d, int iD) {
+    public Menu(int iD) {
         initComponents();
         this.setLocationRelativeTo(null);
         userID = iD;
-        dao = d;
         checkBg();
     }
 
@@ -204,7 +203,7 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_Topics_buttonActionPerformed
 
     private void Setting_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Setting_buttonActionPerformed
-        Settings s = new Settings(dao, userID);
+        Settings s = new Settings(userID);
         s.setVisible(true);
         this.setVisible(false);
         dispose();

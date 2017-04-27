@@ -22,6 +22,7 @@ import java.util.logging.Logger;
 public class End extends javax.swing.JFrame {
 
     private int score, totalQuestions, userID;
+    private String testType;
 
     /**
      * Creates new form End
@@ -61,12 +62,13 @@ public class End extends javax.swing.JFrame {
         
     }
 
-    public End(int marks, int totQues, int iD) {
+    public End(int marks, int totQues, int iD, String topic) {
         initComponents();
         this.setLocationRelativeTo(null);
 
         if(score>totalQuestions)
             score = totalQuestions;
+        testType = topic;
         userID = iD;
         score = marks;
         totalQuestions = totQues;
@@ -81,6 +83,14 @@ public class End extends javax.swing.JFrame {
         Percentage.setText(String.valueOf(df.format(perc)) + "%");
         
         checkBg();
+        
+        storeResult();
+    }
+    
+    
+    public void storeResult(){
+        DAO dao = new DAO(userID);
+        dao.storeTestResult(testType, score);
     }
 
     /**
@@ -180,7 +190,7 @@ public class End extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void End_ReturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_End_ReturnActionPerformed
-        Menu t = new Menu();
+        Menu t = new Menu(userID);
         t.setVisible(true);
         this.setVisible(false);
         dispose();
