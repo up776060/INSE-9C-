@@ -368,7 +368,7 @@ public class Settings extends javax.swing.JFrame {
 
                         String encNpwd = DAO.byteArraytoHexString(DAO.computeHash(newPass.getText()));
 
-                        dao.changePassword(encNpwd);
+                        DAO.changePassword(encNpwd, userID);
                         JOptionPane.showMessageDialog(this, "Your password has succsesfully been updated");
                     }
                 } else {

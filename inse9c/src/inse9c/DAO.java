@@ -95,10 +95,10 @@ public class DAO {
      * @param password
      * @throws SQLException
      */
-    public static void changePassword(String password)
+    public static void changePassword(String password, int iD)
             throws SQLException {
         conn = connect();
-        sql = "UPDATE User SET userPassword = '" + password + "' WHERE userID = '" + email + "'";
+        sql = "UPDATE User SET userPassword = '" + password + "' WHERE userID = '"+ iD +"'";
         stmt.execute(sql);
         conn.close();
     }
