@@ -237,132 +237,154 @@ public class ProgressMonitor extends javax.swing.JFrame {
         res1.setText("");
         resultScore1.setText("");
         date1.setText("");
-        
+
         res2.setText("");
         resultScore2.setText("");
         date2.setText("");
-        
+
         res3.setText("");
         resultScore3.setText("");
         date3.setText("");
-        
+
         res4.setText("");
         resultScore4.setText("");
         date4.setText("");
-        
+
         res5.setText("");
         resultScore5.setText("");
         date5.setText("");
-        
+
         res6.setText("");
         resultScore6.setText("");
         date6.setText("");
-        
+
         res7.setText("");
         resultScore7.setText("");
         date7.setText("");
-        
+
         res8.setText("");
         resultScore8.setText("");
         date8.setText("");
-        
+
         res9.setText("");
         resultScore9.setText("");
         date9.setText("");
-        
+
         res10.setText("");
         resultScore10.setText("");
         date10.setText("");
-        
-        res1.setText(rs.getString("testType"));
-        if (res1.getText().matches("Mock Test")) {
-            resultScore1.setText(rs.getString("testScore") + "/50");
-        } else {
-            resultScore1.setText(rs.getString("testScore") + "/10");
-        }
-        date1.setText(rs.getString("testDate"));
-        rs.next();
 
-        res2.setText(rs.getString("testType"));
-        if (res2.getText().matches("Mock Test")) {
-            resultScore2.setText(rs.getString("testScore") + "/50");
-        } else {
-            resultScore2.setText(rs.getString("testScore") + "/10");
-        }
-        date2.setText(rs.getString("testDate"));
         rs.next();
+        rs.previous();
+        if (rs.next()) {
+            res1.setText(rs.getString("testType"));
+            if (res1.getText().matches("Mock Test")) {
+                resultScore1.setText(rs.getString("testScore") + "/50");
+            } else {
+                resultScore1.setText(rs.getString("testScore") + "/10");
+            }
+            date1.setText(rs.getString("testDate"));
+        }
 
-        res3.setText(rs.getString("testType"));
-        if (res3.getText().matches("Mock Test")) {
-            resultScore3.setText(rs.getString("testScore") + "/50");
-        } else {
-            resultScore3.setText(rs.getString("testScore") + "/10");
-        }
-        date3.setText(rs.getString("testDate"));
         rs.next();
-
-        res4.setText(rs.getString("testType"));
-        if (res4.getText().matches("Mock Test")) {
-            resultScore4.setText(rs.getString("testScore") + "/50");
-        } else {
-            resultScore4.setText(rs.getString("testScore") + "/10");
+        rs.previous();
+        if (rs.next()) {
+            res2.setText(rs.getString("testType"));
+            if (res2.getText().matches("Mock Test")) {
+                resultScore2.setText(rs.getString("testScore") + "/50");
+            } else {
+                resultScore2.setText(rs.getString("testScore") + "/10");
+            }
+            date2.setText(rs.getString("testDate"));
         }
-        date4.setText(rs.getString("testDate"));
         rs.next();
-
-        res5.setText(rs.getString("testType"));
-        if (res5.getText().matches("Mock Test")) {
-            resultScore5.setText(rs.getString("testScore") + "/50");
-        } else {
-            resultScore5.setText(rs.getString("testScore") + "/10");
+        rs.previous();
+        if (rs.next()) {
+            res3.setText(rs.getString("testType"));
+            if (res3.getText().matches("Mock Test")) {
+                resultScore3.setText(rs.getString("testScore") + "/50");
+            } else {
+                resultScore3.setText(rs.getString("testScore") + "/30");
+            }
+            date3.setText(rs.getString("testDate"));
         }
-        date5.setText(rs.getString("testDate"));
         rs.next();
-
-        res6.setText(rs.getString("testType"));
-        if (res6.getText().matches("Mock Test")) {
-            resultScore6.setText(rs.getString("testScore") + "/50");
-        } else {
-            resultScore6.setText(rs.getString("testScore") + "/10");
+        rs.previous();
+        if (rs.next()) {
+            res4.setText(rs.getString("testType"));
+            if (res4.getText().matches("Mock Test")) {
+                resultScore4.setText(rs.getString("testScore") + "/50");
+            } else {
+                resultScore4.setText(rs.getString("testScore") + "/40");
+            }
+            date4.setText(rs.getString("testDate"));
         }
-        date6.setText(rs.getString("testDate"));
         rs.next();
-
-        res7.setText(rs.getString("testType"));
-        if(res7.getText().matches("Mock Test")){
-            resultScore7.setText(rs.getString("testScore") + "/50");
-        }else{
-            resultScore7.setText(rs.getString("testScore") + "/10");
+        rs.previous();
+        if (rs.next()) {
+            res5.setText(rs.getString("testType"));
+            if (res5.getText().matches("Mock Test")) {
+                resultScore5.setText(rs.getString("testScore") + "/50");
+            } else {
+                resultScore5.setText(rs.getString("testScore") + "/50");
+            }
+            date5.setText(rs.getString("testDate"));
         }
-        date7.setText(rs.getString("testDate"));
         rs.next();
-
-        res8.setText(rs.getString("testType"));
-        if(res8.getText().matches("Mock Test")){
-            resultScore8.setText(rs.getString("testScore") + "/50");
-        }else{
-            resultScore8.setText(rs.getString("testScore") + "/10");
+        rs.previous();
+        if (rs.next()) {
+            res6.setText(rs.getString("testType"));
+            if (res6.getText().matches("Mock Test")) {
+                resultScore6.setText(rs.getString("testScore") + "/50");
+            } else {
+                resultScore6.setText(rs.getString("testScore") + "/60");
+            }
+            date6.setText(rs.getString("testDate"));
         }
-        date8.setText(rs.getString("testDate"));
         rs.next();
-
-        res9.setText(rs.getString("testType"));
-        if(res9.getText().matches("Mock Test")){
-            resultScore9.setText(rs.getString("testScore") + "/50");
-        }else{
-            resultScore9.setText(rs.getString("testScore") + "/10");
+        rs.previous();
+        if (rs.next()) {
+            res7.setText(rs.getString("testType"));
+            if (res7.getText().matches("Mock Test")) {
+                resultScore7.setText(rs.getString("testScore") + "/50");
+            } else {
+                resultScore7.setText(rs.getString("testScore") + "/40");
+            }
+            date7.setText(rs.getString("testDate"));
         }
-        date9.setText(rs.getString("testDate"));
         rs.next();
-
-        res10.setText(rs.getString("testType"));
-        if(res10.getText().matches("Mock Test")){
-            resultScore10.setText(rs.getString("testScore") + "/50");
-        }else{
-            resultScore10.setText(rs.getString("testScore") + "/10");
+        rs.previous();
+        if (rs.next()) {
+            res8.setText(rs.getString("testType"));
+            if (res8.getText().matches("Mock Test")) {
+                resultScore8.setText(rs.getString("testScore") + "/50");
+            } else {
+                resultScore8.setText(rs.getString("testScore") + "/80");
+            }
+            date8.setText(rs.getString("testDate"));
         }
-        date10.setText(rs.getString("testDate"));
         rs.next();
+        rs.previous();
+        if (rs.next()) {
+            res9.setText(rs.getString("testType"));
+            if (res9.getText().matches("Mock Test")) {
+                resultScore9.setText(rs.getString("testScore") + "/50");
+            } else {
+                resultScore9.setText(rs.getString("testScore") + "/90");
+            }
+            date9.setText(rs.getString("testDate"));
+        }
+        rs.next();
+        rs.previous();
+        if (rs.next()) {
+            res10.setText(rs.getString("testType"));
+            if (res10.getText().matches("Mock Test")) {
+                resultScore10.setText(rs.getString("testScore") + "/50");
+            } else {
+                resultScore10.setText(rs.getString("testScore") + "/10");
+            }
+            date10.setText(rs.getString("testDate"));
+        }
 
     }
 

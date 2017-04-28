@@ -146,15 +146,13 @@ public class DAO {
     public static ResultSet getTenResultsByTopic(int userID, String topic)
             throws SQLException {
         ResultSet rs;
-        if(topic.matches("")) {
+        if (topic.matches("")) {
             conn = connect();
             rs = stmt.executeQuery("select * from testResult where userID = '" + userID + "' order by testResultID desc limit 10");
-            rs.next();
             return rs;
-        }else{
+        } else {
             conn = connect();
-            rs = stmt.executeQuery("select * from testResult where userID = '" + userID + "' and testType = '"+ topic +"' order by testResultID desc limit 10");
-            rs.next();
+            rs = stmt.executeQuery("select * from testResult where userID = '" + userID + "' and testType = '" + topic + "' order by testResultID desc limit 10");
             return rs;
         }
     }
