@@ -84,6 +84,7 @@ public class QuizUI extends javax.swing.JFrame {
                 maxQuestions = 50;
                 break;
         }
+        questionCounter.setText("Question:  0 / " +maxQuestions);
         //This will display the title
         switch (quizTopic) {
             case "Alertness":
@@ -264,6 +265,7 @@ public class QuizUI extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         TextfieldQuestion = new javax.swing.JTextArea();
         timer = new javax.swing.JLabel();
+        questionCounter = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -344,6 +346,8 @@ public class QuizUI extends javax.swing.JFrame {
         timer.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         timer.setText("60:00");
 
+        questionCounter.setText("Question: /");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -364,11 +368,13 @@ public class QuizUI extends javax.swing.JFrame {
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(ButtonExit, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(212, 212, 212)
+                                .addGap(18, 18, 18)
+                                .addComponent(questionCounter)
+                                .addGap(160, 160, 160)
                                 .addComponent(headerLabel)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 321, Short.MAX_VALUE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 301, Short.MAX_VALUE)
                                         .addComponent(lbScore)
                                         .addGap(53, 53, 53))
                                     .addGroup(layout.createSequentialGroup()
@@ -390,7 +396,9 @@ public class QuizUI extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(ButtonExit, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(ButtonExit, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(questionCounter))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(lbScore)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -488,6 +496,8 @@ public class QuizUI extends javax.swing.JFrame {
                 }
 
             }
+            
+            questionCounter.setText("Question:  "+(i+1) + " / " + correctans.length);
             //if the test is a mock, and the last question has been answered, then
             //the quiz must end when submit is pressed. The timer is also stopped here
             if (quizTopic.matches("Mock Test") && i == 49) {
@@ -652,6 +662,7 @@ public class QuizUI extends javax.swing.JFrame {
     private javax.swing.JLabel headerLabel;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbScore;
+    private javax.swing.JLabel questionCounter;
     private javax.swing.JLabel timer;
     // End of variables declaration//GEN-END:variables
 }
