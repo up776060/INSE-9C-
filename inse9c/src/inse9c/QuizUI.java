@@ -28,6 +28,7 @@ import javax.swing.Timer;
  * and open the template in the editor.
  */
 /**
+ * This class is the environment for all quizzes
  *
  * @author Brad King
  */
@@ -49,12 +50,16 @@ public class QuizUI extends javax.swing.JFrame {
     private ButtonGroup bg = new ButtonGroup();
     // All Radio buttons grouped so 1 active at a time
 
+    /**
+     * DO NOT USE
+     */
     public QuizUI() {
         initComponents();
     }
 
     /**
-     * Creates new form NewJFrame
+     * initialises the UI, as well as retrieving all the questions from the
+     * database This will also display the correct quiz title
      *
      * @param topic
      */
@@ -66,7 +71,7 @@ public class QuizUI extends javax.swing.JFrame {
         quizTopic = topic;
         quizType = quizT;
         userID = iD;
-
+        //determines time needed for quiz
         switch (quizT) {
             case "Topic":
                 timeRemaining = 600;
@@ -79,7 +84,7 @@ public class QuizUI extends javax.swing.JFrame {
                 maxQuestions = 50;
                 break;
         }
-
+        //This will display the title
         switch (quizTopic) {
             case "Alertness":
                 headerLabel.setText("Topic A: " + quizTopic);
@@ -109,16 +114,19 @@ public class QuizUI extends javax.swing.JFrame {
                 headerLabel.setText("Mock Test");
                 break;
         }
-        ResultSet rs ;
+        ResultSet rs;
         i = 0;
         score = 0;
         try {
-            if(quizTopic.matches("Mock Test") || quizTopic.matches("Quiz") ){
+            //if this test is a mock or quiz, no categorising needs to happen
+            if (quizTopic.matches("Mock Test") || quizTopic.matches("Quiz")) {
                 rs = DAO.retrieveQuiz();
-            } else{
+            } else {
+                //this retrieves 10 questions in random order of a given topic
                 rs = DAO.retrieveQuizByTopic(quizTopic);
             }
-
+            //if this is a moc test, there will be 50 questions. Therefore, the
+            //array size will need changing
             if (quizTopic.matches("Mock Test")) {
                 question1 = new String[50][5];
                 correctans = new String[50];
@@ -126,7 +134,7 @@ public class QuizUI extends javax.swing.JFrame {
                 question1 = new String[10][5];
                 correctans = new String[10];
             }
-
+            //this populates the created arrays with questions returned from DB
             for (int i = 0; i < maxQuestions; i++) {
                 rs.next();
                 question1[i][0] = rs.getString("questionContents");
@@ -168,10 +176,16 @@ public class QuizUI extends javax.swing.JFrame {
         }
         // Array of 3 questions (change 1st number to make bigger array)
         // Assigns textField and radioButton values for 1st question!
+
+        //This creates and starts a countdown timer
         countdownTimer = new Timer(1000, new CountdownTimerListener(this));
         countdownTimer.start();
     }
 
+    /**
+     * This class is used to run a countdown in the background. If the timer
+     * reaches 0, the quiz is automatically shut off
+     */
     class CountdownTimerListener implements ActionListener {
 
         QuizUI q;
@@ -198,6 +212,9 @@ public class QuizUI extends javax.swing.JFrame {
         }
     }
 
+    /**
+     * changes background colour based on settings
+     */
     public void checkBg() {
         String readCol = "";
 
@@ -418,9 +435,13 @@ public class QuizUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_AnswerCActionPerformed
 
+    /**
+     * If the next button is pressed, then the next question must be loaded. If
+     * this is the last question, then the test must end
+     *
+     * @param evt
+     */
     private void ButtonNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonNextActionPerformed
-        // TODO add your handling code here:
-
         if (AnswerA.isSelected() == false && AnswerB.isSelected() == false && AnswerC.isSelected() == false && AnswerD.isSelected() == false) {
 
             JOptionPane.showMessageDialog(null, "Please select an answer before continuing.");
@@ -433,7 +454,8 @@ public class QuizUI extends javax.swing.JFrame {
                 lbScore.setText("Score: " + score);
 
                 String sound = "true";
-
+                //If the answer is correct, and the sound settings are set to "on" then
+                //a ding sound is to be played to tell the user he's correct
                 try {
                     BufferedReader br = new BufferedReader(new FileReader("soundSettings.txt"));
                     sound = br.readLine();
@@ -466,32 +488,38 @@ public class QuizUI extends javax.swing.JFrame {
                 }
 
             }
-
+            //if the test is a mock, and the last question has been answered, then
+            //the quiz must end when submit is pressed. The timer is also stopped here
             if (quizTopic.matches("Mock Test") && i == 49) {
                 End t = new End(score, correctans.length, userID, quizTopic);
                 t.setVisible(true);
                 this.setVisible(false);
+                countdownTimer.stop();
                 dispose();
-            } else if(!quizTopic.matches("Mock Test") && i == 9){
+            } else if (!quizTopic.matches("Mock Test") && i == 9) {
+                //This code does the same, but for non mocks
                 End t = new End(score, correctans.length, userID, quizTopic);
                 t.setVisible(true);
                 this.setVisible(false);
+                countdownTimer.stop();
                 dispose();
             }
             // Increment i by 1 
             i++;
-            
-            if(quizTopic.matches("Mock Test") && i > 49){
-                i=49;
-            }else if(!quizTopic.matches("Mock Test") && i > 9){
-                i=9;
+            //to prevent overflow
+            if (quizTopic.matches("Mock Test") && i > 49) {
+                i = 49;
+            } else if (!quizTopic.matches("Mock Test") && i > 9) {
+                i = 9;
             }
-            
+
             Random ran = new Random();
             // Display next question
 
             int a1 = ran.nextInt(4) + 1;
-
+            
+            //This code was built to prevent any overflow of text on the UI
+            //the first blank space after character 65 is replaced with a new line
             if (question1[i][0].length() > 80) {
                 int k = 65;
                 boolean changed = false;
@@ -507,6 +535,7 @@ public class QuizUI extends javax.swing.JFrame {
                 } while (!changed);
             }
 
+            //Displays new questions for the user
             TextfieldQuestion.setText(question1[i][0]);
 
             AnswerA.setText(question1[i][a1]);
@@ -535,27 +564,32 @@ public class QuizUI extends javax.swing.JFrame {
             AnswerD.setActionCommand(question1[i][a4]);
 
         }
-
+        //changes next question button to display "Submit" when answering the last
+        //question in the quiz
         if (i == 9 && !quizType.matches("Mock")) {
             ButtonNext.setText("Submit");
-        } else if(i==49){
+        } else if (i == 49) {
             ButtonNext.setText("Submit");
         }
-        // WHAT NEEDS TO BE DONE!
-        // End of quiz screen displayed
-        // Hint (could be as simple as changing text color to red for 2 items)
+        //fail safe for timer conditions not working
         if (timer.getText().matches("Time's up!")) {
             this.setVisible(false);
             End t = new End(score, correctans.length, userID, quizTopic);
             t.setVisible(true);
+            countdownTimer.stop();
             dispose();
         }
     }//GEN-LAST:event_ButtonNextActionPerformed
 
+    /**
+     * This returns the user to the menu, and terminates this UI, as well as the timer
+     * @param evt 
+     */
     private void ButtonExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonExitActionPerformed
         int result = JOptionPane.showConfirmDialog(null, "Are you sure?", "alert", JOptionPane.OK_CANCEL_OPTION);
         if (result == 0) {
-            Menu m = new Menu();
+            Menu m = new Menu(userID);
+            countdownTimer.stop();
             m.setVisible(true);
             this.setVisible(false);
             dispose();

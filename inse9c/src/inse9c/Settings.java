@@ -29,12 +29,14 @@ import javax.swing.UIManager;
  */
 public class Settings extends javax.swing.JFrame {
 
-    /**
-     * Creates new form NewJFrame2
-     */
     private DAO dao = new DAO();
     private int userID;
 
+    /**
+     * Initialises UI
+     *
+     * @param iD
+     */
     public Settings(int iD) {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -42,13 +44,14 @@ public class Settings extends javax.swing.JFrame {
         checkBg();
     }
 
+    //changes background
     public void checkBg() {
         String readCol = "";
 
         try {
             BufferedReader br = new BufferedReader(new FileReader("colourSettings.txt"));
             readCol = br.readLine();
-            
+
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Settings.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
@@ -69,25 +72,12 @@ public class Settings extends javax.swing.JFrame {
         if (readCol.equals("Default")) {
             this.getContentPane().setBackground(null);
         }
-        
+
     }
 
     public Settings() {
         initComponents();
         this.setLocationRelativeTo(null);
-        String readCol = "";
-
-        try {
-            BufferedReader br = new BufferedReader(new FileReader("colourSettings.txt"));
-            readCol = br.readLine();
-            System.out.println(readCol);
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(Settings.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(Settings.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        checkBg();
     }
 
     /**
@@ -109,7 +99,7 @@ public class Settings extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         Use_application = new javax.swing.JTextArea();
-        jButton4 = new javax.swing.JButton();
+        saveButton = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -168,10 +158,10 @@ public class Settings extends javax.swing.JFrame {
         Use_application.setText("select the desired options to learn.");
         jScrollPane1.setViewportView(Use_application);
 
-        jButton4.setText("Save");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        saveButton.setText("Save");
+        saveButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                saveButtonActionPerformed(evt);
             }
         });
 
@@ -274,7 +264,7 @@ public class Settings extends javax.swing.JFrame {
                                 .addComponent(jLabel1))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(355, 355, 355)
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(saveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -301,13 +291,19 @@ public class Settings extends javax.swing.JFrame {
                     .addComponent(jLabel4)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(32, 32, 32)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(saveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(33, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * When the back button is pressed, the user is taken back to the menus#
+     * this page is terminated
+     *
+     * @param evt
+     */
     private void Back_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Back_buttonActionPerformed
         Menu t = new Menu(userID);
         t.setVisible(true);
@@ -315,7 +311,13 @@ public class Settings extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_Back_buttonActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    /**
+     * Saves the selected colour by the user. Also resets colours on the page to
+     * that colour
+     *
+     * @param evt
+     */
+    private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
         // TODO add your handling code here:
 
         Object bgCol = Colours_combo.getSelectedItem();
@@ -333,8 +335,17 @@ public class Settings extends javax.swing.JFrame {
 
         //this.setBackground(selectCol);
 
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_saveButtonActionPerformed
 
+    /**
+     * this takes the user's password, and makes sure it's correct, then
+     * verifies that the two new passwords match eachother, as well as the old
+     * password
+     *
+     * Then the password is encrypted and stored to the database
+     *
+     * @param evt
+     */
     private void changePassbutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changePassbutActionPerformed
         if (newPass.getText().equals(newPass2.getText())) {
             try {
@@ -380,11 +391,21 @@ public class Settings extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_Colours_comboActionPerformed
 
+    /**
+     * Toggles sound on
+     *
+     * @param evt
+     */
     private void ON_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ON_buttonActionPerformed
         dao.toggleSound(true);
         JOptionPane.showMessageDialog(this, "Sound enabled");
     }//GEN-LAST:event_ON_buttonActionPerformed
 
+    /**
+     * toggles sound off
+     *
+     * @param evt
+     */
     private void OFF_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OFF_ButtonActionPerformed
         dao.toggleSound(false);
         JOptionPane.showMessageDialog(this, "Sound disabled");
@@ -433,7 +454,6 @@ public class Settings extends javax.swing.JFrame {
     private javax.swing.JTextArea Use_application;
     private javax.swing.JButton changePassbut;
     private javax.swing.JPasswordField currentPass;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -445,5 +465,6 @@ public class Settings extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPasswordField newPass;
     private javax.swing.JPasswordField newPass2;
+    private javax.swing.JButton saveButton;
     // End of variables declaration//GEN-END:variables
 }

@@ -18,15 +18,14 @@ import javax.swing.JOptionPane;
  * and open the template in the editor.
  */
 /**
- *
- * @author up785062
+ * This class is used as a user interface menu for our system
  */
 public class Menu extends javax.swing.JFrame {
     
     private static DAO dao;
     private int userID;
     /**
-     * Creates new form NewJFrame
+     * initialises class, shouldn't be used
      */
     public Menu() {
         initComponents();
@@ -34,13 +33,20 @@ public class Menu extends javax.swing.JFrame {
         checkBg();
     }
     
+    /**
+     * initialises class, preferred method
+     * @param iD 
+     */
     public Menu(int iD) {
         initComponents();
         this.setLocationRelativeTo(null);
         userID = iD;
         checkBg();
     }
-
+    
+    /**
+     * Makes the background change colour based on user settings
+     */
     public void checkBg() {
         String readCol = "";
 
@@ -184,7 +190,13 @@ public class Menu extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    /**
+     * When the mock test button is pushed, the user will be displayed with a warning
+     * letting them know what the conditions of the test are, Then this UI is terminated,
+     * and a quiz is created
+     * @param evt 
+     */
     private void Mock_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Mock_buttonActionPerformed
         JOptionPane.showMessageDialog(this, "Once you start, you will have 60 minutes to complete 50 questions.\nAfter 60 minutes have passed, or you have completed the test,\nyou will be sent to the results page");
         QuizUI q = new QuizUI("Mock Test", "Mock", userID);
@@ -192,7 +204,13 @@ public class Menu extends javax.swing.JFrame {
         this.setVisible(false);
         dispose();
     }//GEN-LAST:event_Mock_buttonActionPerformed
-
+    
+    /**
+     * When the quiz button is pushed the user will be displayed with a warning
+     * letting them know what the conditions of the test are, Then this UI is terminated,
+     * and a quiz is created
+     * @param evt 
+     */
     private void Quiz_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Quiz_buttonActionPerformed
         JOptionPane.showMessageDialog(this, "Once you start, you will have 60 minutes to complete 50 questions.\nAfter 60 minutes have passed, or you have completed the test,\nyou will be sent to the results page");
         QuizUI q = new QuizUI("Quiz", "Quiz", userID);
@@ -200,28 +218,47 @@ public class Menu extends javax.swing.JFrame {
         this.setVisible(false);
         dispose();
     }//GEN-LAST:event_Quiz_buttonActionPerformed
-
+    
+    /**
+     * When the topic button is pushed, the user is bought to the topics menu.
+     * This UI is terminated
+     * @param evt 
+     */
     private void Topics_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Topics_buttonActionPerformed
         Topic_Practice t = new Topic_Practice(userID);
         t.setVisible(true);
         this.setVisible(false);
         dispose();
     }//GEN-LAST:event_Topics_buttonActionPerformed
-
+    
+    /**
+     * When the user pushes the settings button, the settings UI opens, menu is
+     * terminated
+     * @param evt 
+     */
     private void Setting_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Setting_buttonActionPerformed
         Settings s = new Settings(userID);
         s.setVisible(true);
         this.setVisible(false);
         dispose();
     }//GEN-LAST:event_Setting_buttonActionPerformed
-
+    
+    /**
+     * This button will open a new login UI, and terminate this UI
+     * @param evt 
+     */
     private void LogOut_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogOut_buttonActionPerformed
         LoginUI t = new LoginUI();
         t.setVisible(true);
         this.setVisible(false);
         dispose();
     }//GEN-LAST:event_LogOut_buttonActionPerformed
-
+    
+    /**
+     * If the user wishes to see their progress, the progress window is shown,
+     * this UI is terminated
+     * @param evt 
+     */
     private void Progress_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Progress_buttonActionPerformed
         try {
             ProgressMonitor pM = new ProgressMonitor(userID);

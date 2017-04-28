@@ -25,6 +25,10 @@ public class Topic_Practice extends javax.swing.JFrame {
      */
     private int userID;
     
+    /**
+     * initialises the class. UserId is a taken parameter
+     * @param iD 
+     */
     public Topic_Practice(int iD) {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -33,6 +37,11 @@ public class Topic_Practice extends javax.swing.JFrame {
         loadScores();
     }
     
+    /**
+     * Load scores mainly uses the dao method getRecentTopicScores to find the avg
+     * of the user's last 5 scores for each topic in the menu. This then displays it next
+     * to the ui
+     */
     public void loadScores(){
         try {
             DAO dao = new DAO();
@@ -877,6 +886,10 @@ public class Topic_Practice extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * returns to menu. this ui is terminated
+     * @param evt 
+     */
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         Menu m = new Menu();
         m.setVisible(true);
@@ -884,48 +897,75 @@ public class Topic_Practice extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btnBackActionPerformed
 
+    /**
+     * opens the intro page for Alertness, this UI is terminated
+     * @param evt 
+     */
     private void btnPractice1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPractice1ActionPerformed
         Topics t = new Topics("Alertness", userID);
         t.setVisible(true);
         this.setVisible(false);
         dispose();
     }//GEN-LAST:event_btnPractice1ActionPerformed
-
+    /**
+     * opens the intro page for Attitude, this UI is terminated
+     * @param evt 
+     */
     private void btnPractice2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPractice2ActionPerformed
         Topics t = new Topics("Attitude", userID);
         t.setVisible(true);
         this.setVisible(false);
         dispose();
     }//GEN-LAST:event_btnPractice2ActionPerformed
-
+    
+    /**
+     * opens the intro page for Safety and your Vehicle, this UI is terminated
+     * @param evt 
+     */
     private void btnPractice3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPractice3ActionPerformed
         Topics t = new Topics("Safety and your vehicle", userID);
         t.setVisible(true);
         this.setVisible(false);
         dispose();
     }//GEN-LAST:event_btnPractice3ActionPerformed
-
+    
+    /**
+     * opens the intro page for Hazard Awareness, this UI is terminated
+     * @param evt 
+     */
     private void btnPractice5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPractice5ActionPerformed
         Topics t = new Topics("Hazard Awareness", userID);
         t.setVisible(true);
         this.setVisible(false);
         dispose();
     }//GEN-LAST:event_btnPractice5ActionPerformed
-
+    
+    /**
+     * opens the intro page for Safety Margin, this UI is terminated
+     * @param evt 
+     */
     private void btnPractice6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPractice6ActionPerformed
         Topics t = new Topics("Safety Margin", userID);
         t.setVisible(true);
         this.setVisible(false);
         dispose();
     }//GEN-LAST:event_btnPractice6ActionPerformed
-
+    
+    /**
+     * opens the intro page for Motorway Rules, this UI is terminated
+     * @param evt 
+     */
     private void btnPractice7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPractice7ActionPerformed
         Topics t = new Topics("Motorway Rules", userID);
         t.setVisible(true);
         this.setVisible(false);
         dispose();
     }//GEN-LAST:event_btnPractice7ActionPerformed
-
+    /**
+     * opens the intro page for Vehicle Handling, this UI is terminated
+     * @param evt 
+     */
+    
     private void btnPractice8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPractice8ActionPerformed
         Topics t = new Topics("Vehicle Handling", userID);
         t.setVisible(true);
@@ -933,6 +973,9 @@ public class Topic_Practice extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btnPractice8ActionPerformed
     
+    /**
+     * Sets the correct background colour
+     */
     public void checkBg() {
         String readCol = "";
 

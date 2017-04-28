@@ -21,14 +21,20 @@ import javax.swing.JOptionPane;
 public class Topics extends javax.swing.JFrame {
 
     /**
-     * Creates new form NewJFrame
+     * Creates ui. NOT PREFFERED. WILL BREAK CODE IF USED
      */
     public Topics() {
         initComponents();
     }
     private String quizTopic;
     private int userID;
-
+    
+    /**
+     * Takes a user ID and a topic from being called in Topic_Practice
+     * this sets the title, and description of the value of topic
+     * @param topic
+     * @param iD 
+     */
     public Topics(String topic, int iD) {
         quizTopic = topic;
         userID = iD;
@@ -55,7 +61,10 @@ public class Topics extends javax.swing.JFrame {
         checkBg();
 
     }
-
+    
+    /**
+     * changes the background
+     */
     public void checkBg() {
         String readCol = "";
 
@@ -194,7 +203,11 @@ public class Topics extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    /**
+     * Terminates this page, and opens the Topic_Practice ui
+     * @param evt 
+     */
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         Topic_Practice t = new Topic_Practice(userID);
         t.setVisible(true);
@@ -206,8 +219,13 @@ public class Topics extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_headerLabelActionPerformed
 
+    /**
+     * Displays user with warning, describing the test. Once they hit ok, the test will start.
+     * This UI is terminated
+     * @param evt 
+     */
     private void startButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startButtonActionPerformed
-        JOptionPane.showMessageDialog(this, "Once you start, you will have 60 minutes to complete 50 questions.\nAfter 60 minutes have passed, or you have completed the test,\nyou will be sent to the results page");
+        JOptionPane.showMessageDialog(this, "Once you start, you will have 10 minutes to complete 10 questions.\nAfter 10 minutes have passed, or you have completed the test,\nyou will be sent to the results page");
         QuizUI q = new QuizUI(quizTopic, "Topic", userID);
         q.setVisible(true);
         this.setVisible(false);

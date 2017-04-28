@@ -16,7 +16,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
+ * This class is to be used as a registration UI
  * @author up777621
  */
 public class registrationUI extends javax.swing.JFrame {
@@ -48,7 +48,7 @@ public class registrationUI extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        regSubmit = new javax.swing.JButton();
         userFirstName = new javax.swing.JTextField();
         userSurname = new javax.swing.JTextField();
         userEmail = new javax.swing.JTextField();
@@ -86,11 +86,11 @@ public class registrationUI extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         jLabel7.setText("Confirm Password:");
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        jButton1.setText("Submit");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        regSubmit.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        regSubmit.setText("Submit");
+        regSubmit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                regSubmitActionPerformed(evt);
             }
         });
 
@@ -171,7 +171,7 @@ public class registrationUI extends javax.swing.JFrame {
                                                 .addComponent(dobYear, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                         .addGap(0, 0, Short.MAX_VALUE))))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton1)
+                                .addComponent(regSubmit)
                                 .addGap(0, 0, Short.MAX_VALUE)))
                         .addGap(32, 32, 32)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -222,7 +222,7 @@ public class registrationUI extends javax.swing.JFrame {
                     .addComponent(jScrollPane1))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
+                    .addComponent(regSubmit)
                     .addComponent(acceptTerms))
                 .addContainerGap())
         );
@@ -233,7 +233,12 @@ public class registrationUI extends javax.swing.JFrame {
     private void userFirstNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userFirstNameActionPerformed
     }//GEN-LAST:event_userFirstNameActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    /**
+     * When submit is pressed, this tests that all required boxes are full, and correct
+     * Then sends data to be stored in database
+     * @param evt 
+     */
+    private void regSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regSubmitActionPerformed
         //Test all of the inputs are full
 
         //getSelectedItem
@@ -280,8 +285,11 @@ public class registrationUI extends javax.swing.JFrame {
             this.setVisible(false);
             dispose();
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
-
+    }//GEN-LAST:event_regSubmitActionPerformed
+    
+    /**
+     * Changes the background to current user Settings
+     */
     public void checkBg() {
         String readCol = "";
 
@@ -316,31 +324,59 @@ public class registrationUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_acceptTermsActionPerformed
 
+    /**
+     * terminates this window, if back button is pressed
+     * @param evt 
+     */
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         this.setVisible(false);
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
-
+    
+    /**
+     * Gets user First Name
+     * @return 
+     */
     public String getFName() {
         return fName;
     }
-
+    
+    /**
+     * Gets user last name
+     * @return 
+     */
     public String getSName() {
         return sName;
     }
-
+    
+    /**
+     * Gets user Date of Birth
+     * @return 
+     */
     public String getDOB() {
         return dob;
     }
-
+    
+    /**
+     * gets user Email
+     * @return 
+     */
     public String getEmail() {
         return email;
     }
-
+    
+    /**
+     * gets the user's password
+     * @return 
+     */
     public String getPassword() {
         return password;
     }
 
+    /**
+     * Ensures that the date of birth is a valid date
+     * @return 
+     */
     public String dobIsValid() {
         /*if there's something wrong with their dob, a string is returned with
         the exact error
@@ -352,7 +388,12 @@ public class registrationUI extends javax.swing.JFrame {
         }
         return "";
     }
-
+    
+    /**
+     * takes a text based month and returns it in MM format
+     * @param textMonth
+     * @return 
+     */
     public String determineMonth(String textMonth) {
         if (textMonth.equals("January")) {
             return "01";
@@ -433,7 +474,6 @@ public class registrationUI extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> dobDay;
     private javax.swing.JComboBox<String> dobMonth;
     private javax.swing.JComboBox<String> dobYear;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -444,6 +484,7 @@ public class registrationUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JButton regSubmit;
     private javax.swing.JPasswordField userConfirmPassword;
     private javax.swing.JTextField userEmail;
     private javax.swing.JTextField userFirstName;

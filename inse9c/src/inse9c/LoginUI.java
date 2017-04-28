@@ -39,6 +39,10 @@ public class LoginUI extends javax.swing.JFrame {
         checkEmail();
     }
 
+    /**
+     * This method is used to check that the email given by the user exists in
+     * our database;
+     */
     public void checkEmail() {
         String email = "";
         boolean notEmpty = false;
@@ -59,6 +63,9 @@ public class LoginUI extends javax.swing.JFrame {
         }
     }
 
+    /**
+     * Ensures that the background matches the most recent user settings
+     */
     public void checkBg() {
         String readCol = "";
 
@@ -217,7 +224,14 @@ public class LoginUI extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    /**
+     * When the login button is pressed, we must check that the user exists, and
+     * that the password matches one inserted by the user When both are
+     * confirmed, this window will terminate, and the menu will open, passing
+     * through the userID
+     *
+     * @param evt
+     */
     private void loginButActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButActionPerformed
         //current checking fake email account, or something entered in the reg screen
         if (remEmail.isSelected()) {
@@ -244,6 +258,12 @@ public class LoginUI extends javax.swing.JFrame {
 
     }//GEN-LAST:event_loginButActionPerformed
 
+    /**
+     * This checks that the user is the correct one based on the email and
+     * password inputs, and returns true or false
+     *
+     * @return
+     */
     public boolean loginValidation() {
         //use encryption method on password so it's compatible with the one stored in Database
         String encryptedPass = "";
@@ -282,14 +302,30 @@ public class LoginUI extends javax.swing.JFrame {
         return false;
     }
 
+    /**
+     * When someone presses the enter key in the password box, this method
+     * redirects to the submit function
+     *
+     * @param evt
+     */
     private void userEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userEmailActionPerformed
         loginButActionPerformed(evt);
     }//GEN-LAST:event_userEmailActionPerformed
-
+    /**
+     * When someone presses the enter key in the password box, this method
+     * redirects to the submit function
+     *
+     * @param evt
+     */
     private void userPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userPasswordActionPerformed
         loginButActionPerformed(evt);
     }//GEN-LAST:event_userPasswordActionPerformed
 
+    /**
+     * This opens a registration UI without closing the login.
+     *
+     * @param evt
+     */
     private void registerButMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerButMouseClicked
         //Login window remains open, whilst opening the registration window
         r.setVisible(true);
@@ -298,7 +334,16 @@ public class LoginUI extends javax.swing.JFrame {
     private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_formMouseClicked
-
+    /**
+     * When a username is not saved by a previous user, a default username of
+     * "user@email.com" will appear, and disappear when the user clicks on, or
+     * enters any input to the text box
+     *
+     * This method is used to make sure that the client knows that the username
+     * text box has already been cleared
+     *
+     * @param evt
+     */
     private void userEmailMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_userEmailMouseClicked
         if (!clicked) {
             userEmail.setText("");

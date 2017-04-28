@@ -17,12 +17,19 @@ public class ProgressMonitor extends javax.swing.JFrame {
     int userID;
 
     /**
-     * Creates new form progressMonitor
+     * Creates new form progressMonitor NOT PREFERRED
      */
     public ProgressMonitor() {
         initComponents();
     }
 
+    /**
+     * Opens the progress monitor page, and populates with the user's 10 most
+     * recent results
+     *
+     * @param iD
+     * @throws SQLException
+     */
     public ProgressMonitor(int iD) throws SQLException {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -206,8 +213,13 @@ public class ProgressMonitor extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * When the user selects a new topic or test type in the drop down menu,
+     * this will automatically change the page to match their response
+     *
+     * @param evt
+     */
     private void testTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_testTypeActionPerformed
-
         DAO dao = new DAO();
         try {
             ResultSet rs;
@@ -223,6 +235,12 @@ public class ProgressMonitor extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_testTypeActionPerformed
 
+    /**
+     * if the back button is pressed, then the user will be taken to the menu
+     * This page will be terminated
+     *
+     * @param evt
+     */
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         Menu m = new Menu(userID);
         m.setVisible(true);
@@ -231,7 +249,14 @@ public class ProgressMonitor extends javax.swing.JFrame {
     }//GEN-LAST:event_backButtonActionPerformed
 
     /**
-     * @param args the command line arguments
+     * This function will take a result set, and extract the date, score and
+     * topic for each of the ten most recent tests taken by the user.
+     *
+     * Starts by ensure that the page is empty, and then filling it with
+     * information
+     *
+     * @param rs
+     * @throws SQLException
      */
     public void populatePage(ResultSet rs) throws SQLException {
         res1.setText("");
@@ -274,6 +299,7 @@ public class ProgressMonitor extends javax.swing.JFrame {
         resultScore10.setText("");
         date10.setText("");
 
+        //rs.next() / rs.previous() is a workaround for rs.next() not working properly in the if statement
         rs.next();
         rs.previous();
         if (rs.next()) {
