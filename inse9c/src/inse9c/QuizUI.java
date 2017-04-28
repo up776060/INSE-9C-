@@ -259,7 +259,6 @@ public class QuizUI extends javax.swing.JFrame {
         AnswerD = new javax.swing.JRadioButton();
         AnswerC = new javax.swing.JRadioButton();
         ButtonNext = new javax.swing.JButton();
-        ButtonHint = new javax.swing.JButton();
         ButtonExit = new javax.swing.JButton();
         lbScore = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -314,14 +313,6 @@ public class QuizUI extends javax.swing.JFrame {
         ButtonNext.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ButtonNextActionPerformed(evt);
-            }
-        });
-
-        ButtonHint.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
-        ButtonHint.setText("Hint");
-        ButtonHint.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ButtonHintActionPerformed(evt);
             }
         });
 
@@ -385,11 +376,6 @@ public class QuizUI extends javax.swing.JFrame {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(ButtonNext, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(35, 35, 35))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(41, 41, 41)
-                    .addComponent(ButtonHint, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(819, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -417,11 +403,6 @@ public class QuizUI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
                 .addComponent(ButtonNext, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(496, Short.MAX_VALUE)
-                    .addComponent(ButtonHint, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(20, 20, 20)))
         );
 
         pack();
@@ -606,10 +587,6 @@ public class QuizUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_ButtonExitActionPerformed
 
-    private void ButtonHintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonHintActionPerformed
-        JOptionPane.showMessageDialog(null, "HINT PLACEHOLDER");
-    }//GEN-LAST:event_ButtonHintActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -656,7 +633,6 @@ public class QuizUI extends javax.swing.JFrame {
     private javax.swing.JRadioButton AnswerC;
     private javax.swing.JRadioButton AnswerD;
     private javax.swing.JButton ButtonExit;
-    private javax.swing.JButton ButtonHint;
     private javax.swing.JButton ButtonNext;
     private javax.swing.JTextArea TextfieldQuestion;
     private javax.swing.JLabel headerLabel;
