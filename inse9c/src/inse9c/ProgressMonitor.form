@@ -3,6 +3,9 @@
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+      <Dimension value="[600, 460]"/>
+    </Property>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -70,7 +73,7 @@
                           <Component id="date1" min="-2" max="-2" attributes="0"/>
                           <Component id="date2" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="276" max="32767" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -145,7 +148,7 @@
                   <Component id="resultScore10" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="date10" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="285" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -187,154 +190,64 @@
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="res1">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="result 1"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="res2">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="result 1"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="res3">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="result 1"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="res4">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="result 1"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="res5">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="result 1"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="res6">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="result 1"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="res7">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="result 1"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="res8">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="result 1"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="res9">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="result 1"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="res10">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="result 1"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="resultScore1">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="score 1"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="resultScore2">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="score 2"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="resultScore3">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="score 3"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="resultScore4">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="score 4"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="resultScore5">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="score 5"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="resultScore6">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="score 6"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="resultScore7">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="score 7"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="resultScore8">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="score 8"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="resultScore9">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="score 9"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="resultScore10">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="score 10"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="date1">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jLabel1"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="date2">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jLabel1"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="date3">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jLabel1"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="date4">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jLabel1"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="date5">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jLabel1"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="date6">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jLabel1"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="date7">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jLabel1"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="date8">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jLabel1"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="date9">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jLabel1"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="date10">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jLabel1"/>
-      </Properties>
     </Component>
   </SubComponents>
 </Form>

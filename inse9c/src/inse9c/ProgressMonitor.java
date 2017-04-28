@@ -23,9 +23,14 @@ public class ProgressMonitor extends javax.swing.JFrame {
         initComponents();
     }
 
-    public ProgressMonitor(int iD) {
+    public ProgressMonitor(int iD) throws SQLException {
         initComponents();
+        this.setLocationRelativeTo(null);
         userID = iD;
+        DAO dao = new DAO();
+        ResultSet rs;
+        rs = dao.getTenResultsByTopic(userID, "");
+        populatePage(rs);
     }
 
     /**
@@ -71,6 +76,7 @@ public class ProgressMonitor extends javax.swing.JFrame {
         date10 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(600, 460));
 
         testType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All Results", "Mock Test", "Quiz", "Alertness", "Attitude", "Safety and your Vehicle", "Hazard Awareness", "Safety Margin", "Motorway Rules", "Vehicle Handling" }));
         testType.addActionListener(new java.awt.event.ActionListener() {
@@ -86,66 +92,6 @@ public class ProgressMonitor extends javax.swing.JFrame {
                 backButtonActionPerformed(evt);
             }
         });
-
-        res1.setText("result 1");
-
-        res2.setText("result 1");
-
-        res3.setText("result 1");
-
-        res4.setText("result 1");
-
-        res5.setText("result 1");
-
-        res6.setText("result 1");
-
-        res7.setText("result 1");
-
-        res8.setText("result 1");
-
-        res9.setText("result 1");
-
-        res10.setText("result 1");
-
-        resultScore1.setText("score 1");
-
-        resultScore2.setText("score 2");
-
-        resultScore3.setText("score 3");
-
-        resultScore4.setText("score 4");
-
-        resultScore5.setText("score 5");
-
-        resultScore6.setText("score 6");
-
-        resultScore7.setText("score 7");
-
-        resultScore8.setText("score 8");
-
-        resultScore9.setText("score 9");
-
-        resultScore10.setText("score 10");
-
-        date1.setText("jLabel1");
-
-        date2.setText("jLabel1");
-
-        date3.setText("jLabel1");
-
-        date4.setText("jLabel1");
-
-        date5.setText("jLabel1");
-
-        date6.setText("jLabel1");
-
-        date7.setText("jLabel1");
-
-        date8.setText("jLabel1");
-
-        date9.setText("jLabel1");
-
-        date10.setText("jLabel1");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -194,7 +140,7 @@ public class ProgressMonitor extends javax.swing.JFrame {
                             .addComponent(date3)
                             .addComponent(date1)
                             .addComponent(date2))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 276, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -254,15 +200,14 @@ public class ProgressMonitor extends javax.swing.JFrame {
                     .addComponent(res10)
                     .addComponent(resultScore10)
                     .addComponent(date10))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(285, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void testTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_testTypeActionPerformed
-        System.out.println("hello");
-        
+
         DAO dao = new DAO();
         try {
             ResultSet rs;
@@ -288,57 +233,134 @@ public class ProgressMonitor extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public void populatePage(ResultSet rs) throws SQLException {        
-        System.out.println(rs.getString("testType"));
+    public void populatePage(ResultSet rs) throws SQLException {
+        res1.setText("");
+        resultScore1.setText("");
+        date1.setText("");
+        
+        res2.setText("");
+        resultScore2.setText("");
+        date2.setText("");
+        
+        res3.setText("");
+        resultScore3.setText("");
+        date3.setText("");
+        
+        res4.setText("");
+        resultScore4.setText("");
+        date4.setText("");
+        
+        res5.setText("");
+        resultScore5.setText("");
+        date5.setText("");
+        
+        res6.setText("");
+        resultScore6.setText("");
+        date6.setText("");
+        
+        res7.setText("");
+        resultScore7.setText("");
+        date7.setText("");
+        
+        res8.setText("");
+        resultScore8.setText("");
+        date8.setText("");
+        
+        res9.setText("");
+        resultScore9.setText("");
+        date9.setText("");
+        
+        res10.setText("");
+        resultScore10.setText("");
+        date10.setText("");
+        
         res1.setText(rs.getString("testType"));
-        System.out.println(rs.getString("testScore"));
-        resultScore1.setText(rs.getString("testScore"));
-        System.out.println(rs.getString("testDate"));
+        if (res1.getText().matches("Mock Test")) {
+            resultScore1.setText(rs.getString("testScore") + "/50");
+        } else {
+            resultScore1.setText(rs.getString("testScore") + "/10");
+        }
         date1.setText(rs.getString("testDate"));
         rs.next();
 
         res2.setText(rs.getString("testType"));
-        resultScore2.setText(rs.getString("testScore"));
+        if (res2.getText().matches("Mock Test")) {
+            resultScore2.setText(rs.getString("testScore") + "/50");
+        } else {
+            resultScore2.setText(rs.getString("testScore") + "/10");
+        }
         date2.setText(rs.getString("testDate"));
         rs.next();
 
         res3.setText(rs.getString("testType"));
-        resultScore3.setText(rs.getString("testScore"));
+        if (res3.getText().matches("Mock Test")) {
+            resultScore3.setText(rs.getString("testScore") + "/50");
+        } else {
+            resultScore3.setText(rs.getString("testScore") + "/10");
+        }
         date3.setText(rs.getString("testDate"));
         rs.next();
 
         res4.setText(rs.getString("testType"));
-        resultScore4.setText(rs.getString("testScore"));
+        if (res4.getText().matches("Mock Test")) {
+            resultScore4.setText(rs.getString("testScore") + "/50");
+        } else {
+            resultScore4.setText(rs.getString("testScore") + "/10");
+        }
         date4.setText(rs.getString("testDate"));
         rs.next();
 
         res5.setText(rs.getString("testType"));
-        resultScore5.setText(rs.getString("testScore"));
+        if (res5.getText().matches("Mock Test")) {
+            resultScore5.setText(rs.getString("testScore") + "/50");
+        } else {
+            resultScore5.setText(rs.getString("testScore") + "/10");
+        }
         date5.setText(rs.getString("testDate"));
         rs.next();
 
         res6.setText(rs.getString("testType"));
-        resultScore6.setText(rs.getString("testScore"));
+        if (res6.getText().matches("Mock Test")) {
+            resultScore6.setText(rs.getString("testScore") + "/50");
+        } else {
+            resultScore6.setText(rs.getString("testScore") + "/10");
+        }
         date6.setText(rs.getString("testDate"));
         rs.next();
 
         res7.setText(rs.getString("testType"));
-        resultScore7.setText(rs.getString("testScore"));
+        if(res7.getText().matches("Mock Test")){
+            resultScore7.setText(rs.getString("testScore") + "/50");
+        }else{
+            resultScore7.setText(rs.getString("testScore") + "/10");
+        }
         date7.setText(rs.getString("testDate"));
         rs.next();
 
         res8.setText(rs.getString("testType"));
-        resultScore8.setText(rs.getString("testScore"));
+        if(res8.getText().matches("Mock Test")){
+            resultScore8.setText(rs.getString("testScore") + "/50");
+        }else{
+            resultScore8.setText(rs.getString("testScore") + "/10");
+        }
         date8.setText(rs.getString("testDate"));
         rs.next();
 
         res9.setText(rs.getString("testType"));
-        resultScore9.setText(rs.getString("testScore"));
+        if(res9.getText().matches("Mock Test")){
+            resultScore9.setText(rs.getString("testScore") + "/50");
+        }else{
+            resultScore9.setText(rs.getString("testScore") + "/10");
+        }
         date9.setText(rs.getString("testDate"));
         rs.next();
 
         res10.setText(rs.getString("testType"));
-        resultScore10.setText(rs.getString("testScore"));
+        if(res10.getText().matches("Mock Test")){
+            resultScore10.setText(rs.getString("testScore") + "/50");
+        }else{
+            resultScore10.setText(rs.getString("testScore") + "/10");
+        }
         date10.setText(rs.getString("testDate"));
         rs.next();
 

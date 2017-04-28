@@ -6,8 +6,6 @@ public class Inse9c {
         LoginUI l = new LoginUI();
         l.setVisible(true);
         DAO.connect();
-        double n = 18/30;
-        System.out.println(n);
     }
 
 }
