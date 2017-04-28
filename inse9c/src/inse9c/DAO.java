@@ -103,7 +103,14 @@ public class DAO {
     public static ResultSet retrieveQuiz()
             throws SQLException {
         conn = connect();
-        ResultSet rs = stmt.executeQuery("select * from Question ORDER BY RAND() LIMIT 10");
+        ResultSet rs = stmt.executeQuery("select * from Question ORDER BY RAND() LIMIT 50");
+        return rs;
+    }
+    
+    public static ResultSet retrieveQuizByTopic(String topic)
+            throws SQLException {
+        conn = connect();
+        ResultSet rs = stmt.executeQuery("select * from Question where questionTopic = '"+topic+"' ORDER BY RAND() LIMIT 50");
         return rs;
     }
 

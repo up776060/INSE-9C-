@@ -304,7 +304,7 @@ public class ProgressMonitor extends javax.swing.JFrame {
             if (res3.getText().matches("Mock Test")) {
                 resultScore3.setText(rs.getString("testScore") + "/50");
             } else {
-                resultScore3.setText(rs.getString("testScore") + "/30");
+                resultScore3.setText(rs.getString("testScore") + "/10");
             }
             date3.setText(rs.getString("testDate"));
         }
@@ -315,7 +315,7 @@ public class ProgressMonitor extends javax.swing.JFrame {
             if (res4.getText().matches("Mock Test")) {
                 resultScore4.setText(rs.getString("testScore") + "/50");
             } else {
-                resultScore4.setText(rs.getString("testScore") + "/40");
+                resultScore4.setText(rs.getString("testScore") + "/10");
             }
             date4.setText(rs.getString("testDate"));
         }
@@ -326,7 +326,7 @@ public class ProgressMonitor extends javax.swing.JFrame {
             if (res5.getText().matches("Mock Test")) {
                 resultScore5.setText(rs.getString("testScore") + "/50");
             } else {
-                resultScore5.setText(rs.getString("testScore") + "/50");
+                resultScore5.setText(rs.getString("testScore") + "/10");
             }
             date5.setText(rs.getString("testDate"));
         }
@@ -337,7 +337,7 @@ public class ProgressMonitor extends javax.swing.JFrame {
             if (res6.getText().matches("Mock Test")) {
                 resultScore6.setText(rs.getString("testScore") + "/50");
             } else {
-                resultScore6.setText(rs.getString("testScore") + "/60");
+                resultScore6.setText(rs.getString("testScore") + "/10");
             }
             date6.setText(rs.getString("testDate"));
         }
@@ -348,7 +348,7 @@ public class ProgressMonitor extends javax.swing.JFrame {
             if (res7.getText().matches("Mock Test")) {
                 resultScore7.setText(rs.getString("testScore") + "/50");
             } else {
-                resultScore7.setText(rs.getString("testScore") + "/40");
+                resultScore7.setText(rs.getString("testScore") + "/10");
             }
             date7.setText(rs.getString("testDate"));
         }
@@ -359,7 +359,7 @@ public class ProgressMonitor extends javax.swing.JFrame {
             if (res8.getText().matches("Mock Test")) {
                 resultScore8.setText(rs.getString("testScore") + "/50");
             } else {
-                resultScore8.setText(rs.getString("testScore") + "/80");
+                resultScore8.setText(rs.getString("testScore") + "/10");
             }
             date8.setText(rs.getString("testDate"));
         }
@@ -370,7 +370,7 @@ public class ProgressMonitor extends javax.swing.JFrame {
             if (res9.getText().matches("Mock Test")) {
                 resultScore9.setText(rs.getString("testScore") + "/50");
             } else {
-                resultScore9.setText(rs.getString("testScore") + "/90");
+                resultScore9.setText(rs.getString("testScore") + "/10");
             }
             date9.setText(rs.getString("testDate"));
         }

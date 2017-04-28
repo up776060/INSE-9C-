@@ -5,6 +5,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -222,10 +223,14 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_LogOut_buttonActionPerformed
 
     private void Progress_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Progress_buttonActionPerformed
-        ProgressMonitor pM = new ProgressMonitor(userID);
-        pM.setVisible(true);
-        this.setVisible(false);
-        dispose();
+        try {
+            ProgressMonitor pM = new ProgressMonitor(userID);
+            pM.setVisible(true);
+            this.setVisible(false);
+            dispose();
+        } catch (SQLException ex) {
+            Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_Progress_buttonActionPerformed
 
     /**

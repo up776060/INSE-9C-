@@ -36,6 +36,7 @@ public class QuizUI extends javax.swing.JFrame {
     // 2 Dimensional array to store questions and possible answers. Array for correct answer.
     private Thread thread = new Thread();
     private Timer countdownTimer;
+    private int maxQuestions;
     private String[][] question1;
     private String[] correctans;
     private String quizTopic;
@@ -61,6 +62,7 @@ public class QuizUI extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         checkBg();
+        maxQuestions = 10;
         quizTopic = topic;
         quizType = quizT;
         userID = iD;
@@ -74,6 +76,7 @@ public class QuizUI extends javax.swing.JFrame {
                 break;
             case "Mock":
                 timeRemaining = 3600;
+                maxQuestions = 50;
                 break;
         }
 
@@ -102,19 +105,29 @@ public class QuizUI extends javax.swing.JFrame {
             case "Quiz":
                 headerLabel.setText("Quiz");
                 break;
-            case "Mock":
+            case "Mock Test":
                 headerLabel.setText("Mock Test");
                 break;
         }
-
+        ResultSet rs ;
         i = 0;
         score = 0;
         try {
-            ResultSet rs = DAO.retrieveQuiz();
+            if(quizTopic.matches("Mock Test") || quizTopic.matches("Quiz") ){
+                rs = DAO.retrieveQuiz();
+            } else{
+                rs = DAO.retrieveQuizByTopic(quizTopic);
+            }
 
-            question1 = new String[10][5];
-            correctans = new String[10];
-            for (int i = 0; i < 10; i++) {
+            if (quizTopic.matches("Mock Test")) {
+                question1 = new String[50][5];
+                correctans = new String[50];
+            } else {
+                question1 = new String[10][5];
+                correctans = new String[10];
+            }
+
+            for (int i = 0; i < maxQuestions; i++) {
                 rs.next();
                 question1[i][0] = rs.getString("questionContents");
                 question1[i][1] = rs.getString("correctAns");
@@ -140,7 +153,6 @@ public class QuizUI extends javax.swing.JFrame {
                 } while (!changed);
             }
 
-
             TextfieldQuestion.setText(question1[0][0]);
             AnswerA.setText(question1[0][1]);
             AnswerA.setActionCommand(question1[0][1]);
@@ -150,9 +162,6 @@ public class QuizUI extends javax.swing.JFrame {
             AnswerC.setActionCommand(question1[0][3]);
             AnswerD.setText(question1[0][4]);
             AnswerD.setActionCommand(question1[0][4]);
-
-
-
 
         } catch (SQLException ex) {
             Logger.getLogger(QuizUI.class.getName()).log(Level.SEVERE, null, ex);
@@ -195,8 +204,6 @@ public class QuizUI extends javax.swing.JFrame {
         try {
             BufferedReader br = new BufferedReader(new FileReader("colourSettings.txt"));
             readCol = br.readLine();
-
-
 
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Settings.class
@@ -421,7 +428,6 @@ public class QuizUI extends javax.swing.JFrame {
 
             // Gets data from radio button. If same as answer, reward a point
             String submit = bg.getSelection().getActionCommand().toString();
-
             if (submit.equals(correctans[i])) {
                 score = score + 1;
                 lbScore.setText("Score: " + score);
@@ -431,7 +437,6 @@ public class QuizUI extends javax.swing.JFrame {
                 try {
                     BufferedReader br = new BufferedReader(new FileReader("soundSettings.txt"));
                     sound = br.readLine();
-
 
                 } catch (FileNotFoundException ex) {
                     Logger.getLogger(Settings.class
@@ -448,7 +453,6 @@ public class QuizUI extends javax.swing.JFrame {
                         clip.open(audioInputStream);
                         clip.start();
 
-
                     } catch (LineUnavailableException ex) {
                         Logger.getLogger(QuizUI.class
                                 .getName()).log(Level.SEVERE, null, ex);
@@ -463,23 +467,28 @@ public class QuizUI extends javax.swing.JFrame {
 
             }
 
-            if (i == 9) {
+            if (quizTopic.matches("Mock Test") && i == 49) {
+                End t = new End(score, correctans.length, userID, quizTopic);
+                t.setVisible(true);
+                this.setVisible(false);
+                dispose();
+            } else if(!quizTopic.matches("Mock Test") && i == 9){
                 End t = new End(score, correctans.length, userID, quizTopic);
                 t.setVisible(true);
                 this.setVisible(false);
                 dispose();
             }
-
             // Increment i by 1 
             i++;
-
-            if (i > 9) {
-                i = 9;
+            
+            if(quizTopic.matches("Mock Test") && i > 49){
+                i=49;
+            }else if(!quizTopic.matches("Mock Test") && i > 9){
+                i=9;
             }
-
+            
             Random ran = new Random();
             // Display next question
-
 
             int a1 = ran.nextInt(4) + 1;
 
@@ -527,7 +536,9 @@ public class QuizUI extends javax.swing.JFrame {
 
         }
 
-        if (i == 9) {
+        if (i == 9 && !quizType.matches("Mock")) {
+            ButtonNext.setText("Submit");
+        } else if(i==49){
             ButtonNext.setText("Submit");
         }
         // WHAT NEEDS TO BE DONE!
@@ -569,7 +580,6 @@ public class QuizUI extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
-
 
                 }
             }
