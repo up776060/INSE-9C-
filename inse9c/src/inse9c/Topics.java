@@ -58,6 +58,8 @@ public class Topics extends javax.swing.JFrame {
         } else {
             System.out.println("error TOPICS SELECTION");
         }
+        
+        topicTextInfo.setText("You are about to undertake a small quiz based on the\ntopic of "+ quizTopic +". For this test you will only be\ngiven questions around this topic.\nYou have 10 minutes to complete this quiz");
         checkBg();
 
     }
